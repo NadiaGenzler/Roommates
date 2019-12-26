@@ -1,0 +1,6 @@
+framework module Pods_RoommatesApp {
+  umbrella header "Pods-RoommatesApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
