@@ -13,18 +13,10 @@ import UIKit
 public class CircularImageView: UIImageView {
    
     
-//    lazy var imageLayer: CALayer = {
-//        let imageLayer = CALayer()
-//
-//        let bundle = Bundle(for: CircularImageView.self)
-//        imageLayer.contents = UIImage(named: "user_male", in: bundle, compatibleWith: nil)?.cgImage
-//        imageLayer.masksToBounds = true //cut to the radius
-//        return imageLayer
-//    }()
-    
    @IBInspectable var borderRadius:Double = 1.0{
        didSet{
            self.layer.cornerRadius = CGFloat(borderRadius)
+        self.layer.masksToBounds=true
        }
    }
 

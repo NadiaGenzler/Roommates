@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,8 @@
 		8097932F23A5617300F2701B /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097932E23A5617300F2701B /* RoundView.swift */; };
 		8097933123A8130400F2701B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097933023A8130400F2701B /* GradientView.swift */; };
 		8097933323A81BAB00F2701B /* Assistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8097933223A81BAB00F2701B /* Assistance.storyboard */; };
+		80C346E823B4AA8C003B4DA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */; };
+		80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		8097932E23A5617300F2701B /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		8097933023A8130400F2701B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		8097933223A81BAB00F2701B /* Assistance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assistance.storyboard; sourceTree = "<group>"; };
+		80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		E7A3F6AD6B471571E9649BA8 /* Pods_RoommatesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RoommatesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -108,9 +112,10 @@
 				8097930623A4F5A400F2701B /* Controller */,
 				8097930523A4F59300F2701B /* View */,
 				809792FE23A4EC7700F2701B /* Model */,
-				809792E823A4E81500F2701B /* AppDelegate.swift */,
 				809792EA23A4E81500F2701B /* SceneDelegate.swift */,
+				809792E823A4E81500F2701B /* AppDelegate.swift */,
 				809792F123A4E81800F2701B /* Assets.xcassets */,
+				80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */,
 				809792F323A4E81800F2701B /* LaunchScreen.storyboard */,
 				809792F623A4E81800F2701B /* Info.plist */,
 				8097933223A81BAB00F2701B /* Assistance.storyboard */,
@@ -125,6 +130,7 @@
 				809792FF23A4F16400F2701B /* Apartment.swift */,
 				8097930123A4F22D00F2701B /* Task.swift */,
 				8097930323A4F37900F2701B /* Event.swift */,
+				80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,7 +166,6 @@
 				480B452ABD65AFB998486192 /* Pods-RoommatesApp.debug.xcconfig */,
 				626F04A2922827AC7F451E96 /* Pods-RoommatesApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +180,7 @@
 				809792E123A4E81500F2701B /* Sources */,
 				809792E223A4E81500F2701B /* Frameworks */,
 				809792E323A4E81500F2701B /* Resources */,
+				8F613E15D4B7EB44B4D713C6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,6 +234,7 @@
 				809792F223A4E81800F2701B /* Assets.xcassets in Resources */,
 				8097933323A81BAB00F2701B /* Assistance.storyboard in Resources */,
 				809792F023A4E81500F2701B /* Registration.storyboard in Resources */,
+				80C346E823B4AA8C003B4DA0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +263,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8F613E15D4B7EB44B4D713C6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RoommatesApp/Pods-RoommatesApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RoommatesApp/Pods-RoommatesApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RoommatesApp/Pods-RoommatesApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -267,6 +291,7 @@
 				809792FD23A4EBA200F2701B /* Tenant.swift in Sources */,
 				8041620E23B0D0AC001639CA /* TasksViewController.swift in Sources */,
 				8097933123A8130400F2701B /* GradientView.swift in Sources */,
+				80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */,
 				8097930023A4F16400F2701B /* Apartment.swift in Sources */,
 				8041620C23B0C55A001639CA /* FillBlankView.swift in Sources */,
 				8041620A23B0BDCB001639CA /* RegistrationViewController.swift in Sources */,

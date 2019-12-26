@@ -211,10 +211,10 @@
                                         <rect key="frame" x="10" y="10" width="314" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-key" translatesAutoresizingMaskIntoConstraints="NO" id="RI8-7S-ats">
-                                                <rect key="frame" x="0.0" y="0.0" width="100.5" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm Joining my Roommates" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1C-jj-a26">
-                                                <rect key="frame" x="105.5" y="3.5" width="208.5" height="53"/>
+                                                <rect key="frame" x="65" y="3.5" width="249" height="53"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -247,10 +247,10 @@
                                         <rect key="frame" x="10" y="10" width="314" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-a_home" translatesAutoresizingMaskIntoConstraints="NO" id="hcM-zd-OWb">
-                                                <rect key="frame" x="0.0" y="0.0" width="99.5" height="60"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="60"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm Creating Roommates Group" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-2N-LDX">
-                                                <rect key="frame" x="109.5" y="3.5" width="204.5" height="53"/>
+                                                <rect key="frame" x="69" y="3.5" width="245" height="53"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

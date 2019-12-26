@@ -11,9 +11,10 @@ import UIKit
 class JoiningViewController: UIViewController {
 
     
-   
     @IBOutlet weak var imageView: CircularImageView!
     
+    @IBOutlet weak var name: UITextField!
+    @IBOutlet weak var phone: UITextField!
     
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imagepicker=UIImagePickerController()
@@ -26,10 +27,22 @@ class JoiningViewController: UIViewController {
       
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
 //        textField.delegate=self
         
-//        let imageData = imageView.image?.pngData()
+
     }
+    
+    
+    
     
     
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -37,8 +50,7 @@ class JoiningViewController: UIViewController {
 //               inflateView(keyboard)
            }
        }
-    
-    
+
     
 //    func inflateView(_ keyboard:CGRect){
 //        print(keyboard.height)
@@ -61,6 +73,8 @@ class JoiningViewController: UIViewController {
 
 }
 
+
+
 extension JoiningViewController:UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
@@ -69,6 +83,8 @@ extension JoiningViewController:UITextFieldDelegate{
         
     
 }
+
+
 extension JoiningViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         //cancled

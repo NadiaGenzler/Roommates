@@ -6,6 +6,7 @@ target 'RoommatesApp' do
   use_frameworks!
 
   # Pods for RoommatesApp
-  # add pods for desired Firebase products
-  # https://firebase.google.com/docs/ios/setup#available-pods
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 end
