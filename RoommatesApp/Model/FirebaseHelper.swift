@@ -18,12 +18,15 @@ class FirebaseHelper {
         ref = Database.database().reference()
     }
     
-    func addApartment(apartment:Apartment){
+    
+     //MARK: Write to FireBase
+    
+    // add and update together
+    func addApartment(apartment: inout Apartment){
         guard let apartmentKey=self.ref.childByAutoId().key else {return}
-//
-//        let apartmentPost=Apartment(name: "Home", id: "1234", tenants: [Tenant(name: "nadia5"), Tenant(name: "asdfg")])
-        let childUpdates=["/Apartment/\(apartmentKey)":apartment.toDictionary()]
+        apartment.apartmentKey=apartmentKey
         
+        let childUpdates=["/Apartment/\(apartmentKey)":apartment.toDictionary()]
         ref.updateChildValues(childUpdates)
     }
     
@@ -35,48 +38,66 @@ class FirebaseHelper {
         ref.updateChildValues(childUpdates)
         
     }
-    
-    func removeTenant(apartmentKey:String ,tenantKey:String){
-        let refForRemove=Database.database().reference(withPath: "/Apartment/\(apartmentKey)/tenants/\(tenantKey)")
-        refForRemove.removeValue()
 
-    }
     
     func addTask(apartmentKey:String, task: inout Task){
         guard let taskKey=self.ref.child(apartmentKey).child("tasks").childByAutoId().key else {return}
-        task.key=taskKey
+        task.taskKey=taskKey
         
         let childUpdates=["/Apartment/\(apartmentKey)/tasks/\(taskKey)":task.toDictionary()]
         ref.updateChildValues(childUpdates)
         
     }
     
+    func addEvent(apartmentKey:String, event: inout Event){
+        guard let eventKey=self.ref.child(apartmentKey).child("events").childByAutoId().key else {return}
+        event.eventKey=eventKey
+        
+        let childUpdates=["/Apartment/\(apartmentKey)/events/\(eventKey)":event.toDictionary()]
+        ref.updateChildValues(childUpdates)
+    }
+    
+    
+    
     //MARK: Read from FireBase
     
     func fetchApartmentData(apartmentKey:String, complition: @escaping (Apartment)->Void){
         ref.child("Apartment").child(apartmentKey).observe(.value) { (snapshot) in
-            let aprtmentDict=snapshot.value as? [String:Any] ?? [:]
-            
-//            let name:String = aprtmentDict["name"] as! String
-//            let key:String = aprtmentDict["key"] as! String
-//            let tenants:[Tenant] = aprtmentDict["talents"] as! [Tenant]
-//            let tasks:[Task] = aprtmentDict["tasks"] as! [Task]
-//            
-            let apartment = Apartment(fromDictionary: aprtmentDict)
+            let apartmentDict=snapshot.value as? [String:Any] ?? [:]
+          
+            let apartment = Apartment(fromDictionary: apartmentDict)
             complition(apartment)
            
         }
     }
     
     
+
     
-    func fetchTasks(){
+    
+    //MARK: Remove from FireBase
+    func removeApartment(apartmentKey:String){
+           let refForRemove=Database.database().reference(withPath: "/Apartment/\(apartmentKey)")
+           refForRemove.removeValue()
+           
+       }
+    
+    func removeTenant(apartmentKey:String ,tenantKey:String){
+        let refForRemove=Database.database().reference(withPath: "/Apartment/\(apartmentKey)/tenants/\(tenantKey)")
+        refForRemove.removeValue()
         
     }
     
+    func removeTask(apartmentKey:String ,taskKey:String){
+        let refForRemove=Database.database().reference(withPath: "/Apartment/\(apartmentKey)/tasks/\(taskKey)")
+        refForRemove.removeValue()
+        
+    }
     
-    
-
-    
+    func removeEvent(apartmentKey:String ,eventKey:String){
+        let refForRemove=Database.database().reference(withPath: "/Apartment/\(apartmentKey)/events/\(eventKey)")
+        refForRemove.removeValue()
+        
+    }
     
 }

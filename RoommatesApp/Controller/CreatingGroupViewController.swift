@@ -8,36 +8,37 @@
 
 import UIKit
 
-class CreatingGroupViewController: UIViewController {
+class CreatingGroupViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var groupName: UITextField!
     @IBOutlet weak var groupId: UITextField!
+    
     let fireBase=FirebaseHelper.shared
+//    var apartment:Apartment
+    // figur out how to pass the key to the popover
     @IBAction func create(_ sender: UIButton) {
         
-        fireBase.addApartment(apartment: Apartment(name: groupName.text!, key: groupId.text!, tenants: [], tasks: []))
+//        apartment=Apartment(name: groupName.text!, tenants: [], tasks: [], events: [])
+//        fireBase.addApartment(apartment: &apartment )
         
-//        let createdAlert = UIAlertController(title: "Group Created Successfuly!",
-//                                               message: "",
-//                                               preferredStyle: .alert)
-//
-//        createdAlert.addAction(.init(title: "Invite Roommates", style: .default, handler: { (action) in
-//            print("invite Tapped")
-//        }))
-//        createdAlert.addAction(.init(title: "Continue to regestration", style: .default, handler: { (action) in
-//            print("continue Tapped")
-//        }))
-//
-//        present(createdAlert, animated: true)
+        let creationVC=storyboard?.instantiateViewController(identifier: "successfulCreation") as! CreatedGroupDialogViewController
+        creationVC.modalPresentationStyle = .overCurrentContext
         
+        
+        
+        present(creationVC,animated: true, completion: nil)
+    
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let dest=segue.description as? CreatedGroupDialogViewController else {return}
+//        dest.apartmentKeyS=apartment.apartmentKey ?? "dd"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        groupId.delegate=self
+        
         groupName.delegate=self
         
     }

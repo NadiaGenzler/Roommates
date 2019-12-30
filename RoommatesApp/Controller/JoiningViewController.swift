@@ -9,12 +9,23 @@
 import UIKit
 
 class JoiningViewController: UIViewController {
-
     
+    var firebase=FirebaseHelper.shared
+    
+    //will be filled automatically once the group created
+    @IBOutlet weak var apartmentKey: UITextField!
     @IBOutlet weak var imageView: CircularImageView!
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+    @IBAction func joinButton(_ sender: UIButton) {
+        
+        var tenant=Tenant(name: name.text!, phoneNumber: phone.text!, password: password.text!)
+        firebase.addTenant(apartmentKey: apartmentKey.text!, tenant: &tenant)
+    }
+    
     
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imagepicker=UIImagePickerController()

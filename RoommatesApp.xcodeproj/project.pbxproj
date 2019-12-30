@@ -32,6 +32,8 @@
 		8097933323A81BAB00F2701B /* Assistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8097933223A81BAB00F2701B /* Assistance.storyboard */; };
 		80C346E823B4AA8C003B4DA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */; };
 		80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */; };
+		80C346EC23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */; };
+		80C346EE23B8733A003B4DA0 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		8097933223A81BAB00F2701B /* Assistance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assistance.storyboard; sourceTree = "<group>"; };
 		80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
+		80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedGroupDialogViewController.swift; sourceTree = "<group>"; };
+		80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		E7A3F6AD6B471571E9649BA8 /* Pods_RoommatesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RoommatesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -140,10 +144,10 @@
 			children = (
 				8097932E23A5617300F2701B /* RoundView.swift */,
 				8097933023A8130400F2701B /* GradientView.swift */,
+				8041621323B10567001639CA /* CircularImageView.swift */,
 				804161F523AABA2E001639CA /* KeyboardHeightView.swift */,
 				8041620B23B0C55A001639CA /* FillBlankView.swift */,
 				8041620F23B10356001639CA /* TaskTableViewCell.swift */,
-				8041621323B10567001639CA /* CircularImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -156,6 +160,8 @@
 				8097930923A504FB00F2701B /* CreatingGroupViewController.swift */,
 				8097930B23A5051A00F2701B /* JoiningViewController.swift */,
 				8041620D23B0D0AC001639CA /* TasksViewController.swift */,
+				80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */,
+				80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -296,6 +302,8 @@
 				8041620C23B0C55A001639CA /* FillBlankView.swift in Sources */,
 				8041620A23B0BDCB001639CA /* RegistrationViewController.swift in Sources */,
 				8097932F23A5617300F2701B /* RoundView.swift in Sources */,
+				80C346EC23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift in Sources */,
+				80C346EE23B8733A003B4DA0 /* ColorPickerViewController.swift in Sources */,
 				8041621023B10356001639CA /* TaskTableViewCell.swift in Sources */,
 				809792E923A4E81500F2701B /* AppDelegate.swift in Sources */,
 				8097930223A4F22D00F2701B /* Task.swift in Sources */,

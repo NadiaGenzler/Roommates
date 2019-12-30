@@ -26,11 +26,17 @@ class ViewController: UIViewController {
 //        FirebaseHelper.shared.addTenant(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", tenant: &t)
         
 //        FirebaseHelper.shared.removeTenant(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", tenantKey: "-Lx11t5IIMz6PIbTm6LF")
-//        var task=Task(title: "wash the dishes", body: "with sponge", done: false)
+        
+
+//        FirebaseHelper.shared.addTask(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", task: &task)
+//        
+//        var task=Task(title: "wash the dishes", body: "with sponge", done: true)
 //        FirebaseHelper.shared.addTask(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", task: &task)
         
         FirebaseHelper.shared.fetchApartmentData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (apartment) in
+
             print(apartment)
+
         }
         
 

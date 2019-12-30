@@ -10,63 +10,86 @@ import UIKit
 
 class Apartment:CustomStringConvertible{
     var description: String {
-        return "name: \(name), key: \(key), tenants: \(tenants), tasks: \(tasks) "
+        return "name: \(name), apartmentKey: \(apartmentKey), tenants: \(tenants),tasks: \(tasks) "
     }
     
     var name:String
-    var key:String
+    var apartmentKey:String?
     var tenants:[Tenant]
     var tasks:[Task]
+    var events:[Event]
     
     init(fromDictionary:[String:Any]) {
-       
-        self.name=fromDictionary["name"] as! String
-        self.key=fromDictionary["id"] as! String
         
-        let tenantsDict = fromDictionary["tenants"] as! [String:Any]
+        self.name=fromDictionary["name"] as! String
+        self.apartmentKey=fromDictionary["apartmentKey"] as! String
         self.tenants=[]
         self.tasks=[]
+        self.events=[]
         
-        for (tenantKey,value) in tenantsDict{
-           //print("00000000000",key,"vvvvvvvvvvvvv",value is Tenant )
-            let tenantValues = value as! [String:Any]
-            
-            for (key,value) in tenantValues{
-                let t = Tenant(name: value as! String)
-                t.tenantKey = tenantKey
-                self.tenants.append(t)
+        
+        let tenantsDict = fromDictionary["tenants"] as? [String:Any] ?? [:]
+        for (tenantKey,tenantValue) in tenantsDict{
+            let tenantValues = tenantValue as! [String:Any]
+            for (_,value) in tenantValues{
+                let tenant = Tenant(name: value as! String, phoneNumber: value as! String,
+                                    password: value as! String)
+                tenant.tenantKey = tenantKey
+                self.tenants.append(tenant)
             }
-            //let t = value as!
-//            t.tenantKey = key
-//            self.tenants.append(t)
-            //print("tatatatat",Tenant(fromDictionary: [key:value]))
-            
         }
-        //print("---------------",tenantsDict)
         
-        let tasksDict = fromDictionary["tasks"] as! [String:Any]
+        //the tasks dont add good
+        let tasksDict = fromDictionary["tasks"] as? [String:Any] ?? [:]
+        for (taskKey,taskValue) in tasksDict{
+            let tasksValues=taskValue as! [String:Any]
+            var Boolvalue = false
+            for (_,value) in tasksValues{
+                if tasksValues["done"] as! String=="true"{
+                     Boolvalue = true
+                }
+                
+                let task=Task(title: value as! String, body: value as! String, done: Boolvalue)
+                task.taskKey=taskKey
+                self.tasks.append(task)
+                
+            }
+        }
         
         
- 
-
+        let eventDict=fromDictionary["events"] as? [String:Any] ?? [:]
+        for (eventKey, eventValue) in eventDict{
+            let eventValues = eventValue as! [String:Any]
+            for (_,value) in eventValues{
+                let event=Event(title: value as! String, description: value as! String, startDate: value as! Date, endDate: value as! Date )// not sure of the end date
+                event.eventKey=eventKey
+                self.events.append(event)
+            }
+        }
     }
     
-    init(name:String, key: String, tenants: [Tenant], tasks: [Task]){
+    
+    init(name:String, tenants: [Tenant], tasks: [Task], events:[Event]){
         self.name=name
-        self.key=key
         self.tenants=tenants
         self.tasks=tasks
+        self.events=events
     }
+    
     
     func toDictionary() -> [String:Any] {
         var dict:Dictionary<String,Any>=[:]
         
         dict["name"]=name
-        dict["key"]=key
-        dict["tenants"]=tenantDict()
+        dict["apartmentKey"]=apartmentKey
+        dict["tenants"]=tenantDict()//[]
         dict["tasks"]=taskDict()
+        dict["events"]=eventsDict()
+        
         return dict
     }
+    
+    
     
     private func tenantDict()->[Dictionary<String,Any>]{
         var arr:[Dictionary<String,Any>]=[]
@@ -80,12 +103,20 @@ class Apartment:CustomStringConvertible{
     
     private func taskDict()->[Dictionary<String,Any>]{
         var arr:[Dictionary<String,Any>]=[]
-        
+
         for task in tasks{
             arr.append(task.toDictionary())
+        }
+
+        return arr
+    }
+    
+    private func eventsDict()->[Dictionary<String,Any>]{
+        var arr:[Dictionary<String,Any>]=[]
+        for event in events{
+            arr.append(event.toDictionary())
         }
         
         return arr
     }
-    
 }
