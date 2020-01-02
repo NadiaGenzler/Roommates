@@ -11,6 +11,7 @@ import Firebase
 
 class FirebaseHelper {
     var ref: DatabaseReference!
+    let storageRef=Storage.storage().reference()
     
     static let shared=FirebaseHelper()
     
@@ -64,7 +65,7 @@ class FirebaseHelper {
     func fetchApartmentData(apartmentKey:String, complition: @escaping (Apartment)->Void){
         ref.child("Apartment").child(apartmentKey).observe(.value) { (snapshot) in
             let apartmentDict=snapshot.value as? [String:Any] ?? [:]
-          
+//          print(apartmentDict)
             let apartment = Apartment(fromDictionary: apartmentDict)
             complition(apartment)
            

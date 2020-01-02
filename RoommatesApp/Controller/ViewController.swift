@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         
         FirebaseHelper.shared.fetchApartmentData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (apartment) in
 
-            print(apartment)
+//            print(apartment.tenants)
 
         }
         

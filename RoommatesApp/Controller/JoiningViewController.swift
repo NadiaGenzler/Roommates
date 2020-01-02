@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JoiningViewController: UIViewController {
+class JoiningViewController: UIViewController, UIPopoverPresentationControllerDelegate{
     
     var firebase=FirebaseHelper.shared
     
@@ -16,13 +16,43 @@ class JoiningViewController: UIViewController {
     @IBOutlet weak var apartmentKey: UITextField!
     @IBOutlet weak var imageView: CircularImageView!
     
+    @IBOutlet weak var colorView: RoundView!
+    var stringColor:String = ""
+    
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    @IBAction func colorPicker(_ sender: UITapGestureRecognizer) {
+        
+        var popoverVC=storyboard?.instantiateViewController(withIdentifier: "colorPalette") as! ColorPickerViewController
+        popoverVC.modalPresentationStyle = .popover
+        popoverVC.preferredContentSize=CGSize(width: 210, height: 110)
+        if let popoverController=popoverVC.popoverPresentationController{
+            popoverController.sourceView=sender.view
+            popoverController.permittedArrowDirections = .up
+            popoverController.delegate=self
+            popoverVC.delegate = self
+        }
+        
+        present(popoverVC,animated: true, completion: nil)
+        
+    }
+//   think how to dismiss popover after choosing color
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        // Return no adaptive presentation style, use default presentation behaviour
+        return .none
+    }
+    
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
+    
     @IBAction func joinButton(_ sender: UIButton) {
         
-        var tenant=Tenant(name: name.text!, phoneNumber: phone.text!, password: password.text!)
+        var tenant=Tenant(name: name.text!, phoneNumber: phone.text!, password: password.text!,userColorString: stringColor)
         firebase.addTenant(apartmentKey: apartmentKey.text!, tenant: &tenant)
     }
     
@@ -33,11 +63,11 @@ class JoiningViewController: UIViewController {
         present(imagepicker,animated: true)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
       
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
         
         
         
