@@ -22,10 +22,13 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var password: UITextField!
+    var popoverVC:ColorPickerViewController?
     
     @IBAction func colorPicker(_ sender: UITapGestureRecognizer) {
         
-        var popoverVC=storyboard?.instantiateViewController(withIdentifier: "colorPalette") as! ColorPickerViewController
+       popoverVC=storyboard?.instantiateViewController(withIdentifier: "colorPalette") as? ColorPickerViewController
+        
+        guard let popoverVC=popoverVC else {return}
         popoverVC.modalPresentationStyle = .popover
         popoverVC.preferredContentSize=CGSize(width: 210, height: 110)
         if let popoverController=popoverVC.popoverPresentationController{
@@ -36,6 +39,7 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
         }
         
         present(popoverVC,animated: true, completion: nil)
+        
         
     }
 //   think how to dismiss popover after choosing color
@@ -134,8 +138,11 @@ extension JoiningViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        //[] print("Info", info)
- 
+        print("Info", info[.imageURL])
+        
+        var imgUrl=info[.imageURL] as! URL
+        firebase.uploadImage(url: imgUrl)
+        
         picker.dismiss(animated: true)
         
         

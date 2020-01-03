@@ -31,12 +31,10 @@ class Apartment:CustomStringConvertible{
         let tenantsDict = fromDictionary["tenants"] as? [String:Any] ?? [:]
         for (tenantKey,tenantValue) in tenantsDict{
             let tenantValues = tenantValue as! [String:Any]
-            for (_,value) in tenantValues{
-                let tenant = Tenant(name: value as! String, phoneNumber: value as! String,
-                                    password: value as! String, userColorString: value as! String)
-                tenant.tenantKey = tenantKey
-                self.tenants.append(tenant)
-            }
+            let tenant = Tenant(name: tenantValues["name"] as! String, phoneNumber: tenantValues["phoneNumber"] as! String,
+            password: tenantValues["password"] as! String, userColorString: tenantValues["userColor"] as! String)
+            tenant.tenantKey = tenantKey
+            self.tenants.append(tenant)
         }
         
         
@@ -44,27 +42,24 @@ class Apartment:CustomStringConvertible{
         for (taskKey,taskValue) in tasksDict{
             let tasksValues=taskValue as! [String:Any]
             var Boolvalue = false
-            for (_,value) in tasksValues{
-                if tasksValues["done"] as! String=="true"{
-                     Boolvalue = true
-                }
-                
-                let task=Task(title: value as! String, body: value as! String, done: Boolvalue)
-                task.taskKey=taskKey
-                self.tasks.append(task)
-                
+            if tasksValues["done"] as! String=="true"{
+                Boolvalue = true
             }
+            let task=Task(title: tasksValues["title"] as! String, body: tasksValues["body"] as! String, done: Boolvalue)
+                           
+            task.taskKey=taskKey
+            self.tasks.append(task)
         }
         
         
         let eventDict=fromDictionary["events"] as? [String:Any] ?? [:]
         for (eventKey, eventValue) in eventDict{
             let eventValues = eventValue as! [String:Any]
-            for (_,value) in eventValues{
-                let event=Event(title: value as! String, description: value as! String, startDate: value as! Date, endDate: value as! Date )// not sure about the end date
-                event.eventKey=eventKey
-                self.events.append(event)
-            }
+            
+            let event=Event(title: eventValues["title"] as! String, description: eventValues["description"] as! String, startDate: eventValues["startDate"] as! Date, endDate: eventValues["endDate"] as! Date )// not sure about the end date
+            event.eventKey=eventKey
+            self.events.append(event)
+            
         }
     }
     

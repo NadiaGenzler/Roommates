@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-        
+       var firebase=FirebaseHelper.shared
     
    func showStoryboard(){
        let sb=UIStoryboard(name: "Registration", bundle: Bundle.main)
@@ -33,13 +33,18 @@ class ViewController: UIViewController {
 //        var task=Task(title: "wash the dishes", body: "with sponge", done: true)
 //        FirebaseHelper.shared.addTask(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", task: &task)
         
-        FirebaseHelper.shared.fetchApartmentData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (apartment) in
+        firebase.fetchApartmentData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (apartment) in
 
-//            print(apartment.tenants)
+            print(apartment)
 
         }
         
-
+//        func uploadImage(url:URL){
+//                let imagesRef = storageRef.child("imagess/user.jpg")
+//                print(imagesRef)
+//      
+//                let uploadTask=imagesRef.putFile(from: url)
+//            }
     }
 
     override func viewDidAppear(_ animated: Bool) {

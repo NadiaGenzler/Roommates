@@ -11,12 +11,13 @@ import Firebase
 
 class FirebaseHelper {
     var ref: DatabaseReference!
-    let storageRef=Storage.storage().reference()
+    let storageRef:StorageReference!
     
     static let shared=FirebaseHelper()
     
     private init(){
         ref = Database.database().reference()
+        storageRef=Storage.storage().reference()
     }
     
     
@@ -58,7 +59,12 @@ class FirebaseHelper {
         ref.updateChildValues(childUpdates)
     }
     
-    
+    func uploadImage(url:URL){
+        let imagesRef = storageRef.child("images")
+        print(imagesRef)
+//        let localFile=URL(string: url)!
+        let uploadTask=imagesRef.putFile(from: url)
+    }
     
     //MARK: Read from FireBase
     
