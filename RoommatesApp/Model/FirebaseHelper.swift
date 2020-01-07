@@ -59,12 +59,11 @@ class FirebaseHelper {
         ref.updateChildValues(childUpdates)
     }
     
-    func uploadImage(url:URL){
-        let imagesRef = storageRef.child("images")
-        print(imagesRef)
-//        let localFile=URL(string: url)!
-        let uploadTask=imagesRef.putFile(from: url)
-    }
+//    func uploadImage(url:URL){
+//        let imagesRef = storageRef.child("images")
+//        print(imagesRef)
+//        let uploadTask=imagesRef.putFile(from: url)
+//    }
     
     //MARK: Read from FireBase
     

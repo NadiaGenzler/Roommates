@@ -11,29 +11,39 @@ import UIKit
 class CreatingGroupViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var groupName: UITextField!
-    @IBOutlet weak var groupId: UITextField!
     
     let fireBase=FirebaseHelper.shared
-//    var apartment:Apartment
+//    var apartment:Apartment?
     // figur out how to pass the key to the popover
     @IBAction func create(_ sender: UIButton) {
+       var apartment=Apartment(name: groupName.text!, tenants: [], tasks: [], events: [])
         
-//        apartment=Apartment(name: groupName.text!, tenants: [], tasks: [], events: [])
-//        fireBase.addApartment(apartment: &apartment )
-        
+//        guard var apartment=apartment else {return}
+       
+        fireBase.addApartment(apartment: &apartment )
+       
         let creationVC=storyboard?.instantiateViewController(identifier: "successfulCreation") as! CreatedGroupDialogViewController
         creationVC.modalPresentationStyle = .overCurrentContext
-        
+//        creationVC.apartmentKey.text=apartment.apartmentKey ?? "hh"
+//        print(apartment.apartmentKey ?? "hh")
+//        if let popoverPresentanionContoller=creationVC.popoverPresentationController{
+//            popoverPresentanionContoller.delegate=self
+//
+//        }
         
         
         present(creationVC,animated: true, completion: nil)
     
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let dest=segue.description as? CreatedGroupDialogViewController else {return}
-//        dest.apartmentKeyS=apartment.apartmentKey ?? "dd"
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        // Return no adaptive presentation style, use default presentation behaviour
+        return .none
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let dest=segue.description as? CreatedGroupDialogViewController else {return}
+//        print(apartment?.apartmentKey ?? "hh")
+//        dest.apartmentKeyS=apartment?.apartmentKey ?? "dd"
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

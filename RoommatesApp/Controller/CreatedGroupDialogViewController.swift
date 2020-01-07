@@ -22,8 +22,8 @@ class CreatedGroupDialogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        apartmentKey.text=apartmentKeyS
+//        firebase.fetchApartmentData(apartmentKey: <#T##String#>, complition: <#T##(Apartment) -> Void#>)
+//        apartmentKey.text=apartmentKeyS
         
     }
     

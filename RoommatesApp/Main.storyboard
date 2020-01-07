@@ -15,22 +15,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add task" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctt-MW-Rel">
-                                <rect key="frame" x="10" y="188" width="394" height="130"/>
-                                <color key="backgroundColor" red="0.94442898040000001" green="0.85081762080000001" blue="0.86666673419999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="y6x-u5-7LQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KTo-LI-py3">
+                                <rect key="frame" x="0.0" y="20" width="414" height="793"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" id="DmR-Xd-WkR" customClass="TaskTableViewCell" customModule="RoommatesApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DmR-Xd-WkR" id="y21-dd-wWO">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" highlightedImage="checkmark.square" translatesAutoresizingMaskIntoConstraints="NO" id="lKd-g6-auQ">
+                                                    <rect key="frame" x="10" y="11" width="19.5" height="17.5"/>
+                                                </imageView>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Here will be the text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sng-2v-F47">
+                                                    <rect key="frame" x="39.5" y="5" width="364.5" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lKd-g6-auQ" firstAttribute="leading" secondItem="y21-dd-wWO" secondAttribute="leading" constant="10" id="LE2-mZ-NRC"/>
+                                                <constraint firstItem="Sng-2v-F47" firstAttribute="top" secondItem="y21-dd-wWO" secondAttribute="top" constant="5" id="P08-cP-7qB"/>
+                                                <constraint firstItem="lKd-g6-auQ" firstAttribute="top" secondItem="y21-dd-wWO" secondAttribute="top" constant="10" id="WKr-Az-Glb"/>
+                                                <constraint firstAttribute="trailing" secondItem="Sng-2v-F47" secondAttribute="trailing" constant="10" id="Wh7-BN-q0q"/>
+                                                <constraint firstItem="Sng-2v-F47" firstAttribute="leading" secondItem="lKd-g6-auQ" secondAttribute="trailing" constant="10" id="plD-av-xjK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ctt-MW-Rel" firstAttribute="leading" secondItem="bMV-N9-xFh" secondAttribute="leading" constant="10" id="8LS-Nh-CA4"/>
-                            <constraint firstItem="ctt-MW-Rel" firstAttribute="top" secondItem="bMV-N9-xFh" secondAttribute="top" constant="100" id="KLh-Zb-DhZ"/>
-                            <constraint firstItem="bMV-N9-xFh" firstAttribute="trailing" secondItem="ctt-MW-Rel" secondAttribute="trailing" constant="10" id="OiJ-Cy-gMW"/>
+                            <constraint firstItem="KTo-LI-py3" firstAttribute="top" secondItem="bMV-N9-xFh" secondAttribute="top" constant="-68" id="Lr2-Bs-eBJ"/>
+                            <constraint firstItem="KTo-LI-py3" firstAttribute="trailing" secondItem="bMV-N9-xFh" secondAttribute="trailing" id="YZU-dq-1G6"/>
+                            <constraint firstItem="bMV-N9-xFh" firstAttribute="bottom" secondItem="KTo-LI-py3" secondAttribute="bottom" id="dWB-s9-lcz"/>
+                            <constraint firstItem="KTo-LI-py3" firstAttribute="leading" secondItem="bMV-N9-xFh" secondAttribute="leading" id="lHy-VF-mGV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bMV-N9-xFh"/>
                     </view>
@@ -38,9 +60,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBb-An-eFI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1342.0289855072465" y="156.69642857142856"/>
+            <point key="canvasLocation" x="1304" y="-159"/>
         </scene>
-        <!--Tasks-->
+        <!--Lists of Tasks-->
         <scene sceneID="eZL-uR-bj7">
             <objects>
                 <viewController id="BcA-8b-c0S" customClass="TasksViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -52,12 +74,34 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="54s-ch-Cyi">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" rowHeight="81" id="54s-ch-Cyi" customClass="TaskTableViewCell" customModule="RoommatesApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="54s-ch-Cyi" id="UoA-fz-BiI">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IlV-cO-69x">
+                                                    <rect key="frame" x="10" y="10" width="104" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVE-R4-Mlw">
+                                                    <rect key="frame" x="10" y="50" width="204" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ZVE-R4-Mlw" secondAttribute="trailing" constant="200" id="0Fp-1x-gfz"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZVE-R4-Mlw" secondAttribute="bottom" constant="10" id="6eT-vu-9pL"/>
+                                                <constraint firstAttribute="trailing" secondItem="IlV-cO-69x" secondAttribute="trailing" constant="300" id="7qy-fb-hbQ"/>
+                                                <constraint firstItem="ZVE-R4-Mlw" firstAttribute="leading" secondItem="UoA-fz-BiI" secondAttribute="leading" constant="10" id="SYw-9H-cMd"/>
+                                                <constraint firstItem="IlV-cO-69x" firstAttribute="leading" secondItem="UoA-fz-BiI" secondAttribute="leading" constant="10" id="reT-3m-Khx"/>
+                                                <constraint firstItem="IlV-cO-69x" firstAttribute="top" secondItem="UoA-fz-BiI" secondAttribute="top" constant="10" id="ykK-Ab-FmS"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -73,7 +117,7 @@
                         <viewLayoutGuide key="safeArea" id="MDN-E0-BCo"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Tasks" id="7hT-1k-cpE">
+                    <navigationItem key="navigationItem" title="Lists of Tasks" id="7hT-1k-cpE">
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="hu5-Ac-24a">
                             <connections>
                                 <segue destination="l4e-no-ydp" kind="show" id="rYE-TM-2qT"/>
@@ -84,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AyY-fa-OWu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="-166"/>
+            <point key="canvasLocation" x="563.768115942029" y="-166.07142857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3CL-0C-pFD">
@@ -201,10 +245,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.square" catalog="system" width="64" height="56"/>
         <image name="icons8-calendar-1" width="50" height="50"/>
         <image name="icons8-menu" width="48" height="48"/>
         <image name="icons8-test_passed" width="50" height="50"/>
         <image name="icons8-wallet_copy_2-2" width="50" height="50"/>
         <image name="plus" catalog="system" width="64" height="56"/>
+        <image name="square" catalog="system" width="64" height="56"/>
     </resources>
 </document>

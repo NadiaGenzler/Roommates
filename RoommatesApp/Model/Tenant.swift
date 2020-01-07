@@ -21,7 +21,6 @@ class Tenant:CustomStringConvertible {
         self.userColorString=userColorString
     }
     
-    // remember that my color is string
     
     var apartmentKey:String?
     var tenantKey:String?
@@ -31,6 +30,9 @@ class Tenant:CustomStringConvertible {
     var phoneNumber:String
     var password:String
 //    var tasks:[Task]
+    var userColor:UIColor{
+        return Utilities.shared.hexStringToUIColor(userColorString!)
+    }
   
     
     init(fromDictionary:[String:Any]){

@@ -42,17 +42,11 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
         
         
     }
-//   think how to dismiss popover after choosing color
     
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        // Return no adaptive presentation style, use default presentation behaviour
         return .none
     }
-    
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
+
     
     @IBAction func joinButton(_ sender: UIButton) {
         
@@ -138,10 +132,10 @@ extension JoiningViewController: UIImagePickerControllerDelegate, UINavigationCo
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("Info", info[.imageURL])
-        
-        var imgUrl=info[.imageURL] as! URL
-        firebase.uploadImage(url: imgUrl)
+//        print("Info", info[.imageURL])
+//        
+//        var imgUrl=info[.imageURL] as! URL
+//        firebase.uploadImage(url: imgUrl)
         
         picker.dismiss(animated: true)
         
