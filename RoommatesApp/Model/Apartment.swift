@@ -10,14 +10,14 @@ import UIKit
 
 class Apartment:CustomStringConvertible{
     var description: String {
-        return "name: \(name), apartmentKey: \(apartmentKey), tenants: \(tenants),tasks: \(tasks) "
+        return "name: \(name), apartmentKey: \(apartmentKey), tenants: \(tenants),tasks: \(tasks), events: \(events) "
     }
     
     var name:String
     var apartmentKey:String?
     var tenants:[Tenant]
     var tasks:[Task]
-    var events:[Event]
+    var events:[MyEvent]
     
     init(fromDictionary:[String:Any]) {
         
@@ -55,8 +55,10 @@ class Apartment:CustomStringConvertible{
         let eventDict=fromDictionary["events"] as? [String:Any] ?? [:]
         for (eventKey, eventValue) in eventDict{
             let eventValues = eventValue as! [String:Any]
+            let formatter=DateFormatter()
+            formatter.dateFormat="MM/dd/yyyy HH:mm"
             
-            let event=Event(title: eventValues["title"] as! String, description: eventValues["description"] as! String, startDate: eventValues["startDate"] as! Date, endDate: eventValues["endDate"] as! Date )// not sure about the end date
+            let event=MyEvent(eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date())
             event.eventKey=eventKey
             self.events.append(event)
             
@@ -64,7 +66,7 @@ class Apartment:CustomStringConvertible{
     }
     
     
-    init(name:String, tenants: [Tenant], tasks: [Task], events:[Event]){
+    init(name:String, tenants: [Tenant], tasks: [Task], events:[MyEvent]){
         self.name=name
         self.tenants=tenants
         self.tasks=tasks

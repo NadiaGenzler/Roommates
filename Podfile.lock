@@ -164,6 +164,10 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
+  - CalendarKit (0.11.1):
+    - DateToolsSwift
+    - Neon
+  - DateToolsSwift (4.0.0)
   - Firebase/CoreOnly (6.13.0):
     - FirebaseCore (= 6.4.0)
   - Firebase/Database (6.13.0):
@@ -239,8 +243,10 @@ PODS:
     - nanopb/encode (= 0.3.9011)
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
+  - Neon (0.4.0)
 
 DEPENDENCIES:
+  - CalendarKit
   - Firebase/Database
   - Firebase/Firestore
   - Firebase/Storage
@@ -249,6 +255,8 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - CalendarKit
+    - DateToolsSwift
     - Firebase
     - FirebaseAuthInterop
     - FirebaseCore
@@ -265,10 +273,13 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - Neon
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
+  CalendarKit: 4bde77df42fce869bb014aeb736615cb3f0a14de
+  DateToolsSwift: 875d97ff9e3a5d54abdd67a269b3f51c757b71ab
   Firebase: 458d109512200d1aca2e1b9b6cf7d68a869a4a46
   FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
   FirebaseCore: 307ea2508df730c5865334e41965bd9ea344b0e5
@@ -285,7 +296,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
+  Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
 
-PODFILE CHECKSUM: 9d69863305c509c85dea8318aa69b1202b9a1a48
+PODFILE CHECKSUM: 0bd630dec933143b6f7bfb15bb4281bb350fdd54
 
 COCOAPODS: 1.8.4

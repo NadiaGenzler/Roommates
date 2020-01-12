@@ -10,21 +10,41 @@ import UIKit
 
 class TasksViewController: UIViewController {
 
+    @IBAction func addList(_ sender: UIBarButtonItem) {
+        let alert=UIAlertController(title: "Add Task", message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder="Write your task here"
+            
+        }
+        
+//        alert.addAction(.init(title: "Add", style: .default, handler: { (action) in
+//            <#code#>
+//        }))
+        
+        present(alert, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+
+
+}
+extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        5
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell=tableView.dequeueReusableCell(withIdentifier: "taskCell") as! TaskTableViewCell
+        
+        cell.taskText.text="dddd"
+        return cell
+    }
+    
+    
 }

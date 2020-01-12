@@ -15,6 +15,10 @@ class TaskTableViewCell: UITableViewCell {
 //        // Initialization code
 //    }
 
+    @IBOutlet weak var chekmark: UIImageView!
+    
+    @IBOutlet weak var taskText: UITextField!
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

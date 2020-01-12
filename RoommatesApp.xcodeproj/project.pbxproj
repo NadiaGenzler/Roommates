@@ -25,7 +25,7 @@
 		809792FD23A4EBA200F2701B /* Tenant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809792FC23A4EBA200F2701B /* Tenant.swift */; };
 		8097930023A4F16400F2701B /* Apartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809792FF23A4F16400F2701B /* Apartment.swift */; };
 		8097930223A4F22D00F2701B /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097930123A4F22D00F2701B /* Task.swift */; };
-		8097930423A4F37900F2701B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097930323A4F37900F2701B /* Event.swift */; };
+		8097930423A4F37900F2701B /* MyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097930323A4F37900F2701B /* MyEvent.swift */; };
 		8097930A23A504FB00F2701B /* CreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097930923A504FB00F2701B /* CreatingGroupViewController.swift */; };
 		8097930C23A5051A00F2701B /* JoiningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097930B23A5051A00F2701B /* JoiningViewController.swift */; };
 		8097932F23A5617300F2701B /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097932E23A5617300F2701B /* RoundView.swift */; };
@@ -35,6 +35,7 @@
 		80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */; };
 		80C346EC23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */; };
 		80C346EE23B8733A003B4DA0 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */; };
+		80F3B8CC23CA2FD100532411 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +60,7 @@
 		809792FC23A4EBA200F2701B /* Tenant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tenant.swift; sourceTree = "<group>"; };
 		809792FF23A4F16400F2701B /* Apartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apartment.swift; sourceTree = "<group>"; };
 		8097930123A4F22D00F2701B /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		8097930323A4F37900F2701B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		8097930323A4F37900F2701B /* MyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEvent.swift; sourceTree = "<group>"; };
 		8097930923A504FB00F2701B /* CreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupViewController.swift; sourceTree = "<group>"; };
 		8097930B23A5051A00F2701B /* JoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiningViewController.swift; sourceTree = "<group>"; };
 		8097932E23A5617300F2701B /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
@@ -69,6 +70,7 @@
 		80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedGroupDialogViewController.swift; sourceTree = "<group>"; };
 		80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E7A3F6AD6B471571E9649BA8 /* Pods_RoommatesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RoommatesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -135,7 +137,7 @@
 				809792FC23A4EBA200F2701B /* Tenant.swift */,
 				809792FF23A4F16400F2701B /* Apartment.swift */,
 				8097930123A4F22D00F2701B /* Task.swift */,
-				8097930323A4F37900F2701B /* Event.swift */,
+				8097930323A4F37900F2701B /* MyEvent.swift */,
 				80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */,
 				806E495D23BF539100BB13E7 /* Utilities.swift */,
 			);
@@ -161,10 +163,11 @@
 				809792EC23A4E81500F2701B /* ViewController.swift */,
 				8041620923B0BDCB001639CA /* RegistrationViewController.swift */,
 				8097930923A504FB00F2701B /* CreatingGroupViewController.swift */,
+				80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */,
 				8097930B23A5051A00F2701B /* JoiningViewController.swift */,
 				8041620D23B0D0AC001639CA /* TasksViewController.swift */,
-				80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */,
 				80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */,
+				80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,9 +313,10 @@
 				80C346EE23B8733A003B4DA0 /* ColorPickerViewController.swift in Sources */,
 				8041621023B10356001639CA /* TaskTableViewCell.swift in Sources */,
 				809792E923A4E81500F2701B /* AppDelegate.swift in Sources */,
+				80F3B8CC23CA2FD100532411 /* CalendarViewController.swift in Sources */,
 				8097930223A4F22D00F2701B /* Task.swift in Sources */,
 				8041621423B10567001639CA /* CircularImageView.swift in Sources */,
-				8097930423A4F37900F2701B /* Event.swift in Sources */,
+				8097930423A4F37900F2701B /* MyEvent.swift in Sources */,
 				804161F623AABA2E001639CA /* KeyboardHeightView.swift in Sources */,
 				809792EB23A4E81500F2701B /* SceneDelegate.swift in Sources */,
 				8097930C23A5051A00F2701B /* JoiningViewController.swift in Sources */,

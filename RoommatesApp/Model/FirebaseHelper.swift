@@ -51,7 +51,7 @@ class FirebaseHelper {
         
     }
     
-    func addEvent(apartmentKey:String, event: inout Event){
+    func addEvent(apartmentKey:String, event: inout MyEvent){
         guard let eventKey=self.ref.child(apartmentKey).child("events").childByAutoId().key else {return}
         event.eventKey=eventKey
         
