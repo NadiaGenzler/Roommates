@@ -37,7 +37,7 @@ class ViewController: UIViewController {
 //        var event=MyEvent(eventDescription: "dinner", startDate: Date(year: 2020, month: 1, day: 11, hour: 8, minute: 00, second: 00), endDate: Date(year: 2020, month: 1, day: 11, hour: 8, minute: 30, second: 00))
 //        firebase.addEvent(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", event: &event)
         
-      
+     
         firebase.fetchApartmentData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (apartment) in
 
             print(apartment)

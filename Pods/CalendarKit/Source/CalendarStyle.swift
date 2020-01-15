@@ -76,7 +76,7 @@ public struct TimelineStyle {
 public struct CurrentTimeIndicatorStyle {
   public var color = UIColor.red
   public var font = UIFont.systemFont(ofSize: 11)
-  public var dateStyle : DateStyle = .system
+    public var dateStyle : DateStyle = .twentyFourHour
   public init() {}
 }
 

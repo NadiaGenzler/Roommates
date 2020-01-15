@@ -58,7 +58,7 @@ class Apartment:CustomStringConvertible{
             let formatter=DateFormatter()
             formatter.dateFormat="MM/dd/yyyy HH:mm"
             
-            let event=MyEvent(eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date())
+            let event=MyEvent(eventName: eventValues["eventName"] as! String ,eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date())
             event.eventKey=eventKey
             self.events.append(event)
             

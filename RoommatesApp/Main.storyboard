@@ -97,17 +97,25 @@
             </objects>
             <point key="canvasLocation" x="-932" y="207"/>
         </scene>
-        <!--View Controller-->
+        <!--Events Calendar-->
         <scene sceneID="hzB-zR-GtK">
             <objects>
-                <viewController id="CuJ-Vc-RHE" customClass="ViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CuJ-Vc-RHE" customClass="CalendarViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Chc-RZ-UuW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="4sf-ph-dP4"/>
                     </view>
-                    <navigationItem key="navigationItem" id="One-eN-h17"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Events Calendar" id="One-eN-h17">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="doI-as-mRs">
+                            <connections>
+                                <action selector="addEvent:" destination="CuJ-Vc-RHE" id="pyJ-wq-wQJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJc-O8-Epv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

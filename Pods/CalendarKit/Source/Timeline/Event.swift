@@ -13,7 +13,7 @@ public final class Event: EventDescriptor {
   }
   public var backgroundColor = UIColor.blue.withAlphaComponent(0.3)
   public var textColor = UIColor.black
-  public var font = UIFont.boldSystemFont(ofSize: 12)
+  public var font = UIFont.boldSystemFont(ofSize: 14)
   public var userInfo: Any?
   public weak var editedEvent: EventDescriptor? {
     didSet {
