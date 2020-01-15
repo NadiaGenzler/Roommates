@@ -18,8 +18,11 @@ class CalendarViewController: DayViewController {
     //6/edit the landscape layout
     //7/
     
-    var myEvents:[MyEvent]=[MyEvent(eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00)),
-                            MyEvent(eventDescription: "Travel", startDate: Date(year: 2020, month: 01, day: 16, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 16, hour: 20, minute: 00, second: 00))]
+    var Vdelegate: ViewController?
+    var firebase=FirebaseHelper.shared
+        
+//        MyEvent(eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00)),
+//                            MyEvent(eventDescription: "Travel", startDate: Date(year: 2020, month: 01, day: 16, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 16, hour: 20, minute: 00, second: 00))]
     
     
         lazy var customCalendar: Calendar = {
@@ -29,14 +32,16 @@ class CalendarViewController: DayViewController {
           return calendar
         }()
     
-//        override func loadView() {
-//          calendar = customCalendar
-//          dayView = DayView(calendar: calendar)
-//          view = dayView
-//        }
+        override func loadView() {
+          calendar = customCalendar
+          dayView = DayView(calendar: calendar)
+          view = dayView
+        }
     
     @IBAction func addEvent(_ sender: UIBarButtonItem) {
-        
+//        var event=MyEvent(eventName: "gogogogo", eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00))
+//        firebase.addEvent(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", event: &event)
+//        reloadData()
     }
     
     override func viewDidLoad() {
@@ -49,19 +54,24 @@ class CalendarViewController: DayViewController {
     // MARK: EventDataSource
     
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
-        
         var events = [Event]()
-        
-        for myevent in myEvents {
-            let event = Event()
-            
-            event.text=myevent.eventDescription
-            event.startDate = myevent.startDate
-            event.endDate = myevent.endDate
-            event.color=UIColor.brown
-            
-            events.append(event)
+        var arrey=Vdelegate?.eventsArr ?? []
+        print(arrey)
+        if var myEvents=Vdelegate?.eventsArr{
+            print(myEvents)
+            for myevent in myEvents {
+                print(myevent)
+                let event = Event()
+                
+                event.text=myevent.eventDescription
+                event.startDate = myevent.startDate
+                event.endDate = myevent.endDate
+                event.color=UIColor.brown
+                
+                events.append(event)
+            }
         }
+        
         return events
     }
     

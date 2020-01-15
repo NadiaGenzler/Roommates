@@ -77,7 +77,7 @@
         <!--View Controller-->
         <scene sceneID="3CL-0C-pFD">
             <objects>
-                <viewController id="wgW-Rj-SnW" sceneMemberID="viewController">
+                <viewController id="wgW-Rj-SnW" customClass="ViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ajk-cn-2Wv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,10 +131,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="wgW-Rj-SnW" kind="relationship" relationship="viewControllers" id="fjX-0R-81T"/>
                         <segue destination="Vor-cH-C1E" kind="relationship" relationship="viewControllers" id="QCX-w0-2xX"/>
                         <segue destination="Xpf-Io-Hbo" kind="relationship" relationship="viewControllers" id="iGW-b7-MYt"/>
                         <segue destination="Sg4-ic-Y3V" kind="relationship" relationship="viewControllers" id="szy-69-pcr"/>
-                        <segue destination="wgW-Rj-SnW" kind="relationship" relationship="viewControllers" id="fjX-0R-81T"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cb6-Ae-9yK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

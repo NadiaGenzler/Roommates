@@ -10,6 +10,9 @@ import UIKit
 
 class ViewController: UIViewController {
        var firebase=FirebaseHelper.shared
+    var tenantsArr:[Tenant]?
+    var tasksArr:[Task]?
+    var eventsArr:[MyEvent]?
     
    func showStoryboard(){
        let sb=UIStoryboard(name: "Registration", bundle: Bundle.main)
@@ -34,14 +37,14 @@ class ViewController: UIViewController {
 //        FirebaseHelper.shared.addTask(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", task: &task)
         
         
-//        var event=MyEvent(eventDescription: "dinner", startDate: Date(year: 2020, month: 1, day: 11, hour: 8, minute: 00, second: 00), endDate: Date(year: 2020, month: 1, day: 11, hour: 8, minute: 30, second: 00))
+//        var event=MyEvent(eventName: "gogogogo", eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00))
 //        firebase.addEvent(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", event: &event)
         
      
         firebase.fetchApartmentData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (apartment) in
-
+            
             print(apartment)
-
+            
         }
         
 //        func uploadImage(url:URL){
