@@ -22,6 +22,7 @@ public struct DayHeaderStyle {
   public var daySelector = DaySelectorStyle()
   public var swipeLabel = SwipeLabelStyle()
   public var backgroundColor = UIColor(white: 247/255, alpha: 1)
+//    public var height=
   public init() {}
 }
 
@@ -63,7 +64,7 @@ public struct TimelineStyle {
   public var lineColor = UIColor.lightGray
   public var backgroundColor = UIColor.white
   public var font = UIFont.boldSystemFont(ofSize: 11)
-  public var dateStyle : DateStyle = .system
+  public var dateStyle : DateStyle = .twentyFourHour
   public var eventsWillOverlap: Bool = false
   public var splitMinuteInterval: Int = 15
   public var verticalDiff: CGFloat = 50

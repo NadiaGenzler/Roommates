@@ -50,6 +50,13 @@ class FirebaseHelper {
         ref.updateChildValues(childUpdates)
         
     }
+    func updateTask(apartmentKey:String, taskKey:String, task: inout Task){
+       // ref.child(apartmentKey).child("tasks").child(taskKey)
+        
+        let childUpdates=["/Apartment/\(apartmentKey)/tasks/\(taskKey)":task.toDictionary()]
+        ref.updateChildValues(childUpdates)
+        
+    }
     
     func addEvent(apartmentKey:String, event: inout MyEvent){
         guard let eventKey=self.ref.child(apartmentKey).child("events").childByAutoId().key else {return}
@@ -58,6 +65,11 @@ class FirebaseHelper {
         let childUpdates=["/Apartment/\(apartmentKey)/events/\(eventKey)":event.toDictionary()]
         ref.updateChildValues(childUpdates)
     }
+    
+    
+    
+    
+    
     
     //    func uploadImage(url:URL){
     //        let imagesRef = storageRef.child("images")

@@ -22,7 +22,7 @@ class CalendarViewController: DayViewController {
    
     var firebase=FirebaseHelper.shared
     var eventsArr:[MyEvent]?
-        
+        var util=Utilities.shared
 //        MyEvent(eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00)),
 //                            MyEvent(eventDescription: "Travel", startDate: Date(year: 2020, month: 01, day: 16, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 16, hour: 20, minute: 00, second: 00))]
     
@@ -31,6 +31,7 @@ class CalendarViewController: DayViewController {
           let customNSCalendar = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!
           customNSCalendar.timeZone = TimeZone(abbreviation: "CEST")!
           let calendar = customNSCalendar as Calendar
+            
           return calendar
         }()
     
@@ -55,6 +56,8 @@ class CalendarViewController: DayViewController {
 //          //  eventsArr=events
 //                   
 //               }
+        self.navigationController?.navigationBar.backgroundColor=util.hexStringToUIColor("#FFCCFF")
+        
         
         dayView.autoScrollToFirstEvent = true
         reloadData()

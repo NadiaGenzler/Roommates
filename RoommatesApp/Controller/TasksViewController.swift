@@ -9,32 +9,33 @@
 import UIKit
 import Firebase
 
-class TasksViewController: UIViewController  {
+class TasksViewController: UIViewController , UIPopoverPresentationControllerDelegate {
 
     
     var firebase=FirebaseHelper.shared
-    var delegate:TaskTableViewCell?
+   // var delegate:TaskTableViewCell?
     var tasks:[Task]?
     var util=Utilities.shared
 
-   // @IBOutlet weak var checkMark: UIImageView!
     
     
     @IBAction func addList(_ sender: UIBarButtonItem) {
-        let alert=UIAlertController(title: "Add Task", message: "", preferredStyle: .alert)
+        taskPopover(sender)
         
-        alert.addTextField { (textField) in
-            textField.placeholder="Write your task here"
-            
-        }
-        
-//        alert.addAction(.init(title: "Add", style: .default, handler: { (action) in
-//            <#code#>
-//        }))
-        
-        present(alert, animated: true)
     }
     
+    func taskPopover(_ sender : Any){
+        var id = sender is UIBarButtonItem ? "newTask" : "updateTask"
+       // var id = sender is UILongPressGestureRecognizer ? "updateTask" : "newTask"
+        
+        var popoverTaskVC=storyboard?.instantiateViewController(identifier: id) as! UIViewController
+        popoverTaskVC.modalPresentationStyle = .overCurrentContext
+        
+        present(popoverTaskVC, animated: true)
+    }
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,8 @@ class TasksViewController: UIViewController  {
 //                      }
 //              }
  
+       
+    
     }
     
     @objc func handleSingleTap(_ sender:UITapGestureRecognizer){
@@ -73,9 +76,24 @@ class TasksViewController: UIViewController  {
         }
          
     }
-    @objc func handelLongPress(_ sendr: UILongPressGestureRecognizer){
+    @objc func handelLongPress(_ sender: UILongPressGestureRecognizer){
+        taskPopover(sender)
+//        var cell=sender.view as! TaskTableViewCell
+//        cell.isSelected=true
+//        cell.delete.isHidden=false
+//        cell.update.isHidden=false
+//        let deleteTapGesture=UITapGestureRecognizer(target: self, action: #selector(deleteTap(_:)))
+//        cell.delete.addGestureRecognizer(deleteTapGesture)
+//        let editTapGesture=UITapGestureRecognizer(target: self, action: #selector(editTap(_:)))
+//        cell.update.addGestureRecognizer(editTapGesture)
+        
         
     }
+//    @objc func deleteTap(_ sender:UITapGestureRecognizer){
+//    }
+//    @objc func editTap(_ sender:UITapGestureRecognizer){
+//
+//    }
 }
 
 
@@ -97,6 +115,7 @@ extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
         
         let singleTapGestureRecognizer=UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(_:)))
         cell.addGestureRecognizer(singleTapGestureRecognizer)
+        
         let longPressGestureRecognizer=UILongPressGestureRecognizer(target: self, action: #selector(handelLongPress(_:)))
         cell.addGestureRecognizer(longPressGestureRecognizer)
         
@@ -104,26 +123,16 @@ extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
            return cell
        }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell=tableView.dequeueReusableCell(withIdentifier: "taskCell",for: indexPath)
-         as! TaskTableViewCell
-        
-
-    }
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        let cell=tableView.dequeueReusableCell(withIdentifier: "taskCell",for: indexPath)
-//         as! TaskTableViewCell
-//        cell.contentView.backgroundColor=UIColor.white
-//        print("deselected")
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete{
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
 //    }
-   
-    
+//
+//
 //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        // Return false if you do not want the specified item to be editable.
 //        return true
 //    }
-    
-    
     
 }
 

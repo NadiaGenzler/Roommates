@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController {
        var firebase=FirebaseHelper.shared
     var tenantsArr:[Tenant]=[]
-    var tasksArr=[Task(title: "wash the dishes", body: "with sponge", done: true)]
+    var tasksArr=[Task(body: "with sponge", done: true)]
     var eventArr:[MyEvent]=[]
-   
+    var util=Utilities.shared
     
    func showStoryboard(){
        let sb=UIStoryboard(name: "Registration", bundle: Bundle.main)
@@ -25,6 +25,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.barTintColor=UIColor.white
 
 //        var t = Tenant(name: "nhhh")
 //        FirebaseHelper.shared.addTenant(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", tenant: &t)

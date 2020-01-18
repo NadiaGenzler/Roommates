@@ -17,7 +17,9 @@ class TaskTableViewCell: UITableViewCell {
 
     @IBOutlet weak var chekmark: UIImageView!
     
-  
+    @IBOutlet weak var delete: UIImageView!
+    @IBOutlet weak var update: UIImageView!
+    
     @IBOutlet weak var taskText: UILabel!
     
 //    override func setSelected(_ selected: Bool, animated: Bool) {

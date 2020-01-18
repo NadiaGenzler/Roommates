@@ -53,7 +53,7 @@ class SwipeLabelView: UIView, DayViewStateUpdating {
   func configure() {
     for _ in 0...1 {
       let label = UILabel()
-      label.textAlignment = .center
+        label.textAlignment = .center
       labels.append(label)
       addSubview(label)
     }

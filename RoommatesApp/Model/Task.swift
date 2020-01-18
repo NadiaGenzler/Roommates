@@ -10,11 +10,11 @@ import UIKit
 
 class Task:CustomStringConvertible {
     var description: String{
-        return "title: \(title), body: \(body), done: \(done), takenBy: \(takenBy), taskKey \(taskKey), apartmentKey: \(apartmentKey)"
+        return "body: \(body), done: \(done), takenBy: \(takenBy), taskKey \(taskKey), apartmentKey: \(apartmentKey)"
     }
     
     
-    var title:String
+   // var title:String
     var body:String
     var done:Bool = false
     var apartmentKey:String?
@@ -23,7 +23,7 @@ class Task:CustomStringConvertible {
     
     init(fromDictionary:[String:Any]){
             
-        self.title=fromDictionary["title"] as! String
+      //  self.title=fromDictionary["title"] as! String
         self.body=fromDictionary["body"] as! String
         self.done=Bool(fromDictionary["done"] as! String ) ?? false
         self.takenBy=fromDictionary["takenBy"] as? Tenant ?? nil
@@ -31,13 +31,16 @@ class Task:CustomStringConvertible {
         self.apartmentKey=fromDictionary["apartmentKey"] as? String ?? nil
     }
     //the task alway false in the begining
-    init(title:String,body:String){
-        self.title=title
+    init(body:String){
         self.body=body
     }
     
-    init(title:String,body:String,done:Bool){
-        self.title=title
+    init(body:String,taskKey:String){
+        self.body=body
+        self.taskKey=taskKey
+    }
+    
+    init(body:String,done:Bool){
         self.body=body
         self.done=done
     }
@@ -45,7 +48,7 @@ class Task:CustomStringConvertible {
     
     func toDictionary()->[String:Any]{
         var dict:Dictionary<String,Any>=[:]
-        dict["title"]=title
+    //    dict["title"]=title
         dict["body"]=body
         dict["done"]=String(done)
         dict["takenBy"]=takenBy

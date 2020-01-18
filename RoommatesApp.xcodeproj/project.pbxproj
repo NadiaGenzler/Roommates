@@ -31,6 +31,8 @@
 		8097932F23A5617300F2701B /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097932E23A5617300F2701B /* RoundView.swift */; };
 		8097933123A8130400F2701B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097933023A8130400F2701B /* GradientView.swift */; };
 		8097933323A81BAB00F2701B /* Assistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8097933223A81BAB00F2701B /* Assistance.storyboard */; };
+		809FF88823D32D150038B8C5 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809FF88723D32D150038B8C5 /* NewTaskViewController.swift */; };
+		809FF88A23D346660038B8C5 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809FF88923D346660038B8C5 /* EditTaskViewController.swift */; };
 		80C346E823B4AA8C003B4DA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */; };
 		80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */; };
 		80C346EC23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */; };
@@ -66,6 +68,8 @@
 		8097932E23A5617300F2701B /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		8097933023A8130400F2701B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		8097933223A81BAB00F2701B /* Assistance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assistance.storyboard; sourceTree = "<group>"; };
+		809FF88723D32D150038B8C5 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		809FF88923D346660038B8C5 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedGroupDialogViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				8041620D23B0D0AC001639CA /* TasksViewController.swift */,
 				80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */,
 				80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */,
+				809FF88723D32D150038B8C5 /* NewTaskViewController.swift */,
+				809FF88923D346660038B8C5 /* EditTaskViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 				8041620A23B0BDCB001639CA /* RegistrationViewController.swift in Sources */,
 				8097932F23A5617300F2701B /* RoundView.swift in Sources */,
 				806E495E23BF539100BB13E7 /* Utilities.swift in Sources */,
+				809FF88A23D346660038B8C5 /* EditTaskViewController.swift in Sources */,
 				80C346EC23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift in Sources */,
 				80C346EE23B8733A003B4DA0 /* ColorPickerViewController.swift in Sources */,
 				8041621023B10356001639CA /* TaskTableViewCell.swift in Sources */,
@@ -321,6 +328,7 @@
 				809792EB23A4E81500F2701B /* SceneDelegate.swift in Sources */,
 				8097930C23A5051A00F2701B /* JoiningViewController.swift in Sources */,
 				8097930A23A504FB00F2701B /* CreatingGroupViewController.swift in Sources */,
+				809FF88823D32D150038B8C5 /* NewTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
