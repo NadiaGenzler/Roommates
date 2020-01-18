@@ -10,7 +10,7 @@ import UIKit
 
 class Task:CustomStringConvertible {
     var description: String{
-        return "1245566,title: \(title), body: \(body), done: \(done), takenBy: \(takenBy), taskKey \(taskKey), apartmentKey: \(apartmentKey)"
+        return "title: \(title), body: \(body), done: \(done), takenBy: \(takenBy), taskKey \(taskKey), apartmentKey: \(apartmentKey)"
     }
     
     
@@ -22,9 +22,10 @@ class Task:CustomStringConvertible {
     var takenBy:Tenant?
     
     init(fromDictionary:[String:Any]){
+            
         self.title=fromDictionary["title"] as! String
         self.body=fromDictionary["body"] as! String
-        self.done=Bool(fromDictionary["done"] as! String) ?? false
+        self.done=Bool(fromDictionary["done"] as! String ) ?? false
         self.takenBy=fromDictionary["takenBy"] as? Tenant ?? nil
         self.taskKey=fromDictionary["taskKey"] as? String ?? nil
         self.apartmentKey=fromDictionary["apartmentKey"] as? String ?? nil

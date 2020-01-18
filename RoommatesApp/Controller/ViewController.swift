@@ -10,9 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
        var firebase=FirebaseHelper.shared
-    var tenantsArr:[Tenant]?
-    var tasksArr:[Task]?
-    var eventsArr:[MyEvent]?
+    var tenantsArr:[Tenant]=[]
+    var tasksArr=[Task(title: "wash the dishes", body: "with sponge", done: true)]
+    var eventArr:[MyEvent]=[]
+   
     
    func showStoryboard(){
        let sb=UIStoryboard(name: "Registration", bundle: Bundle.main)
@@ -46,6 +47,25 @@ class ViewController: UIViewController {
             print(apartment)
             
         }
+//        firebase.fetchTaskData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (tasks) in
+//
+////                for task in tasks{
+////                    self.tasksArr.append(task)
+////                   // print(self.tasksArr)
+////
+////                }
+//            self.tasksArr=tasks
+//        }
+        
+                firebase.fetchEventData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (events) in
+        
+                 for event in events{
+                     self.eventArr.append(event)
+                    // print(self.tasksArr)
+                     
+                 }
+        
+                       }
         
 //        func uploadImage(url:URL){
 //                let imagesRef = storageRef.child("imagess/user.jpg")

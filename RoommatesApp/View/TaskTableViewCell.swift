@@ -17,12 +17,13 @@ class TaskTableViewCell: UITableViewCell {
 
     @IBOutlet weak var chekmark: UIImageView!
     
-    @IBOutlet weak var taskText: UITextField!
+  
+    @IBOutlet weak var taskText: UILabel!
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
 
 }

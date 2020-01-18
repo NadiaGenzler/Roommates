@@ -24,14 +24,15 @@ class MyEvent: CustomStringConvertible {
     let formatter=DateFormatter()
     
     
-    init(fromDicionary:[String:Any]){
-        self.apartmentKey=fromDicionary["apartmentKey"] as? String
-        self.eventKey=fromDicionary["eventKey"] as? String
-        self.eventDescription=fromDicionary["eventDescription"] as! String
-        self.eventName=fromDicionary["eventName"] as? String ?? ""
-        self.startDate=formatter.date(from: fromDicionary["startDate"] as! String) ?? Date()
-        self.endDate=formatter.date(from: fromDicionary["endDate"] as! String) ?? Date()
-        self.tenant=fromDicionary["tenant"] as? Tenant
+    init(fromDictionary:[String:Any]){
+        
+        self.apartmentKey=fromDictionary["apartmentKey"] as? String
+        self.eventKey=fromDictionary["eventKey"] as? String
+        self.eventDescription=fromDictionary["eventDescription"] as! String
+        self.eventName=fromDictionary["eventName"] as? String ?? ""
+        self.startDate=formatter.date(from: fromDictionary["startDate"] as! String) ?? Date()
+        self.endDate=formatter.date(from: fromDictionary["endDate"] as! String) ?? Date()
+        self.tenant=fromDictionary["tenant"] as? Tenant
         
     }
     

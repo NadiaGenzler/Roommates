@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="20L-ft-Ktc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="20L-ft-Ktc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="TimesNewRoman.ttf">
+            <string>.SFUI-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Lists of Tasks-->
         <scene sceneID="eZL-uR-bj7">
@@ -19,36 +24,47 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" id="mqz-qD-Ry8" customClass="TaskTableViewCell" customModule="RoommatesApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" id="mqz-qD-Ry8" customClass="TaskTableViewCell" customModule="RoommatesApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mqz-qD-Ry8" id="MS4-hb-g6g">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" highlightedImage="checkmark.square" translatesAutoresizingMaskIntoConstraints="NO" id="fTL-YH-MpN">
-                                                    <rect key="frame" x="10" y="11" width="19.5" height="17.5"/>
-                                                </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Here will be the text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IeO-B1-JIU">
-                                                    <rect key="frame" x="39.5" y="5" width="364.5" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="mkx-nP-3LF">
+                                                    <rect key="frame" x="10" y="7" width="394" height="24.5"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fTL-YH-MpN">
+                                                            <rect key="frame" x="0.0" y="1" width="19.5" height="22"/>
+                                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <gestureRecognizers/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpU-5U-gfZ">
+                                                            <rect key="frame" x="27.5" y="0.0" width="366.5" height="24.5"/>
+                                                            <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="22"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="IeO-B1-JIU" secondAttribute="trailing" constant="10" id="MfQ-2e-9vS"/>
-                                                <constraint firstItem="IeO-B1-JIU" firstAttribute="top" secondItem="MS4-hb-g6g" secondAttribute="top" constant="5" id="Mie-v4-q1s"/>
-                                                <constraint firstItem="IeO-B1-JIU" firstAttribute="leading" secondItem="fTL-YH-MpN" secondAttribute="trailing" constant="10" id="Oo1-4L-KbC"/>
-                                                <constraint firstItem="fTL-YH-MpN" firstAttribute="top" secondItem="MS4-hb-g6g" secondAttribute="top" constant="10" id="UPh-4x-q1C"/>
-                                                <constraint firstItem="fTL-YH-MpN" firstAttribute="leading" secondItem="MS4-hb-g6g" secondAttribute="leading" constant="10" id="x1h-x0-3aB"/>
+                                                <constraint firstItem="mkx-nP-3LF" firstAttribute="leading" secondItem="MS4-hb-g6g" secondAttribute="leading" constant="10" id="PNF-sm-W8T"/>
+                                                <constraint firstItem="mkx-nP-3LF" firstAttribute="top" secondItem="MS4-hb-g6g" secondAttribute="top" constant="7" id="cBV-SA-acb"/>
+                                                <constraint firstAttribute="trailing" secondItem="mkx-nP-3LF" secondAttribute="trailing" constant="10" id="y15-3p-gWl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="chekmark" destination="fTL-YH-MpN" id="RCY-XJ-t93"/>
-                                            <outlet property="taskText" destination="IeO-B1-JIU" id="Iau-3o-yVs"/>
+                                            <outlet property="taskText" destination="TpU-5U-gfZ" id="z2d-81-WxB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BcA-8b-c0S" id="GSZ-eO-mbV"/>
+                                    <outlet property="delegate" destination="BcA-8b-c0S" id="blf-Ly-GBF"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -197,7 +213,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="checkmark.square" catalog="system" width="64" height="56"/>
         <image name="icons8-calendar-1" width="50" height="50"/>
         <image name="icons8-menu" width="48" height="48"/>
         <image name="icons8-test_passed" width="50" height="50"/>
