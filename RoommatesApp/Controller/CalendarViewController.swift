@@ -12,19 +12,20 @@ import CalendarKit
 class CalendarViewController: DayViewController {
     //1/add new event by pressing tne + sighn and by longpress on thr time line
     //2/edit event by long press on the existing event  -  both with the same view
-    
-    //3/get reed of the gray color
-    //4/resolve the issue with the hours format on the side
+
     //5/resolve the issue with the hours showing one hour early
     //6/edit the landscape layout
     //7/
     
    
     var firebase=FirebaseHelper.shared
+    var util=Utilities.shared
+    
     var eventsArr:[MyEvent]?
-        var util=Utilities.shared
-//        MyEvent(eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00)),
-//                            MyEvent(eventDescription: "Travel", startDate: Date(year: 2020, month: 01, day: 16, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 16, hour: 20, minute: 00, second: 00))]
+        
+    
+    
+        
     
     
         lazy var customCalendar: Calendar = {
@@ -50,6 +51,8 @@ class CalendarViewController: DayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        eventsArr=[MyEvent(eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00)),
+        MyEvent(eventDescription: "Travel", startDate: Date(year: 2020, month: 01, day: 16, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 16, hour: 20, minute: 00, second: 00))]
 //        firebase.fetchEventData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (events) in
 //                   
 //                  // print(events)
@@ -77,7 +80,7 @@ class CalendarViewController: DayViewController {
                 event.text=myevent.eventDescription
                 event.startDate = myevent.startDate
                 event.endDate = myevent.endDate
-                event.color=UIColor.brown
+                event.color=util.hexStringToUIColor("#FFCCFF")
                 
                 events.append(event)
             }
@@ -94,6 +97,7 @@ class CalendarViewController: DayViewController {
       guard let descriptor = eventView.descriptor as? Event else {
         return
       }
+        
         print("Event has been selected: \(descriptor) \(String(describing: descriptor.text))")
     }
 
@@ -106,6 +110,6 @@ class CalendarViewController: DayViewController {
 
     override func dayView(dayView: DayView, didLongPressTimelineAt date: Date) {
       print("Did long press timeline at date \(date)")
-        //use to add new event
+        //add new event
     }
 }

@@ -43,6 +43,11 @@ class MyEvent: CustomStringConvertible {
         self.endDate=endDate
     }
     
+    init(eventDescription:String, startDate:Date, endDate:Date){
+        self.eventDescription=eventDescription
+        self.startDate=startDate
+        self.endDate=endDate
+    }
     func toDictionary()->[String:Any]{
         var dict:Dictionary<String,Any>=[:]
         formatter.dateFormat="MM/dd/yyyy HH:mm"

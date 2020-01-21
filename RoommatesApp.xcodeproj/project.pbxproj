@@ -16,6 +16,7 @@
 		8041621023B10356001639CA /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041620F23B10356001639CA /* TaskTableViewCell.swift */; };
 		8041621423B10567001639CA /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041621323B10567001639CA /* CircularImageView.swift */; };
 		806E495E23BF539100BB13E7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E495D23BF539100BB13E7 /* Utilities.swift */; };
+		808E33B323D4D746009CCDBE /* ViewControllerCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33B223D4D746009CCDBE /* ViewControllerCal.swift */; };
 		809792E923A4E81500F2701B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809792E823A4E81500F2701B /* AppDelegate.swift */; };
 		809792EB23A4E81500F2701B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809792EA23A4E81500F2701B /* SceneDelegate.swift */; };
 		809792ED23A4E81500F2701B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809792EC23A4E81500F2701B /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		8041620F23B10356001639CA /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8041621323B10567001639CA /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		806E495D23BF539100BB13E7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		808E33B223D4D746009CCDBE /* ViewControllerCal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCal.swift; sourceTree = "<group>"; };
 		809792E523A4E81500F2701B /* RoommatesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoommatesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		809792E823A4E81500F2701B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		809792EA23A4E81500F2701B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */,
 				809FF88723D32D150038B8C5 /* NewTaskViewController.swift */,
 				809FF88923D346660038B8C5 /* EditTaskViewController.swift */,
+				808E33B223D4D746009CCDBE /* ViewControllerCal.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				8097930223A4F22D00F2701B /* Task.swift in Sources */,
 				8041621423B10567001639CA /* CircularImageView.swift in Sources */,
 				8097930423A4F37900F2701B /* MyEvent.swift in Sources */,
+				808E33B323D4D746009CCDBE /* ViewControllerCal.swift in Sources */,
 				804161F623AABA2E001639CA /* KeyboardHeightView.swift in Sources */,
 				809792EB23A4E81500F2701B /* SceneDelegate.swift in Sources */,
 				8097930C23A5051A00F2701B /* JoiningViewController.swift in Sources */,

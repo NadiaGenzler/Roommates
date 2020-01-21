@@ -17,8 +17,7 @@ class CreatingGroupViewController: UIViewController, UIPopoverPresentationContro
     // figur out how to pass the key to the popover
     @IBAction func create(_ sender: UIButton) {
        var apartment=Apartment(name: groupName.text!, tenants: [], tasks: [], events: [])
-        
-//        guard var apartment=apartment else {return}
+    
        
         fireBase.addApartment(apartment: &apartment )
        

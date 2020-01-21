@@ -101,6 +101,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="iys-6V-8zy" id="aPv-lK-cBo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AyY-fa-OWu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -240,7 +243,19 @@
                     <view key="view" contentMode="scaleToFill" id="Chc-RZ-UuW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQz-z5-PfJ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="857"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JQz-z5-PfJ" firstAttribute="leading" secondItem="4sf-ph-dP4" secondAttribute="leading" id="0ej-Ec-iTg"/>
+                            <constraint firstItem="JQz-z5-PfJ" firstAttribute="top" secondItem="4sf-ph-dP4" secondAttribute="top" id="5Jm-y6-yBE"/>
+                            <constraint firstItem="4sf-ph-dP4" firstAttribute="trailing" secondItem="JQz-z5-PfJ" secondAttribute="trailing" id="7ub-6S-7Lt"/>
+                            <constraint firstItem="4sf-ph-dP4" firstAttribute="bottom" secondItem="JQz-z5-PfJ" secondAttribute="bottom" constant="-132" id="Td8-hN-M6L"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="4sf-ph-dP4"/>
                     </view>
                     <toolbarItems/>
@@ -251,11 +266,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VJc-O8-Epv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="-865"/>
+            <point key="canvasLocation" x="563.768115942029" y="-865.17857142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="VsT-Qe-LqV">
