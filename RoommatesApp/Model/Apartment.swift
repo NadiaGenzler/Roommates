@@ -31,7 +31,7 @@ class Apartment:CustomStringConvertible{
         let tenantsDict = fromDictionary["tenants"] as? [String:Any] ?? [:]
         for (tenantKey,tenantValue) in tenantsDict{
             let tenantValues = tenantValue as! [String:Any]
-            let tenant = Tenant(name: tenantValues["name"] as! String, phoneNumber: tenantValues["phoneNumber"] as! String,
+            let tenant = Tenant(apartmentKey:tenantValues["apartmentKey"] as! String ,name: tenantValues["name"] as! String,
             password: tenantValues["password"] as! String, userColorString: tenantValues["userColor"] as! String)
             tenant.tenantKey = tenantKey
             self.tenants.append(tenant)
@@ -79,7 +79,7 @@ class Apartment:CustomStringConvertible{
         
         dict["name"]=name
         dict["apartmentKey"]=apartmentKey
-        dict["tenants"]=tenantDict()//[]
+        dict["tenants"]=tenantDict()
         dict["tasks"]=taskDict()
         dict["events"]=eventsDict()
         

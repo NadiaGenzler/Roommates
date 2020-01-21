@@ -23,13 +23,14 @@ class FirebaseHelper {
     
     //MARK: Write to FireBase
     
-    // add and update together
-    func addApartment(apartment: inout Apartment){
+    // add new
+    func addApartment(apartment: inout Apartment, complition: (String,String)->Void){
         guard let apartmentKey=self.ref.childByAutoId().key else {return}
         apartment.apartmentKey=apartmentKey
         
         let childUpdates=["/Apartment/\(apartmentKey)":apartment.toDictionary()]
         ref.updateChildValues(childUpdates)
+        complition(apartmentKey, apartment.name)
     }
     
     func addTenant(apartmentKey:String, tenant: inout Tenant){
@@ -78,6 +79,19 @@ class FirebaseHelper {
     //    }
     
     //MARK: Read from FireBase
+    
+    func fetchAllApartmentsData(complition: @escaping ([Apartment])->Void){
+        ref.child("Apartment").observe(.value) { (snapshot) in
+            let apartmentDict=snapshot.value as? [String:Any] ?? [:]
+            var apartments:[Apartment]=[]
+            for (apartmentKey,apartmentValue) in apartmentDict{
+                let apartmentValues=apartmentValue as! [String:Any]
+                let apartment = Apartment(fromDictionary: apartmentValues)
+                apartments.append(apartment)
+            }
+            complition(apartments)
+        }
+    }
     
     func fetchApartmentData(apartmentKey:String, complition: @escaping (Apartment)->Void){
         ref.child("Apartment").child(apartmentKey).observe(.value) { (snapshot) in

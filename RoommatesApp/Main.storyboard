@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="20L-ft-Ktc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CEx-72-aQc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -17,11 +17,11 @@
             <objects>
                 <viewController id="BcA-8b-c0S" customClass="TasksViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GI4-d0-SMc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iys-6V-8zy">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="681"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" id="mqz-qD-Ry8" customClass="TaskTableViewCell" customModule="RoommatesApp" customModuleProvider="target">
@@ -94,6 +94,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Lists of Tasks" id="7hT-1k-cpE">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="icons8-menu" id="lYa-wQ-9MP">
+                            <connections>
+                                <action selector="openMenu:" destination="BcA-8b-c0S" id="ple-pQ-XZM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="hu5-Ac-24a">
                             <connections>
                                 <action selector="addList:" destination="BcA-8b-c0S" id="7CD-AR-tff"/>
@@ -213,39 +218,16 @@
             </objects>
             <point key="canvasLocation" x="1255" y="231"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="3CL-0C-pFD">
-            <objects>
-                <viewController id="wgW-Rj-SnW" customClass="ViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ajk-cn-2Wv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JLP-Bt-4gJ">
-                                <rect key="frame" x="123" y="89" width="240" height="622"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="3xf-Ne-zeY"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="icons8-menu" selectedImage="icons8-menu" id="d1A-M5-rFV"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c36-mI-VjV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-932" y="207"/>
-        </scene>
         <!--Events Calendar-->
         <scene sceneID="hzB-zR-GtK">
             <objects>
                 <viewController id="CuJ-Vc-RHE" customClass="CalendarViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Chc-RZ-UuW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQz-z5-PfJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="857"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="813"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -272,6 +254,50 @@
             </objects>
             <point key="canvasLocation" x="563.768115942029" y="-865.17857142857144"/>
         </scene>
+        <!--Container View Controller-->
+        <scene sceneID="91Q-0d-lhY">
+            <objects>
+                <viewController id="CEx-72-aQc" customClass="ContainerViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vi1-eM-8e7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lg-Cn-EoM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <connections>
+                                    <segue destination="20L-ft-Ktc" kind="embed" id="bHj-qm-WOA"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSY-yV-N1d">
+                                <rect key="frame" x="-240" y="44" width="240" height="818"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="rZY-g2-2aD"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="fCK-m2-12C" kind="embed" id="b6b-vL-01v"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Bfi-lu-EZW" firstAttribute="bottom" secondItem="0lg-Cn-EoM" secondAttribute="bottom" id="3mY-4v-fev"/>
+                            <constraint firstItem="Bfi-lu-EZW" firstAttribute="bottom" secondItem="pSY-yV-N1d" secondAttribute="bottom" id="FEo-hY-aOb"/>
+                            <constraint firstItem="0lg-Cn-EoM" firstAttribute="top" secondItem="Bfi-lu-EZW" secondAttribute="top" id="GPU-wa-e9M"/>
+                            <constraint firstItem="0lg-Cn-EoM" firstAttribute="centerX" secondItem="vi1-eM-8e7" secondAttribute="centerX" id="MT7-fE-cf0"/>
+                            <constraint firstItem="0lg-Cn-EoM" firstAttribute="top" secondItem="pSY-yV-N1d" secondAttribute="top" id="Qdr-cT-K9e"/>
+                            <constraint firstItem="0lg-Cn-EoM" firstAttribute="leading" secondItem="Bfi-lu-EZW" secondAttribute="leading" id="geb-uF-PrM"/>
+                            <constraint firstItem="pSY-yV-N1d" firstAttribute="leading" secondItem="Bfi-lu-EZW" secondAttribute="leading" constant="-240" id="sH4-fr-iA1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Bfi-lu-EZW"/>
+                    </view>
+                    <connections>
+                        <outlet property="sideMenuConstraint" destination="sH4-fr-iA1" id="TgI-42-xIf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Be4-JM-L7E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1797.1014492753625" y="-934.15178571428567"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="VsT-Qe-LqV">
             <objects>
@@ -282,9 +308,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="wgW-Rj-SnW" kind="relationship" relationship="viewControllers" id="fjX-0R-81T"/>
-                        <segue destination="Vor-cH-C1E" kind="relationship" relationship="viewControllers" id="QCX-w0-2xX"/>
                         <segue destination="Xpf-Io-Hbo" kind="relationship" relationship="viewControllers" id="iGW-b7-MYt"/>
+                        <segue destination="Vor-cH-C1E" kind="relationship" relationship="viewControllers" id="QCX-w0-2xX"/>
                         <segue destination="Sg4-ic-Y3V" kind="relationship" relationship="viewControllers" id="szy-69-pcr"/>
                     </connections>
                 </tabBarController>
@@ -297,7 +322,7 @@
             <objects>
                 <viewController id="Sg4-ic-Y3V" customClass="ViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ojy-al-cJ5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="S2V-sT-leZ"/>
@@ -442,6 +467,57 @@
             </objects>
             <point key="canvasLocation" x="1255" y="-434"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="2jb-OT-Fhs">
+            <objects>
+                <viewController id="fCK-m2-12C" customClass="MenuViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xo7-pQ-07s">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="818"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Groups Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejd-UJ-hfu">
+                                <rect key="frame" x="16" y="177" width="106" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tanants Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMx-eS-drD">
+                                <rect key="frame" x="16" y="230" width="110" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="71j-BP-P2D">
+                                <rect key="frame" x="126" y="114" width="39" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user_male" translatesAutoresizingMaskIntoConstraints="NO" id="DSB-eo-jlx" customClass="CircularImageView" customModule="RoommatesApp" customModuleProvider="target">
+                                <rect key="frame" x="37" y="88" width="65" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z46-Sb-FVd">
+                                <rect key="frame" x="42" y="565" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log Out"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0F4-cJ-2QG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2501" y="-270"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icons8-calendar-1" width="50" height="50"/>
@@ -452,5 +528,6 @@
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="square" catalog="system" width="64" height="56"/>
         <image name="trash" catalog="system" width="60" height="64"/>
+        <image name="user_male" width="32" height="32"/>
     </resources>
 </document>

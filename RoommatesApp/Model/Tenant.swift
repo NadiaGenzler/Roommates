@@ -10,28 +10,29 @@ import UIKit
 
 class Tenant:CustomStringConvertible {
     var description: String {
-        return "name: \(name), phoneNumber: \(phoneNumber), password: \(password), userColorString: \(userColorString) "
+        return "name: \(name), password: \(password), userColorString: \(userColorString) "
     }
     
 
-    init(name:String,phoneNumber:String,password:String, userColorString:String) {
+    init(apartmentKey:String,name:String,password:String, userColorString:String) {
+        self.apartmentKey=apartmentKey
         self.name=name
-        self.phoneNumber=phoneNumber
+      //  self.phoneNumber=phoneNumber
         self.password=password
         self.userColorString=userColorString
     }
     
     
-    var apartmentKey:String?
+    var apartmentKey:String
     var tenantKey:String?
     let name:String
 //    var userPhoto:UIImage
-    var userColorString:String?
-    var phoneNumber:String
+    var userColorString:String="#fff"
+  //  var phoneNumber:String
     var password:String
 //    var tasks:[Task]
     var userColor:UIColor{
-        return Utilities.shared.hexStringToUIColor(userColorString!)
+        return Utilities.shared.hexStringToUIColor(userColorString)
     }
   
     
@@ -39,10 +40,10 @@ class Tenant:CustomStringConvertible {
         
         self.name=fromDictionary["name"] as! String
         self.tenantKey=fromDictionary["tenantKey"] as? String ?? nil
-        self.apartmentKey=fromDictionary["apartmentKey"] as? String ?? nil
-        self.phoneNumber=fromDictionary["phoneNumber"] as! String
+        self.apartmentKey=fromDictionary["apartmentKey"] as! String 
+       // self.phoneNumber=fromDictionary["phoneNumber"] as! String
         self.password=fromDictionary["password"] as! String
-        self.userColorString=fromDictionary["userColor"] as? String
+        self.userColorString=fromDictionary["userColor"] as! String
         
     }
     
@@ -51,7 +52,7 @@ class Tenant:CustomStringConvertible {
         dict["name"]=name
         dict["tenantKey"]=tenantKey
         dict["apartmentKey"]=apartmentKey
-        dict["phoneNumber"]=phoneNumber
+    //    dict["phoneNumber"]=phoneNumber
         dict["password"]=password
         dict["userColor"]=userColorString
         

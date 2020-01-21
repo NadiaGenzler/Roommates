@@ -13,14 +13,17 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     var firebase=FirebaseHelper.shared
     
     //will be filled automatically once the group created
-    @IBOutlet weak var apartmentKey: UITextField!
+    @IBOutlet weak var apartmentKeyTF: UITextField!
+    var apartmentKey:String?
+    @IBOutlet weak var apartmentNameTF: UITextField!
+    var apartmentName:String?
+    
     @IBOutlet weak var imageView: CircularImageView!
     
     @IBOutlet weak var colorView: RoundView!
-    var stringColor:String = ""
+    var stringColor:String = "#ffffff"
     
     @IBOutlet weak var name: UITextField!
-    @IBOutlet weak var phone: UITextField!
     @IBOutlet weak var password: UITextField!
     var popoverVC:ColorPickerViewController?
     
@@ -40,18 +43,28 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
         
         present(popoverVC,animated: true, completion: nil)
         
-        
     }
-    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
 
     
     @IBAction func joinButton(_ sender: UIButton) {
+        //add function tha cheks that the fields are not empty
+        var tenant=Tenant(apartmentKey:apartmentKeyTF.text! ,name: name.text!, password: password.text!,userColorString: stringColor)
+        firebase.addTenant(apartmentKey: apartmentKeyTF.text!, tenant: &tenant)
         
-        var tenant=Tenant(name: name.text!, phoneNumber: phone.text!, password: password.text!,userColorString: stringColor)
-        firebase.addTenant(apartmentKey: apartmentKey.text!, tenant: &tenant)
+        if let apartKey = apartmentKeyTF.text{
+            UserDefaults.standard.set(apartKey, forKey: "apartKey")
+        }
+        if let name = name.text{
+            UserDefaults.standard.set(name, forKey: "name")
+        }
+        if let apartKey = apartmentKeyTF.text{
+            UserDefaults.standard.set(apartKey, forKey: "apartKey")
+        }
+        
+        
     }
     
     
@@ -64,7 +77,10 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+//        apartmentNameTF.text=apartmentName
+//        apartmentKeyTF.text=apartmentKey
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         

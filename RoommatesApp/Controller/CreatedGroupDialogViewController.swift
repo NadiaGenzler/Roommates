@@ -10,20 +10,38 @@ import UIKit
 
 class CreatedGroupDialogViewController: UIViewController {
 
-    let firebase=FirebaseHelper.shared
-    @IBOutlet weak var apartmentKey: UILabel!
-    var apartmentKeyS:String = ""
+    //let firebase=FirebaseHelper.shared
+
+    @IBOutlet weak var message: UILabel!
+    var apartmentKey:String = ""
+    var apartmentName:String = ""
+ //   var delegate:CreatingGroupViewController?
     
     @IBAction func continiueRegestration(_ sender: UIButton) {
+        
+       
+        
+//        var joinController=storyboard?.instantiateViewController(withIdentifier: "joinVC") as! JoiningViewController
+//        joinController.apartmentKey=apartmentKey
+//        joinController.apartmentName=apartmentName
+//        present(joinController, animated: true)
+
+       //  delegate?.creationVC?.dismiss(animated: true)
+        
+        
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let dest=segue.destination as? JoiningViewController else {return}
+//        dest.apartmentName=apartmentName
+//        dest.apartmentKey=apartmentKey
+//    }
     
     @IBAction func inviteRoommates(_ sender: UIButton) {
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        firebase.fetchApartmentData(apartmentKey: <#T##String#>, complition: <#T##(Apartment) -> Void#>)
-//        apartmentKey.text=apartmentKeyS
+        message.text="\(apartmentName) \nwas Created Successfully!"
         
     }
     

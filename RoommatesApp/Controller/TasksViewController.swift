@@ -17,14 +17,19 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     var tasksArr:[Task]?
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func openMenu(_ sender: UIBarButtonItem) {
+        NotificationCenter.default.post(name: NSNotification.Name("openMenu"), object: nil)
+        //make the parent view and the tableview darker
+    }
     
     @IBAction func addList(_ sender: UIBarButtonItem) {
         taskPopover(sender)
+       // tableView.insertRows(at: [indexPath], with: .automatic)
         
     }
     
     func taskPopover(_ sender : Any){
-        var id = sender is UIBarButtonItem ? "newTask" : "updateTask"
+        let id = sender is UIBarButtonItem ? "newTask" : "updateTask"
         
         var popoverTaskVC=storyboard?.instantiateViewController(identifier: id) as! UIViewController
         popoverTaskVC.modalPresentationStyle = .overCurrentContext
@@ -97,7 +102,6 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
 extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(tasksArr)
         return tasksArr?.count ?? 0
     }
     

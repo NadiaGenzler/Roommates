@@ -9,40 +9,38 @@
 import UIKit
 
 class CreatingGroupViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-
+// if no tenet subscribes, group will be eliminated within 3 days
     @IBOutlet weak var groupName: UITextField!
     
     let fireBase=FirebaseHelper.shared
-//    var apartment:Apartment?
-    // figur out how to pass the key to the popover
-    @IBAction func create(_ sender: UIButton) {
-       var apartment=Apartment(name: groupName.text!, tenants: [], tasks: [], events: [])
+    var apartmentKey:String?
+    var apartmentName:String?
+    var creationVC:CreatedGroupDialogViewController?
     
-       
-        fireBase.addApartment(apartment: &apartment )
-       
-        let creationVC=storyboard?.instantiateViewController(identifier: "successfulCreation") as! CreatedGroupDialogViewController
-        creationVC.modalPresentationStyle = .overCurrentContext
-//        creationVC.apartmentKey.text=apartment.apartmentKey ?? "hh"
-//        print(apartment.apartmentKey ?? "hh")
-//        if let popoverPresentanionContoller=creationVC.popoverPresentationController{
-//            popoverPresentanionContoller.delegate=self
-//
-//        }
+    @IBAction func create(_ sender: UIButton) {
         
+        //add function tha cheks that the fields are not empty
+     var apartment=Apartment(name: groupName.text!, tenants: [], tasks: [], events: [])
+    
+        fireBase.addApartment(apartment: &apartment) { (apartmentKey, name) in
+                self.apartmentKey=apartmentKey
+                self.apartmentName=name
+        }
+        
+        creationVC=storyboard?.instantiateViewController(identifier: "successfulCreation") as! CreatedGroupDialogViewController
+        
+        if let creationVC=creationVC {
+        creationVC.modalPresentationStyle = .overCurrentContext
+        creationVC.apartmentKey=apartmentKey ?? "0key"
+        creationVC.apartmentName=apartmentName ?? "0name"
+      
         
         present(creationVC,animated: true, completion: nil)
-    
+        }
     }
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        // Return no adaptive presentation style, use default presentation behaviour
         return .none
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let dest=segue.description as? CreatedGroupDialogViewController else {return}
-//        print(apartment?.apartmentKey ?? "hh")
-//        dest.apartmentKeyS=apartment?.apartmentKey ?? "dd"
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
