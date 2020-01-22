@@ -262,13 +262,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lg-Cn-EoM">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lg-Cn-EoM" userLabel="main container view">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <connections>
                                     <segue destination="20L-ft-Ktc" kind="embed" id="bHj-qm-WOA"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSY-yV-N1d">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pSY-yV-N1d" userLabel="menu container view">
                                 <rect key="frame" x="-240" y="44" width="240" height="818"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="rZY-g2-2aD"/>
@@ -279,6 +279,7 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Bfi-lu-EZW" firstAttribute="bottom" secondItem="0lg-Cn-EoM" secondAttribute="bottom" id="3mY-4v-fev"/>
                             <constraint firstItem="Bfi-lu-EZW" firstAttribute="bottom" secondItem="pSY-yV-N1d" secondAttribute="bottom" id="FEo-hY-aOb"/>
@@ -291,12 +292,12 @@
                         <viewLayoutGuide key="safeArea" id="Bfi-lu-EZW"/>
                     </view>
                     <connections>
-                        <outlet property="sideMenuConstraint" destination="sH4-fr-iA1" id="TgI-42-xIf"/>
+                        <outlet property="sideMenuConstraint" destination="sH4-fr-iA1" id="XyL-2L-9H9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Be4-JM-L7E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1797.1014492753625" y="-934.15178571428567"/>
+            <point key="canvasLocation" x="-2104" y="-1092"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="VsT-Qe-LqV">
@@ -331,7 +332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y7C-sA-KmO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-959" y="-1348"/>
+            <point key="canvasLocation" x="-959" y="-1205"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gAO-gQ-hXg">
@@ -508,15 +509,17 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z46-Sb-FVd">
                                 <rect key="frame" x="42" y="565" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
                                 <state key="normal" title="Log Out"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0F4-cJ-2QG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2501" y="-270"/>
+            <point key="canvasLocation" x="-2232" y="-435"/>
         </scene>
     </scenes>
     <resources>

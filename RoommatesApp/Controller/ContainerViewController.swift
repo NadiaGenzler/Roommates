@@ -9,7 +9,7 @@
 import UIKit
 
 class ContainerViewController: UIViewController {
-
+    
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -17,16 +17,33 @@ class ContainerViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(openSideMenu), name: NSNotification.Name("openMenu"), object: nil)
         
+        
+        var leftSwipe=UISwipeGestureRecognizer(target: self, action: #selector(closeSideMenu(_:)))
+        leftSwipe.direction = .left
+        self.children[1].view.addGestureRecognizer(leftSwipe)
+        
     }
     
     @objc func openSideMenu(){
-       
-        sideMenuConstraint.constant = sideMenuConstraint.constant == -240 ? 0 : -240
+        sideMenuConstraint.constant = 0
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
-
+        
     }
-
-
+    
+    @objc func closeSideMenu(_ sender: UISwipeGestureRecognizer) {
+        if(sender.direction == .left){
+            sideMenuConstraint.constant = -240
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+            
+        }
+        
+        
+        
+        
+    }
+    
 }
