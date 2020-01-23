@@ -30,7 +30,8 @@ class CreatingGroupViewController: UIViewController, UIPopoverPresentationContro
         creationVC=storyboard?.instantiateViewController(identifier: "successfulCreation") as! CreatedGroupDialogViewController
         
         if let creationVC=creationVC {
-        creationVC.modalPresentationStyle = .overCurrentContext
+            creationVC.modalPresentationStyle = .overFullScreen
+            creationVC.modalTransitionStyle = .coverVertical
         creationVC.apartmentKey=apartmentKey ?? "0key"
         creationVC.apartmentName=apartmentName ?? "0name"
       

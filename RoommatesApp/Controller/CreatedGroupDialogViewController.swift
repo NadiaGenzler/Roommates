@@ -15,21 +15,25 @@ class CreatedGroupDialogViewController: UIViewController {
     @IBOutlet weak var message: UILabel!
     var apartmentKey:String = ""
     var apartmentName:String = ""
- //   var delegate:CreatingGroupViewController?
+//    var delegate:CreatingGroupViewController?
     
-    @IBAction func continiueRegestration(_ sender: UIButton) {
+    @IBAction func continueRegestration(_ sender: UIButton) {
         
        
         
-//        var joinController=storyboard?.instantiateViewController(withIdentifier: "joinVC") as! JoiningViewController
-//        joinController.apartmentKey=apartmentKey
-//        joinController.apartmentName=apartmentName
-//        present(joinController, animated: true)
+        var joinController=storyboard?.instantiateViewController(withIdentifier: "joinVC") as! JoiningViewController
+        joinController.modalPresentationStyle = .overFullScreen
+        joinController.modalTransitionStyle = .coverVertical
+        joinController.apartmentKey=apartmentKey
+        joinController.apartmentName=apartmentName
+        present(joinController, animated: true)
 
-       //  delegate?.creationVC?.dismiss(animated: true)
+//         delegate?.creationVC?.dismiss(animated: true)
         
         
     }
+   
+
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        guard let dest=segue.destination as? JoiningViewController else {return}
 //        dest.apartmentName=apartmentName
