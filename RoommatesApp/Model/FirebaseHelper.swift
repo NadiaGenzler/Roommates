@@ -24,22 +24,22 @@ class FirebaseHelper {
     //MARK: Write to FireBase
     
     // add new
-    func addApartment(apartment: inout Apartment, complition: (String,String)->Void){
+    func addApartment(apartment: inout Apartment, completion: (String,String)->Void){
         guard let apartmentKey=self.ref.childByAutoId().key else {return}
         apartment.apartmentKey=apartmentKey
         
         let childUpdates=["/Apartment/\(apartmentKey)":apartment.toDictionary()]
         ref.updateChildValues(childUpdates)
-        complition(apartmentKey, apartment.name)
+        completion(apartmentKey, apartment.name)
     }
     
-    func addTenant(apartmentKey:String, tenant: inout Tenant){
+    func addTenant(apartmentKey:String, tenant: inout Tenant, completion : (Tenant)->Void){
         guard let tenantKey=self.ref.child(apartmentKey).child("tenants").childByAutoId().key else {return}
         tenant.tenantKey=tenantKey
         
         let childUpdates=["/Apartment/\(apartmentKey)/tenants/\(tenantKey)":tenant.toDictionary()]
         ref.updateChildValues(childUpdates)
-        
+        completion(tenant)
     }
     
     
@@ -80,77 +80,81 @@ class FirebaseHelper {
     
     //MARK: Read from FireBase
     
-    func fetchAllApartmentsData(complition: @escaping ([Apartment])->Void){
+    func fetchAllApartmentsData(completion: @escaping ([Apartment])->Void){
         ref.child("Apartment").observe(.value) { (snapshot) in
             let apartmentDict=snapshot.value as? [String:Any] ?? [:]
             var apartments:[Apartment]=[]
-            for (apartmentKey,apartmentValue) in apartmentDict{
+            for (_,apartmentValue) in apartmentDict{
                 let apartmentValues=apartmentValue as! [String:Any]
                 let apartment = Apartment(fromDictionary: apartmentValues)
                 apartments.append(apartment)
             }
-            complition(apartments)
+            completion(apartments)
         }
     }
     
-    func fetchApartmentData(apartmentKey:String, complition: @escaping (Apartment)->Void){
+    func fetchApartmentData(apartmentKey:String, completion: @escaping (Apartment)->Void){
         ref.child("Apartment").child(apartmentKey).observe(.value) { (snapshot) in
             let apartmentDict=snapshot.value as? [String:Any] ?? [:]
             //          print(apartmentDict)
             
             let apartment = Apartment(fromDictionary: apartmentDict)
-            complition(apartment)
+            completion(apartment)
             
         }
     }
     
-    func fetchTenantData(apartmentKey:String, complition: @escaping ([Tenant])->Void){
+    func fetchTenantData(apartmentKey:String, completion: @escaping ([Tenant])->Void){
         ref.child("Apartment").child(apartmentKey).child("tenants").observe(.value) { (snapshot) in
             let tenantDict=snapshot.value as? [String:Any] ?? [:]
             var tenants:[Tenant]=[]
-            for (tenantKey,tenantValue ) in tenantDict{
+            for (_,tenantValue ) in tenantDict{
                 let tenantValues=tenantValue as![String:Any]
                 let tenant=Tenant(fromDictionary: tenantValues)
                 
                 tenants.append(tenant)
             }
             
-            complition(tenants)
+            completion(tenants)
             
         }
     }
     
-    func fetchEventData(apartmentKey:String, complition: @escaping ([MyEvent])->Void){
+    func fetchEventData(apartmentKey:String, completion: @escaping ([MyEvent])->Void){
         ref.child("Apartment").child(apartmentKey).child("events").observe(.value) { (snapshot) in
             let eventDict=snapshot.value as? [String:Any] ?? [:]
+          
+            let formatter=DateFormatter()
+                       formatter.dateFormat="MM/dd/yyyy HH:mm"
+            
             var events:[MyEvent]=[]
-            for (eventKey,eventValue) in eventDict{
+            for (_,eventValue) in eventDict{
                 let eventValues=eventValue as![String:Any]
-                let event=MyEvent(fromDictionary: eventValues)
-                
+                let event=MyEvent(eventName: eventValues["eventName"] as! String ,eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date(), tenantColor: eventValues["tenantColor"] as! String )
+
                 events.append(event)
             }
             
-            complition(events)
+            completion(events)
             
         }
     }
     
         
-    func fetchTaskData(apartmentKey:String, complition: @escaping ([Task])->Void){
+    func fetchTaskData(apartmentKey:String, completion: @escaping ([Task])->Void){
         
         self.ref.child("Apartment").child(apartmentKey).child("tasks").observe(.value) { (snapshot) in
             var tasks:[Task]=[]
             
             let taskDict=snapshot.value as? [String:Any] ?? [:]
-            for (taskKey,taskValue) in taskDict{
+            for (_,taskValue) in taskDict{
                 let tasksValues=taskValue as! [String:Any]
                 
                 let task=Task(fromDictionary: tasksValues)
                 
                 tasks.append(task)
             }
-                complition(tasks)
+                completion(tasks)
         
         }
     }

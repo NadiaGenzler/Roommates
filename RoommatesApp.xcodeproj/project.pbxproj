@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		32BF34DC2FCC6BC05ABADF1E /* Pods_RoommatesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A3F6AD6B471571E9649BA8 /* Pods_RoommatesApp.framework */; };
+		8034D18023DCCC60001835DA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034D17F23DCCC60001835DA /* NewEventViewController.swift */; };
+		8034D18223DCE0C3001835DA /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034D18123DCE0C3001835DA /* EditEventViewController.swift */; };
 		804161F623AABA2E001639CA /* KeyboardHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804161F523AABA2E001639CA /* KeyboardHeightView.swift */; };
 		8041620C23B0C55A001639CA /* FillBlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041620B23B0C55A001639CA /* FillBlankView.swift */; };
 		8041620E23B0D0AC001639CA /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041620D23B0D0AC001639CA /* TasksViewController.swift */; };
 		8041621023B10356001639CA /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041620F23B10356001639CA /* TaskTableViewCell.swift */; };
 		8041621423B10567001639CA /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041621323B10567001639CA /* CircularImageView.swift */; };
 		806E495E23BF539100BB13E7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E495D23BF539100BB13E7 /* Utilities.swift */; };
-		808E33B323D4D746009CCDBE /* ViewControllerCal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33B223D4D746009CCDBE /* ViewControllerCal.swift */; };
 		808E33B523D729EC009CCDBE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33B423D729EC009CCDBE /* LogInViewController.swift */; };
 		808E33B723D749D4009CCDBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808E33B623D749D4009CCDBE /* Main.storyboard */; };
 		808E33B923D77391009CCDBE /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33B823D77391009CCDBE /* ContainerViewController.swift */; };
@@ -47,13 +48,14 @@
 /* Begin PBXFileReference section */
 		480B452ABD65AFB998486192 /* Pods-RoommatesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoommatesApp.debug.xcconfig"; path = "Target Support Files/Pods-RoommatesApp/Pods-RoommatesApp.debug.xcconfig"; sourceTree = "<group>"; };
 		626F04A2922827AC7F451E96 /* Pods-RoommatesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoommatesApp.release.xcconfig"; path = "Target Support Files/Pods-RoommatesApp/Pods-RoommatesApp.release.xcconfig"; sourceTree = "<group>"; };
+		8034D17F23DCCC60001835DA /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
+		8034D18123DCE0C3001835DA /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
 		804161F523AABA2E001639CA /* KeyboardHeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightView.swift; sourceTree = "<group>"; };
 		8041620B23B0C55A001639CA /* FillBlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillBlankView.swift; sourceTree = "<group>"; };
 		8041620D23B0D0AC001639CA /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		8041620F23B10356001639CA /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8041621323B10567001639CA /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		806E495D23BF539100BB13E7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		808E33B223D4D746009CCDBE /* ViewControllerCal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerCal.swift; sourceTree = "<group>"; };
 		808E33B423D729EC009CCDBE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		808E33B623D749D4009CCDBE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		808E33B823D77391009CCDBE /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,32 @@
 				E7A3F6AD6B471571E9649BA8 /* Pods_RoommatesApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8034D18323DCE1B9001835DA /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */,
+				80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */,
+				8097930923A504FB00F2701B /* CreatingGroupViewController.swift */,
+				8097930B23A5051A00F2701B /* JoiningViewController.swift */,
+				808E33B423D729EC009CCDBE /* LogInViewController.swift */,
+				808E33BC23D9959B009CCDBE /* RegistrationViewController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		8034D18423DCE234001835DA /* Main  */ = {
+			isa = PBXGroup;
+			children = (
+				80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */,
+				8034D18123DCE0C3001835DA /* EditEventViewController.swift */,
+				809FF88923D346660038B8C5 /* EditTaskViewController.swift */,
+				8034D17F23DCCC60001835DA /* NewEventViewController.swift */,
+				809FF88723D32D150038B8C5 /* NewTaskViewController.swift */,
+				8041620D23B0D0AC001639CA /* TasksViewController.swift */,
+			);
+			path = "Main ";
 			sourceTree = "<group>";
 		};
 		809792DC23A4E81500F2701B = {
@@ -172,20 +200,11 @@
 		8097930623A4F5A400F2701B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				808E33BC23D9959B009CCDBE /* RegistrationViewController.swift */,
-				809792EC23A4E81500F2701B /* ViewController.swift */,
-				8097930923A504FB00F2701B /* CreatingGroupViewController.swift */,
-				80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */,
-				8097930B23A5051A00F2701B /* JoiningViewController.swift */,
-				8041620D23B0D0AC001639CA /* TasksViewController.swift */,
-				80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */,
-				80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */,
-				809FF88723D32D150038B8C5 /* NewTaskViewController.swift */,
-				809FF88923D346660038B8C5 /* EditTaskViewController.swift */,
-				808E33B223D4D746009CCDBE /* ViewControllerCal.swift */,
-				808E33B423D729EC009CCDBE /* LogInViewController.swift */,
+				8034D18423DCE234001835DA /* Main  */,
+				8034D18323DCE1B9001835DA /* Registration */,
 				808E33B823D77391009CCDBE /* ContainerViewController.swift */,
 				808E33BA23D7B30E009CCDBE /* MenuViewController.swift */,
+				809792EC23A4E81500F2701B /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -324,6 +343,7 @@
 				8097933123A8130400F2701B /* GradientView.swift in Sources */,
 				80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */,
 				8097930023A4F16400F2701B /* Apartment.swift in Sources */,
+				8034D18223DCE0C3001835DA /* EditEventViewController.swift in Sources */,
 				8041620C23B0C55A001639CA /* FillBlankView.swift in Sources */,
 				8097932F23A5617300F2701B /* RoundView.swift in Sources */,
 				806E495E23BF539100BB13E7 /* Utilities.swift in Sources */,
@@ -335,9 +355,9 @@
 				80F3B8CC23CA2FD100532411 /* CalendarViewController.swift in Sources */,
 				8097930223A4F22D00F2701B /* Task.swift in Sources */,
 				8041621423B10567001639CA /* CircularImageView.swift in Sources */,
+				8034D18023DCCC60001835DA /* NewEventViewController.swift in Sources */,
 				808E33BD23D9959B009CCDBE /* RegistrationViewController.swift in Sources */,
 				8097930423A4F37900F2701B /* MyEvent.swift in Sources */,
-				808E33B323D4D746009CCDBE /* ViewControllerCal.swift in Sources */,
 				804161F623AABA2E001639CA /* KeyboardHeightView.swift in Sources */,
 				809792EB23A4E81500F2701B /* SceneDelegate.swift in Sources */,
 				808E33BB23D7B30E009CCDBE /* MenuViewController.swift in Sources */,

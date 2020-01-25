@@ -119,6 +119,7 @@ public class DayView: UIView, EventViewDelegate, TimelinePagerViewDelegate {
 
   public func reloadData() {
     timelinePagerView.reloadData()
+    
   }
 
   override public func layoutSubviews() {

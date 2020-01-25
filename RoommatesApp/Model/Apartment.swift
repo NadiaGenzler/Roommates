@@ -31,7 +31,7 @@ class Apartment:CustomStringConvertible{
         let tenantsDict = fromDictionary["tenants"] as? [String:Any] ?? [:]
         for (tenantKey,tenantValue) in tenantsDict{
             let tenantValues = tenantValue as! [String:Any]
-            let tenant = Tenant(apartmentKey:tenantValues["apartmentKey"] as! String ,name: tenantValues["name"] as! String,
+            let tenant = Tenant(apartmentKey:tenantValues["apartmentKey"] as? String ?? "no apartment key" ,name: tenantValues["name"] as! String,
             password: tenantValues["password"] as! String, userColorString: tenantValues["userColor"] as! String)
             tenant.tenantKey = tenantKey
             self.tenants.append(tenant)
@@ -53,12 +53,12 @@ class Apartment:CustomStringConvertible{
         
         
         let eventDict=fromDictionary["events"] as? [String:Any] ?? [:]
+      let formatter=DateFormatter()
+      formatter.dateFormat="MM/dd/yyyy HH:mm"
         for (eventKey, eventValue) in eventDict{
             let eventValues = eventValue as! [String:Any]
-            let formatter=DateFormatter()
-            formatter.dateFormat="MM/dd/yyyy HH:mm"
-            
-            let event=MyEvent(eventName: eventValues["eventName"] as! String ,eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date())
+             
+            let event=MyEvent(eventName: eventValues["eventName"] as! String ,eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date(), tenantColor: eventValues["tenantColor"] as! String )
             event.eventKey=eventKey
             self.events.append(event)
             

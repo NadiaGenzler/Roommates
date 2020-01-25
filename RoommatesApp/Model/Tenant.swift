@@ -27,7 +27,7 @@ class Tenant:CustomStringConvertible {
     var tenantKey:String?
     let name:String
 //    var userPhoto:UIImage
-    var userColorString:String="#fff"
+    var userColorString:String="#ffffff"
   //  var phoneNumber:String
     var password:String
 //    var tasks:[Task]

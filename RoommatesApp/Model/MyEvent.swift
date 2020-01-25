@@ -16,10 +16,11 @@ class MyEvent: CustomStringConvertible {
     
     var startDate:Date
     var endDate:Date
-    var tenant:Tenant?   // decide whether the tenant subscribe himself right in the creation of the event or afterwards
+//    var tenantKey:String
+     var tenantColor:String
 
     var description:String{
-        return "eventName:\(eventName ?? "no name"), eventDescription:\(eventDescription) startDate:\(startDate), endDate:\(endDate)"
+        return "eventName:\(eventName ?? "no name"), eventDescription:\(eventDescription) startDate:\(startDate), endDate:\(endDate), tenantKey : \(tenantColor)"
     }
     let formatter=DateFormatter()
     
@@ -32,21 +33,24 @@ class MyEvent: CustomStringConvertible {
         self.eventName=fromDictionary["eventName"] as? String ?? ""
         self.startDate=formatter.date(from: fromDictionary["startDate"] as! String) ?? Date()
         self.endDate=formatter.date(from: fromDictionary["endDate"] as! String) ?? Date()
-        self.tenant=fromDictionary["tenant"] as? Tenant
+        self.tenantColor=fromDictionary["tenantColor"] as! String
+        
         
     }
     
-    init(eventName:String ,eventDescription:String, startDate:Date, endDate:Date){
+    init(eventName:String ,eventDescription:String, startDate:Date, endDate:Date, tenantColor : String){
         self.eventName=eventName
         self.eventDescription=eventDescription
         self.startDate=startDate
         self.endDate=endDate
+        self.tenantColor=tenantColor
     }
     
-    init(eventDescription:String, startDate:Date, endDate:Date){
+    init(eventDescription:String, startDate:Date, endDate:Date, tenantColor : String){
         self.eventDescription=eventDescription
         self.startDate=startDate
         self.endDate=endDate
+        self.tenantColor=tenantColor
     }
     func toDictionary()->[String:Any]{
         var dict:Dictionary<String,Any>=[:]
@@ -57,7 +61,7 @@ class MyEvent: CustomStringConvertible {
         dict["eventDescription"]=eventDescription
         dict["startDate"]=formatter.string(from: startDate)
         dict["endDate"]=formatter.string(from: endDate)
-        dict["tenant"]=tenant
+        dict["tenantColor"]=tenantColor
         
         return dict
     }

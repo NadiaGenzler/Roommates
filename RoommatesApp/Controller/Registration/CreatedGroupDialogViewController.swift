@@ -18,10 +18,8 @@ class CreatedGroupDialogViewController: UIViewController {
 //    var delegate:CreatingGroupViewController?
     
     @IBAction func continueRegestration(_ sender: UIButton) {
-        
-       
-        
-        var joinController=storyboard?.instantiateViewController(withIdentifier: "joinVC") as! JoiningViewController
+
+        let joinController=storyboard?.instantiateViewController(withIdentifier: "joinVC") as! JoiningViewController
         joinController.modalPresentationStyle = .overFullScreen
         joinController.modalTransitionStyle = .coverVertical
         joinController.apartmentKey=apartmentKey

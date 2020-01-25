@@ -1,14 +1,14 @@
- //
-//  ViewControllerCal.swift
+//
+//  NewEventViewController.swift
 //  RoommatesApp
 //
-//  Created by Nadia Genzler on 19/01/2020.
+//  Created by Nadia Genzler on 25/01/2020.
 //  Copyright © 2020 NadiaGenzler. All rights reserved.
 //
 
 import UIKit
 
-class ViewControllerCal: UIViewController {
+class NewEventViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

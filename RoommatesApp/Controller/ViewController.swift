@@ -9,20 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-       var firebase=FirebaseHelper.shared
-   // var tenantsArr:[Tenant]=[]
-  //  var tasksArr=[Task(body: "with sponge", done: true)]
-   // var eventArr:[MyEvent]=[]
+    var nav:UIViewController?
+    var firebase=FirebaseHelper.shared
     var util=Utilities.shared
     
    func showStoryboard(){
-       let sb=UIStoryboard(name: "Registration", bundle: Bundle.main)
-       let nav=sb.instantiateViewController(identifier: "registrationSb")
-    
-    
+
+    var regestrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
+    nav=regestrationStoryBoard.instantiateViewController(identifier: "registrationSb") as! UIViewController
+    if let nav=nav{
     show(nav, sender: nil)
+    }
+//    NotificationCenter.default.addObserver(self, selector: <#T##Selector#>, name: <#T##NSNotification.Name?#>, object: <#T##Any?#>)
    }
     
+    @objc func dismissStoryBoard(){
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +34,7 @@ class ViewController: UIViewController {
 
         
         
-//        var event=MyEvent(eventName: "gogogogo", eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00))
+//        var event=MyEvent(eventName: "go2", eventDescription: "Go to the woods ", startDate: Date(year: 2020, month: 01, day: 20, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 20, hour: 20, minute: 00, second: 00))
 //        firebase.addEvent(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", event: &event)
         
      

@@ -10,7 +10,11 @@ import UIKit
 
 class JoiningViewController: UIViewController, UIPopoverPresentationControllerDelegate{
     
-    @IBOutlet var scroll: UIScrollView!
+    // fix the location of the scroll when closed after being opened
+    //fix the color picker when the keyboard is open
+    
+    var delegate:ViewController?
+    @IBOutlet var scrollView: UIScrollView!
     var firebase=FirebaseHelper.shared
     
     //will be filled automatically once the group created
@@ -53,17 +57,43 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     @IBAction func joinButton(_ sender: UIButton) {
         //add function tha cheks that the fields are not empty
         var tenant=Tenant(apartmentKey:apartmentKeyTF.text! ,name: name.text!, password: password.text!,userColorString: stringColor)
-        firebase.addTenant(apartmentKey: apartmentKeyTF.text!, tenant: &tenant)
         
-//        if let apartKey = apartmentKeyTF.text{
-//            UserDefaults.standard.set(apartKey, forKey: "apartKey")
-//        }
-//        if let name = name.text{
-//            UserDefaults.standard.set(name, forKey: "name")
-//        }
-//        if let apartKey = apartmentKeyTF.text{
-//            UserDefaults.standard.set(apartKey, forKey: "apartKey")
-//        }
+        firebase.addTenant(apartmentKey: apartmentKeyTF.text!, tenant: &tenant) { (currentTenant) in
+            
+            
+            UserDefaults.standard.set(apartmentNameTF.text!, forKey: "apartmentName")
+            
+            
+            UserDefaults.standard.set(currentTenant.apartmentKey, forKey: "apartmentKey")
+            UserDefaults.standard.set(currentTenant.tenantKey, forKey: "tenantKey")
+            
+            UserDefaults.standard.set(currentTenant.name, forKey: "name")
+            UserDefaults.standard.set(currentTenant.password, forKey: "password")
+            UserDefaults.standard.set(currentTenant.userColorString, forKey: "userColorString")
+            
+//            if let apartKey = currentTenant.apartmentKey{
+//                UserDefaults.standard.set(apartKey, forKey: "apartmentKey")
+//            }
+//            if let name = name.text{
+//                UserDefaults.standard.set(name, forKey: "name")
+//            }
+//            if let password = password.text{
+//                UserDefaults.standard.set(password, forKey: "password")
+//            }
+//            if let password = password.text{
+//                UserDefaults.standard.set(password, forKey: "color")
+//            }
+            
+            self.delegate?.nav?.dismiss(animated: true)
+            //how do I dismiss the storyboard???
+            
+            
+            
+        }
+        
+        
+        
+        
         
         
     }
@@ -78,15 +108,11 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        apartmentNameTF.text=apartmentName
-//        apartmentKeyTF.text=apartmentKey
+        apartmentNameTF.text=apartmentName
+        apartmentKeyTF.text=apartmentKey
         
-        
+       // scrollView.isScrollEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        
-        
         
 //        textField.delegate=self
         
@@ -94,47 +120,31 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     }
     
     
-    var keyboardOpened = false
-    
-    
+    var keyboardClosed = true
+
     @objc func keyboardWillShow(_ notification: NSNotification) {
            if let keyboard=(notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
-               inflateView(keyboard)
+               handleScrollView(keyboard)
            }
        }
-    
-    
-    @objc func keyboardWillHide(_ notification: NSNotification) {
-              if let keyboard=(notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
-                  closeView(keyboard)
-              }
-          }
-    
-    func inflateView(_ keyboard:CGRect){
-        print(keyboard.height)
 
-        if keyboardOpened == false{
-            scroll.contentSize = CGSize(width: keyboard.width, height: view.frame.height-keyboard.height)
-            self.view.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height-keyboard.height)
-            print("open")
-            keyboardOpened = true
+    func handleScrollView(_ keyboard:CGRect){
+        
+        if keyboardClosed {
+         //   scrollView.isScrollEnabled = true
+            scrollView.contentSize = CGSize(width: keyboard.width, height: view.frame.height-keyboard.height)
+            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height-keyboard.height)
+    
+            keyboardClosed = false
         }else{
+           // scrollView.isScrollEnabled = false
+            scrollView.contentSize = CGSize(width: keyboard.width, height: view.frame.height)
+            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height)
             
-            scroll.contentSize = CGSize(width: keyboard.width, height: view.frame.height+keyboard.height)
-            self.view.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height+keyboard.height)
-            print("closed")
-            keyboardOpened = false
+            keyboardClosed = true
         }
         
     }
-    
-   func closeView(_ keyboard:CGRect){
-    self.view.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height+keyboard.height)
-    print(keyboard.height)
-    print("closed")
-    }
-
-
 }
 
 
@@ -144,8 +154,6 @@ extension JoiningViewController:UITextFieldDelegate{
         textField.endEditing(true)
         return true
     }
-        
-    
 }
 
 

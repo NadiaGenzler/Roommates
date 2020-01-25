@@ -22,48 +22,41 @@ class CalendarViewController: DayViewController {
     var util=Utilities.shared
     
     var eventsArr:[MyEvent]?
-        
-    
-    
-        
-    
-    
-        lazy var customCalendar: Calendar = {
-          let customNSCalendar = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!
-          customNSCalendar.timeZone = TimeZone(abbreviation: "CEST")!
-          let calendar = customNSCalendar as Calendar
-            
-          return calendar
-        }()
-    
-        override func loadView() {
-          calendar = customCalendar
-          dayView = DayView(calendar: calendar)
-          view = dayView
-        }
     
     @IBAction func addEvent(_ sender: UIBarButtonItem) {
-//        var event=MyEvent(eventName: "gogogogo", eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00))
-//        firebase.addEvent(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", event: &event)
-//        reloadData()
+//        eventPopover(sender)
+//        var event=MyEvent(eventName: "go2", eventDescription: "Go to the woods ", startDate: Date(year: 2020, month: 01, day: 20, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 20, hour: 20, minute: 00, second: 00))
+//               firebase.addEvent(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", event: &event)
+        reloadData()
     }
+    
+    func eventPopover(_ sender : Any){
+           let id = (sender is UITapGestureRecognizer||sender is UILongPressGestureRecognizer) ? "newEvent" : "editEvent"
+           
+           let popoverTaskVC=storyboard?.instantiateViewController(identifier: id) as! UIViewController
+           popoverTaskVC.modalPresentationStyle = .overCurrentContext
+           
+           present(popoverTaskVC, animated: true)
+       }
+       func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+           return .none
+       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        eventsArr=[MyEvent(eventDescription: "Go shopping ", startDate: Date(year: 2020, month: 01, day: 14, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 14, hour: 20, minute: 00, second: 00)),
-        MyEvent(eventDescription: "Travel", startDate: Date(year: 2020, month: 01, day: 16, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 16, hour: 20, minute: 00, second: 00))]
-//        firebase.fetchEventData(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX") { (events) in
-//                   
-//                  // print(events)
-//          //  eventsArr=events
-//                   
-//               }
-        self.navigationController?.navigationBar.backgroundColor=util.hexStringToUIColor("#FFCCFF")
+        let apartmentKey = UserDefaults.standard.string(forKey: "apartmentKey")
+        firebase.fetchEventData(apartmentKey: apartmentKey!) { (events) in
+
+            self.eventsArr=events
+            self.reloadData()
+               }
+
+//        self.navigationController?.navigationBar.backgroundColor=util.hexStringToUIColor("#FFCCFF")
         
         
         dayView.autoScrollToFirstEvent = true
-        reloadData()
+//        reloadData()
+   
     }
     
     // MARK: EventDataSource
@@ -71,21 +64,20 @@ class CalendarViewController: DayViewController {
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         var events = [Event]()
         
-        if var myEvents=eventsArr{
-            print(myEvents)
+        if let myEvents=eventsArr{
             for myevent in myEvents {
-                print(myevent)
+               
                 let event = Event()
                 
                 event.text=myevent.eventDescription
                 event.startDate = myevent.startDate
                 event.endDate = myevent.endDate
-                event.color=util.hexStringToUIColor("#FFCCFF")
-                
+                event.color=util.hexStringToUIColor(myevent.tenantColor)
+//                 event.isAllDay
                 events.append(event)
             }
         }
-        
+
         return events
     }
     
@@ -104,6 +96,7 @@ class CalendarViewController: DayViewController {
     override func dayViewDidLongPressEventView(_ eventView: EventView) {
       guard let descriptor = eventView.descriptor as? Event else {
         return
+//            self.eventPopover(
       }
       print("Event has been longPressed: \(descriptor) \(String(describing: descriptor.userInfo))")
     }

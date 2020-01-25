@@ -18,7 +18,7 @@ class ContainerViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(openSideMenu), name: NSNotification.Name("openMenu"), object: nil)
         
         
-        var leftSwipe=UISwipeGestureRecognizer(target: self, action: #selector(closeSideMenu(_:)))
+        let leftSwipe=UISwipeGestureRecognizer(target: self, action: #selector(closeSideMenu(_:)))
         leftSwipe.direction = .left
         self.children[1].view.addGestureRecognizer(leftSwipe)
         

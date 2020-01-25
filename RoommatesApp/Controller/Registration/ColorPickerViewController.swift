@@ -15,12 +15,6 @@ class ColorPickerViewController: UIViewController,UICollectionViewDataSource, UI
     var colors=["#ffccff","#ff99bb","#e184c2","#d9b3ff","#b3d9ff","#99ffff","#b3ffe6","#ffbb99"]
     var delegate : JoiningViewController? = nil
     var utilities=Utilities.shared
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {return}
-//
-//        layout.itemSize = CGSize(width: 200, height: 200)
-//    }
     
     
     
@@ -36,7 +30,7 @@ class ColorPickerViewController: UIViewController,UICollectionViewDataSource, UI
     
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        var cell=collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath)
+        let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath)
         cellColor=utilities.hexStringToUIColor(colors[indexPath.item])
         print(cellColor)
         cell.contentView.backgroundColor=cellColor
@@ -49,7 +43,7 @@ class ColorPickerViewController: UIViewController,UICollectionViewDataSource, UI
      func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        let cell: UICollectionViewCell  = collectionView.cellForItem(at: indexPath)! as UICollectionViewCell
         
-        var sColor=colors[cell.tag]
+        let sColor=colors[cell.tag]
         cellColor=utilities.hexStringToUIColor(sColor)
         delegate?.colorView.backgroundColor=cellColor
         delegate?.stringColor=sColor

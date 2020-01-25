@@ -29,9 +29,9 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     }
     
     func taskPopover(_ sender : Any){
-        let id = sender is UIBarButtonItem ? "newTask" : "updateTask"
+        let id = sender is UIBarButtonItem ? "newTask" : "editTask"
         
-        var popoverTaskVC=storyboard?.instantiateViewController(identifier: id) as! UIViewController
+        let popoverTaskVC=storyboard?.instantiateViewController(identifier: id) as! UIViewController
         popoverTaskVC.modalPresentationStyle = .overCurrentContext
         
         present(popoverTaskVC, animated: true)
