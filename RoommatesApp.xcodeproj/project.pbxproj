@@ -8,10 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		32BF34DC2FCC6BC05ABADF1E /* Pods_RoommatesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A3F6AD6B471571E9649BA8 /* Pods_RoommatesApp.framework */; };
-		8034D18023DCCC60001835DA /* NewEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034D17F23DCCC60001835DA /* NewEventViewController.swift */; };
-		8034D18223DCE0C3001835DA /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034D18123DCE0C3001835DA /* EditEventViewController.swift */; };
-		804161F623AABA2E001639CA /* KeyboardHeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804161F523AABA2E001639CA /* KeyboardHeightView.swift */; };
-		8041620C23B0C55A001639CA /* FillBlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041620B23B0C55A001639CA /* FillBlankView.swift */; };
+		802C945323DDE42E0051C311 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C945223DDE42E0051C311 /* DatePickerViewController.swift */; };
+		8034D18023DCCC60001835DA /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8034D17F23DCCC60001835DA /* EditEventViewController.swift */; };
 		8041620E23B0D0AC001639CA /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041620D23B0D0AC001639CA /* TasksViewController.swift */; };
 		8041621023B10356001639CA /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041620F23B10356001639CA /* TaskTableViewCell.swift */; };
 		8041621423B10567001639CA /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041621323B10567001639CA /* CircularImageView.swift */; };
@@ -36,7 +34,6 @@
 		8097932F23A5617300F2701B /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097932E23A5617300F2701B /* RoundView.swift */; };
 		8097933123A8130400F2701B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097933023A8130400F2701B /* GradientView.swift */; };
 		8097933323A81BAB00F2701B /* Assistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8097933223A81BAB00F2701B /* Assistance.storyboard */; };
-		809FF88823D32D150038B8C5 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809FF88723D32D150038B8C5 /* NewTaskViewController.swift */; };
 		809FF88A23D346660038B8C5 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809FF88923D346660038B8C5 /* EditTaskViewController.swift */; };
 		80C346E823B4AA8C003B4DA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */; };
 		80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */; };
@@ -48,10 +45,8 @@
 /* Begin PBXFileReference section */
 		480B452ABD65AFB998486192 /* Pods-RoommatesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoommatesApp.debug.xcconfig"; path = "Target Support Files/Pods-RoommatesApp/Pods-RoommatesApp.debug.xcconfig"; sourceTree = "<group>"; };
 		626F04A2922827AC7F451E96 /* Pods-RoommatesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoommatesApp.release.xcconfig"; path = "Target Support Files/Pods-RoommatesApp/Pods-RoommatesApp.release.xcconfig"; sourceTree = "<group>"; };
-		8034D17F23DCCC60001835DA /* NewEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventViewController.swift; sourceTree = "<group>"; };
-		8034D18123DCE0C3001835DA /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
-		804161F523AABA2E001639CA /* KeyboardHeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightView.swift; sourceTree = "<group>"; };
-		8041620B23B0C55A001639CA /* FillBlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillBlankView.swift; sourceTree = "<group>"; };
+		802C945223DDE42E0051C311 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		8034D17F23DCCC60001835DA /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
 		8041620D23B0D0AC001639CA /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		8041620F23B10356001639CA /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8041621323B10567001639CA /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
@@ -78,7 +73,6 @@
 		8097932E23A5617300F2701B /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		8097933023A8130400F2701B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		8097933223A81BAB00F2701B /* Assistance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assistance.storyboard; sourceTree = "<group>"; };
-		809FF88723D32D150038B8C5 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 		809FF88923D346660038B8C5 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
@@ -125,11 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */,
-				8034D18123DCE0C3001835DA /* EditEventViewController.swift */,
 				809FF88923D346660038B8C5 /* EditTaskViewController.swift */,
-				8034D17F23DCCC60001835DA /* NewEventViewController.swift */,
-				809FF88723D32D150038B8C5 /* NewTaskViewController.swift */,
+				8034D17F23DCCC60001835DA /* EditEventViewController.swift */,
 				8041620D23B0D0AC001639CA /* TasksViewController.swift */,
+				802C945223DDE42E0051C311 /* DatePickerViewController.swift */,
 			);
 			path = "Main ";
 			sourceTree = "<group>";
@@ -190,8 +183,6 @@
 				8097932E23A5617300F2701B /* RoundView.swift */,
 				8097933023A8130400F2701B /* GradientView.swift */,
 				8041621323B10567001639CA /* CircularImageView.swift */,
-				804161F523AABA2E001639CA /* KeyboardHeightView.swift */,
-				8041620B23B0C55A001639CA /* FillBlankView.swift */,
 				8041620F23B10356001639CA /* TaskTableViewCell.swift */,
 			);
 			path = View;
@@ -343,8 +334,6 @@
 				8097933123A8130400F2701B /* GradientView.swift in Sources */,
 				80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */,
 				8097930023A4F16400F2701B /* Apartment.swift in Sources */,
-				8034D18223DCE0C3001835DA /* EditEventViewController.swift in Sources */,
-				8041620C23B0C55A001639CA /* FillBlankView.swift in Sources */,
 				8097932F23A5617300F2701B /* RoundView.swift in Sources */,
 				806E495E23BF539100BB13E7 /* Utilities.swift in Sources */,
 				809FF88A23D346660038B8C5 /* EditTaskViewController.swift in Sources */,
@@ -355,16 +344,15 @@
 				80F3B8CC23CA2FD100532411 /* CalendarViewController.swift in Sources */,
 				8097930223A4F22D00F2701B /* Task.swift in Sources */,
 				8041621423B10567001639CA /* CircularImageView.swift in Sources */,
-				8034D18023DCCC60001835DA /* NewEventViewController.swift in Sources */,
+				8034D18023DCCC60001835DA /* EditEventViewController.swift in Sources */,
 				808E33BD23D9959B009CCDBE /* RegistrationViewController.swift in Sources */,
 				8097930423A4F37900F2701B /* MyEvent.swift in Sources */,
-				804161F623AABA2E001639CA /* KeyboardHeightView.swift in Sources */,
 				809792EB23A4E81500F2701B /* SceneDelegate.swift in Sources */,
 				808E33BB23D7B30E009CCDBE /* MenuViewController.swift in Sources */,
 				8097930C23A5051A00F2701B /* JoiningViewController.swift in Sources */,
+				802C945323DDE42E0051C311 /* DatePickerViewController.swift in Sources */,
 				8097930A23A504FB00F2701B /* CreatingGroupViewController.swift in Sources */,
 				808E33B523D729EC009CCDBE /* LogInViewController.swift in Sources */,
-				809FF88823D32D150038B8C5 /* NewTaskViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,7 +45,7 @@ class Apartment:CustomStringConvertible{
             if tasksValues["done"] as! String=="true"{
                 Boolvalue = true
             }
-            let task=Task(body: tasksValues["body"] as! String, done: Boolvalue)
+            let task=Task(taskDescription: tasksValues["taskDescription"] as! String, done: Boolvalue,tenantColor: tasksValues["tenantColor"] as? String ?? "#ffffff")
                            
             task.taskKey=taskKey
             self.tasks.append(task)
@@ -58,7 +58,7 @@ class Apartment:CustomStringConvertible{
         for (eventKey, eventValue) in eventDict{
             let eventValues = eventValue as! [String:Any]
              
-            let event=MyEvent(eventName: eventValues["eventName"] as! String ,eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date(), tenantColor: eventValues["tenantColor"] as! String )
+            let event=MyEvent(eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date(), tenantColor: eventValues["tenantColor"] as! String )
             event.eventKey=eventKey
             self.events.append(event)
             

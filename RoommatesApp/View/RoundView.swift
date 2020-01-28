@@ -16,6 +16,12 @@ import UIKit
             clipsToBounds=true
         }
     }
+    @IBInspectable var viewBackgroundColor:UIColor = .clear{
+        didSet{
+            layer.backgroundColor=self.viewBackgroundColor.cgColor
+            
+        }
+    }
     
     
 }

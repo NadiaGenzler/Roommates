@@ -83,8 +83,8 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
 //            if let password = password.text{
 //                UserDefaults.standard.set(password, forKey: "color")
 //            }
-            
-            self.delegate?.nav?.dismiss(animated: true)
+            self.dismiss(animated: true)
+//            self.delegate?.nav?.dismiss(animated: true)
             //how do I dismiss the storyboard???
             
             

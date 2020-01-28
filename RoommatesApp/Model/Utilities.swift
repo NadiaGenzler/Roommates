@@ -34,4 +34,22 @@ class Utilities {
             alpha: CGFloat(1.0)
         )
     }
+//    var dateFormatter=DateFormatter()
+    
+//    func presentPopover(popoverVC: inout UIViewController,identifier: String, popoverSize : CGSize) {
+//        popoverVC=popoverVC.storyboard?.instantiateViewController(withIdentifier: identifier) ?? <#default value#>
+//           
+//           guard let popoverVC=popoverVC else {return}
+//           popoverVC.modalPresentationStyle = .popover
+//           popoverVC.preferredContentSize=popoverSize
+//           if let popoverController=popoverVC.popoverPresentationController{
+//               popoverController.sourceView=sender.view
+//               popoverController.permittedArrowDirections = .up
+//               popoverController.delegate=self
+//               popoverVC.delegate = self
+//           }
+//           
+//           present(popoverVC,animated: true, completion: nil)
+//           
+//       }
 }

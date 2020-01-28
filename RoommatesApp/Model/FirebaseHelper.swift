@@ -67,6 +67,12 @@ class FirebaseHelper {
         ref.updateChildValues(childUpdates)
     }
     
+    func updateEvent(apartmentKey:String, eventKey:String, event: inout MyEvent){
+        
+        let childUpdates=["/Apartment/\(apartmentKey)/events/\(eventKey)":event.toDictionary()]
+        ref.updateChildValues(childUpdates)
+        
+    }
     
     
     
@@ -129,8 +135,8 @@ class FirebaseHelper {
             
             var events:[MyEvent]=[]
             for (_,eventValue) in eventDict{
-                let eventValues=eventValue as![String:Any]
-                let event=MyEvent(eventName: eventValues["eventName"] as! String ,eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date(), tenantColor: eventValues["tenantColor"] as! String )
+                let eventValues=eventValue as! [String:Any]
+                let event=MyEvent(eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date(), tenantColor: eventValues["tenantColor"] as! String ,eventKey: eventValues["eventKey"] as? String ?? "nokey")
 
                 events.append(event)
             }
@@ -148,9 +154,14 @@ class FirebaseHelper {
             
             let taskDict=snapshot.value as? [String:Any] ?? [:]
             for (_,taskValue) in taskDict{
+                
                 let tasksValues=taskValue as! [String:Any]
                 
-                let task=Task(fromDictionary: tasksValues)
+                var Boolvalue = false
+                if tasksValues["done"] as! String=="true"{
+                    Boolvalue = true
+                }
+                let task=Task(taskDescription: tasksValues["taskDescription"] as! String,taskKey:tasksValues["taskKey"] as! String, done: Boolvalue,tenantColor: tasksValues["tenantColor"] as? String ?? "#ffffff")
                 
                 tasks.append(task)
             }

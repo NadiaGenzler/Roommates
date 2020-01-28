@@ -10,50 +10,57 @@ import UIKit
 
 class Task:CustomStringConvertible {
     var description: String{
-        return "body: \(body), done: \(done), takenBy: \(takenBy), taskKey \(taskKey), apartmentKey: \(apartmentKey)"
+        return "taskDescription: \(taskDescription), done: \(done), tenantColor: \(tenantColor), taskKey \(taskKey), apartmentKey: \(apartmentKey)"
     }
     
     
    // var title:String
-    var body:String
+    var taskDescription:String
     var done:Bool = false
     var apartmentKey:String?
     var taskKey:String?
-    var takenBy:Tenant?
+  //  var takenBy:Tenant?
+    var tenantColor:String?
+    
     
     init(fromDictionary:[String:Any]){
             
       //  self.title=fromDictionary["title"] as! String
-        self.body=fromDictionary["body"] as! String
+        self.taskDescription=fromDictionary["taskDescription"] as! String
         self.done=Bool(fromDictionary["done"] as! String ) ?? false
-        self.takenBy=fromDictionary["takenBy"] as? Tenant ?? nil
+       // self.takenBy=fromDictionary["takenBy"] as? Tenant ?? nil
         self.taskKey=fromDictionary["taskKey"] as? String ?? nil
         self.apartmentKey=fromDictionary["apartmentKey"] as? String ?? nil
+        self.tenantColor=fromDictionary["tenantColor"] as? String ?? "#ffffff"
     }
     //the task alway false in the begining
-    init(body:String){
-        self.body=body
+    init(taskDescription:String){
+        self.taskDescription=taskDescription
     }
     
-    init(body:String,taskKey:String){
-        self.body=body
+    init(taskDescription:String,taskKey:String, done:Bool,tenantColor:String){
+        self.taskDescription=taskDescription
         self.taskKey=taskKey
+        self.tenantColor=tenantColor
+        self.done=done
     }
     
-    init(body:String,done:Bool){
-        self.body=body
+    init(taskDescription:String,done:Bool,tenantColor:String){
+        self.taskDescription=taskDescription
         self.done=done
+        self.tenantColor=tenantColor
     }
     
     
     func toDictionary()->[String:Any]{
         var dict:Dictionary<String,Any>=[:]
     //    dict["title"]=title
-        dict["body"]=body
+        dict["taskDescription"]=taskDescription
         dict["done"]=String(done)
-        dict["takenBy"]=takenBy
+       // dict["takenBy"]=takenBy
         dict["taskKey"]=taskKey
         dict["apartmentKey"]=apartmentKey
+        dict["tenantColor"]=tenantColor
         
         return dict
     }

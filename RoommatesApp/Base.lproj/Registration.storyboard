@@ -197,19 +197,19 @@ was Created Successfully!</string>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hqE-4q-n2d" customClass="RoundView" customModule="RoommatesApp" customModuleProvider="target">
-                                <rect key="frame" x="40" y="410.5" width="334" height="75"/>
+                                <rect key="frame" x="40" y="373" width="334" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f1V-yZ-gJk">
-                                        <rect key="frame" x="10" y="0.0" width="314" height="75"/>
+                                        <rect key="frame" x="10" y="0.0" width="314" height="150"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-a_home-1" translatesAutoresizingMaskIntoConstraints="NO" id="hcM-zd-OWb">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="wNq-kX-9h7"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm Creating Roommates Group" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-2N-LDX">
-                                                <rect key="frame" x="78" y="11" width="236" height="53"/>
+                                                <rect key="frame" x="78" y="48.5" width="236" height="53"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -236,19 +236,19 @@ was Created Successfully!</string>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Psa-uR-emf" customClass="RoundView" customModule="RoommatesApp" customModuleProvider="target">
-                                <rect key="frame" x="40" y="535.5" width="334" height="75"/>
+                                <rect key="frame" x="40" y="573" width="334" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="z9H-bR-vF4">
-                                        <rect key="frame" x="10" y="0.0" width="314" height="75"/>
+                                        <rect key="frame" x="10" y="0.0" width="314" height="150"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icons8-key-1" translatesAutoresizingMaskIntoConstraints="NO" id="RI8-7S-ats">
-                                                <rect key="frame" x="0.0" y="0.0" width="70" height="75"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="Rtz-og-hgG"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I'm Joining my Roommates" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1C-jj-a26">
-                                                <rect key="frame" x="80" y="11" width="234" height="53"/>
+                                                <rect key="frame" x="80" y="48.5" width="234" height="53"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -389,6 +389,7 @@ was Created Successfully!</string>
                                                 <connections>
                                                     <action selector="create:" destination="cGb-We-qCQ" eventType="touchUpInside" id="RfF-fu-xwv"/>
                                                     <action selector="joinButton:" destination="7yg-oV-hjy" eventType="touchUpInside" id="Jb8-OH-Piu"/>
+                                                    <action selector="logInButton:" destination="NMi-Fd-jn6" eventType="touchUpInside" id="h9t-Tz-ahY"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -425,6 +426,10 @@ was Created Successfully!</string>
                         <viewLayoutGuide key="safeArea" id="nc9-xE-xsK"/>
                     </view>
                     <navigationItem key="navigationItem" id="o1P-2b-De1"/>
+                    <connections>
+                        <outlet property="tenantName" destination="25B-eT-yxB" id="Mhz-Cf-sXR"/>
+                        <outlet property="tenantPassword" destination="zhV-Mk-n07" id="MWd-n1-YbJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5tV-Kk-Hk4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
