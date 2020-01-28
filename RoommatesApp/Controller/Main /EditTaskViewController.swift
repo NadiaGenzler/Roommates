@@ -60,7 +60,7 @@ class EditTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.children)
+        print(self.navigationController?.children)
         if senderIdentifier=="addNewTask"{
             header.text="Write new task"
             deleteBtn.isHidden=true

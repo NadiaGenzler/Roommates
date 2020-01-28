@@ -45,7 +45,7 @@ class Apartment:CustomStringConvertible{
             if tasksValues["done"] as! String=="true"{
                 Boolvalue = true
             }
-            let task=Task(taskDescription: tasksValues["taskDescription"] as! String, done: Boolvalue,tenantColor: tasksValues["tenantColor"] as? String ?? "#ffffff")
+            let task=Task(taskDescription: tasksValues["taskDescription"] as! String,taskKey:tasksValues["taskKey"] as! String, done: Boolvalue,tenantColor: tasksValues["tenantColor"] as? String ?? "#ffffff")
                            
             task.taskKey=taskKey
             self.tasks.append(task)

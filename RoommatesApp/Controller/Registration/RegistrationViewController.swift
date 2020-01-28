@@ -10,12 +10,23 @@ import UIKit
 
 class RegistrationViewController: UIViewController {
 
+    var delegate:JoiningViewController?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+//      NotificationCenter.default.addObserver(self, selector: #selector(dismissStoryBoard), name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
     }
     
+    @objc func dismissStoryBoard(){
+      //  self.removeFromParent()
+          // self.dismiss(animated: true)
+       // self.navigationController.
+        
+           
+       }
 
     /*
     // MARK: - Navigation

@@ -14,18 +14,18 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     
     var firebase=FirebaseHelper.shared
     var util=Utilities.shared
-    var tasksArr:[Task]?
+    var tasksArr:[Task]=[]
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("openMenu"), object: nil)
         //make the parent view and the tableview darker
-      //  self.view.backgroundColor=UIColor.lightGray
+        //  self.view.backgroundColor=UIColor.lightGray
     }
     
     @IBAction func addList(_ sender: UIBarButtonItem) {
         taskPopover(sender, [:])
-       // tableView.insertRows(at: [indexPath], with: .automatic)
+        // tableView.insertRows(at: [indexPath], with: .automatic)
         
     }
     
@@ -48,64 +48,78 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        firebase.fetchTaskData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!) { (tasks) in
+        if UserDefaults.standard.string(forKey: "apartmentKey") != nil{
+        firebase.fetchAllTasksData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!) { (tasks) in
             self.tasksArr=tasks
             self.tableView.reloadData()
+            }
         }
-        
+       
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+////        firebase.fetchAllTasksData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!) { (tasks) in
+////            self.tasksArr=tasks
+////            self.tableView.reloadData()
+////        }
+//    }
     
     
-
-@objc func handleSingleTap(_ sender:UITapGestureRecognizer){
     
-    let cell=sender.view as! TaskTableViewCell
-    
-    let checkMark=cell.chekmark
-    let textL=cell.taskText
-    
-    if (checkMark?.image==UIImage(systemName: "square")){
+    @objc func handleSingleTap(_ sender:UITapGestureRecognizer){
         
-        checkMark?.image=UIImage(systemName: "checkmark.square")
-        cell.tasksProperties["done"]=true
-        textL?.attributedText = textL?.text?.strikeThrough()
-        textL?.textColor=UIColor.gray
-        let stringColor=UserDefaults.standard.string(forKey: "userColorString")
-        cell.backgroundColor=util.hexStringToUIColor(stringColor ?? "#ffffff")
-        //save done and color in firebase
+        let cell=sender.view as! TaskTableViewCell
         
-    }else{
-        checkMark?.image=UIImage(systemName: "square")
-        cell.tasksProperties["done"]=false
-        textL?.attributedText = textL?.text?.normal()
-        textL?.textColor=UIColor.black
-        cell.backgroundColor=UIColor.white
+      //  let checkMark=cell.chekmark
+      //  let textL=cell.taskText
+        var tappedTaskProperties=cell.tasksProperties
+        
+        if (tappedTaskProperties["isTaskDone"] as! Bool==false){
+            tappedTaskProperties["isTaskDone"]=true
+            cell.chekmark?.image=UIImage(systemName: "checkmark.square")
+            cell.taskText?.attributedText = cell.taskText.text?.strikeThrough()
+            cell.taskText?.textColor=UIColor.gray
+            let stringColor=UserDefaults.standard.string(forKey: "userColorString")
+            cell.backgroundColor=util.hexStringToUIColor(stringColor ?? "#ffffff")
+            tappedTaskProperties["doneByTenant"]=stringColor ?? "#ffffff"
+            //save done and color in firebase
+            
+        }else if (tappedTaskProperties["isTaskDone"] as! Bool==true){
+            tappedTaskProperties["isTaskDone"]=false
+            cell.chekmark?.image=UIImage(systemName: "square")
+            tappedTaskProperties["doneByTenant"]="#ffffff"
+            cell.taskText?.attributedText = cell.taskText?.text?.normal()
+            cell.taskText?.textColor=UIColor.black
+            cell.backgroundColor=UIColor.white
+            
+        }
+       // print(tappedTaskProperties)
+        
+        var updatedTask=Task(taskDescription: tappedTaskProperties["taskDescription"] as! String, taskKey: tappedTaskProperties["taskKey"] as! String, done: tappedTaskProperties["isTaskDone"] as? Bool ?? false, tenantColor: tappedTaskProperties["doneByTenant"] as! String)
+        firebase.updateTask(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!, taskKey: tappedTaskProperties["taskKey"] as! String, task: &updatedTask)
         
     }
+    @objc func handelLongPress(_ sender: UILongPressGestureRecognizer){
+        var cell=sender.view as! TaskTableViewCell
+        taskPopover(sender,cell.tasksProperties)
+        
+        //            cell.isSelected=true
+        //            cell.delete.isHidden=false
+        //            cell.update.isHidden=false
+        //            let deleteTapGesture=UITapGestureRecognizer(target: self, action: #selector(deleteTap(_:)))
+        //            cell.delete.addGestureRecognizer(deleteTapGesture)
+        //            let editTapGesture=UITapGestureRecognizer(target: self, action: #selector(editTap(_:)))
+        //            cell.update.addGestureRecognizer(editTapGesture)
+        
+        
+    }
+    //    @objc func deleteTap(_ sender:UITapGestureRecognizer){
+    //    }
+    //    @objc func editTap(_ sender:UITapGestureRecognizer){
+    //
+    //    }
     
-}
-@objc func handelLongPress(_ sender: UILongPressGestureRecognizer){
-    var cell=sender.view as! TaskTableViewCell
-    taskPopover(sender,cell.tasksProperties)
-    
-//            cell.isSelected=true
-//            cell.delete.isHidden=false
-//            cell.update.isHidden=false
-//            let deleteTapGesture=UITapGestureRecognizer(target: self, action: #selector(deleteTap(_:)))
-//            cell.delete.addGestureRecognizer(deleteTapGesture)
-//            let editTapGesture=UITapGestureRecognizer(target: self, action: #selector(editTap(_:)))
-//            cell.update.addGestureRecognizer(editTapGesture)
-    
-    
-}
-//    @objc func deleteTap(_ sender:UITapGestureRecognizer){
-//    }
-//    @objc func editTap(_ sender:UITapGestureRecognizer){
-//
-//    }
-
 }
 
 
@@ -113,17 +127,37 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
 extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tasksArr?.count ?? 0
+        return tasksArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "taskCell",for: indexPath)
             as! TaskTableViewCell
-        var currentTask=tasksArr?[indexPath.row]
-        cell.taskText?.text=currentTask?.taskDescription
-        cell.chekmark.image = currentTask?.done==true ? UIImage(systemName: "checkmark.square") : UIImage(systemName: "square")
-        //cell.backgroundColor=
-        cell.tasksProperties=["taskKey":currentTask?.taskKey,"taskDescription":currentTask?.taskDescription,"isTaskDone":currentTask?.done, "doneByTenant":currentTask?.tenantColor]
+        var currentTask=tasksArr[indexPath.row]
+       // print(tasksArr)
+        cell.tasksProperties=["taskKey":currentTask.taskKey,"taskDescription":currentTask.taskDescription,"isTaskDone":currentTask.done, "doneByTenant":currentTask.tenantColor ?? "#ffffff"]
+        
+       var taskProperties=cell.tasksProperties
+        
+        cell.taskText?.text=taskProperties["taskDescription"] as? String ?? ""
+        if (taskProperties["isTaskDone"] as? Bool==true){
+            
+            cell.chekmark.image=UIImage(systemName: "checkmark.square")
+            cell.taskText?.attributedText = cell.taskText?.text?.strikeThrough()
+            cell.taskText?.textColor=UIColor.gray
+            cell.backgroundColor=util.hexStringToUIColor(taskProperties["doneByTenant"] as? String ?? "#ffffff")
+            
+        }
+        else{
+           cell.chekmark.image=UIImage(systemName: "square")
+            //cell.taskText?.attributedText = cell.taskText?.text?.normal()
+            cell.taskText?.textColor=UIColor.black
+            cell.backgroundColor=UIColor.white
+            
+        }
+//        cell.chekmark.image = currentTask?.done==true ? UIImage(systemName: "checkmark.square") : UIImage(systemName: "square")
+//        cell.backgroundColor=util.hexStringToUIColor(currentTask?.tenantColor ?? "#ffffff")
+        
         
         let singleTapGestureRecognizer=UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(_:)))
         cell.addGestureRecognizer(singleTapGestureRecognizer)
@@ -135,17 +169,6 @@ extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    
-    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete{
-    //            tableView.deleteRows(at: [indexPath], with: .fade)
-    //        }
-    //    }
-    //
-    //
-    //    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-    //        return true
-    //    }
     
 }
 

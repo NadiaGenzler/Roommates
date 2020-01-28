@@ -34,6 +34,7 @@ class CreatingGroupViewController: UIViewController, UIPopoverPresentationContro
             creationVC.modalTransitionStyle = .coverVertical
         creationVC.apartmentKey=apartmentKey ?? "0key"
         creationVC.apartmentName=apartmentName ?? "0name"
+            creationVC.delegate=self
       
         
         present(creationVC,animated: true, completion: nil)

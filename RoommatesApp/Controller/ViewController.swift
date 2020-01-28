@@ -12,18 +12,27 @@ class ViewController: UIViewController {
     var nav:UIViewController?
     var firebase=FirebaseHelper.shared
     var util=Utilities.shared
+    //var delegate:JoiningViewController?
     
    func showStoryboard(){
 
-    var regestrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
-    nav=regestrationStoryBoard.instantiateViewController(identifier: "registrationSb") as! UIViewController
+    var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
+//    nav=regestrationStoryBoard.instantiateViewController(identifier: "registrationSb") as! UIViewController
+    nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
+    //regestrationStoryBoard.
+    
+ 
     if let nav=nav{
+       
     show(nav, sender: nil)
+        
     }
-//    NotificationCenter.default.addObserver(self, selector: <#T##Selector#>, name: <#T##NSNotification.Name?#>, object: <#T##Any?#>)
+    
    }
     
     @objc func dismissStoryBoard(){
+      //   nav?.dismiss(animated: true)
+        self.nav?.dismiss(animated: true)
         
     }
     
@@ -31,16 +40,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.barTintColor=UIColor.white
-
         
-        
-//        var event=MyEvent(eventName: "go2", eventDescription: "Go to the woods ", startDate: Date(year: 2020, month: 01, day: 20, hour: 14, minute: 00, second: 00), endDate: Date(year: 2020, month: 01, day: 20, hour: 20, minute: 00, second: 00))
-//        firebase.addEvent(apartmentKey: "-Lx0lGNvQu6ggnCJDtgX", event: &event)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(dismissStoryBoard), name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
      
-       
-    
-        
 //        func uploadImage(url:URL){
 //                let imagesRef = storageRef.child("imagess/user.jpg")
 //                print(imagesRef)

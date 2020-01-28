@@ -110,7 +110,7 @@ class FirebaseHelper {
         }
     }
     
-    func fetchTenantData(apartmentKey:String, completion: @escaping ([Tenant])->Void){
+    func fetchAllTenantsData(apartmentKey:String, completion: @escaping ([Tenant])->Void){
         ref.child("Apartment").child(apartmentKey).child("tenants").observe(.value) { (snapshot) in
             let tenantDict=snapshot.value as? [String:Any] ?? [:]
             var tenants:[Tenant]=[]
@@ -125,6 +125,16 @@ class FirebaseHelper {
             
         }
     }
+    
+    func fetchTenantData(apartmentKey:String,tenantKey:String, completion: @escaping (Tenant)->Void){
+               ref.child("Apartment").child(apartmentKey).child("tenants").child(tenantKey).observe(.value) { (snapshot) in
+                      let tenantDict=snapshot.value as? [String:Any] ?? [:]
+                      
+                      let tenant = Tenant(fromDictionary: tenantDict)
+                      completion(tenant)
+                      
+                  }
+              }
     
     func fetchEventData(apartmentKey:String, completion: @escaping ([MyEvent])->Void){
         ref.child("Apartment").child(apartmentKey).child("events").observe(.value) { (snapshot) in
@@ -147,7 +157,7 @@ class FirebaseHelper {
     }
     
         
-    func fetchTaskData(apartmentKey:String, completion: @escaping ([Task])->Void){
+    func fetchAllTasksData(apartmentKey:String, completion: @escaping ([Task])->Void){
         
         self.ref.child("Apartment").child(apartmentKey).child("tasks").observe(.value) { (snapshot) in
             var tasks:[Task]=[]
@@ -169,6 +179,19 @@ class FirebaseHelper {
         
         }
     }
+        
+        func fetchTaskData(apartmentKey:String,taskKey:String, completion: @escaping (Task)->Void){
+            ref.child("Apartment").child(apartmentKey).child("tasks").child(taskKey).observe(.value) { (snapshot) in
+                   let taskDict=snapshot.value as? [String:Any] ?? [:]
+                   //          print(apartmentDict)
+                   
+                   let task = Task(fromDictionary: taskDict)
+                   completion(task)
+                   
+               }
+           }
+        
+    
     
     
     

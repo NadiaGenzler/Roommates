@@ -31,6 +31,7 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var password: UITextField!
     var popoverVC:ColorPickerViewController?
+   // var delegate:CreatingGroupViewController?
     
     @IBAction func colorPicker(_ sender: UITapGestureRecognizer) {
         
@@ -71,19 +72,15 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
             UserDefaults.standard.set(currentTenant.password, forKey: "password")
             UserDefaults.standard.set(currentTenant.userColorString, forKey: "userColorString")
             
-//            if let apartKey = currentTenant.apartmentKey{
-//                UserDefaults.standard.set(apartKey, forKey: "apartmentKey")
-//            }
-//            if let name = name.text{
-//                UserDefaults.standard.set(name, forKey: "name")
-//            }
-//            if let password = password.text{
-//                UserDefaults.standard.set(password, forKey: "password")
-//            }
-//            if let password = password.text{
-//                UserDefaults.standard.set(password, forKey: "color")
-//            }
-            self.dismiss(animated: true)
+
+            
+            NotificationCenter.default.post(name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
+            
+            
+            
+           // self.navigationController?.children
+         //   delegate?.nav?.dismiss(animated: true)
+//            self.dismiss(animated: true)
 //            self.delegate?.nav?.dismiss(animated: true)
             //how do I dismiss the storyboard???
             
@@ -91,11 +88,7 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
             
         }
         
-        
-        
-        
-        
-        
+     
     }
     
     
