@@ -28,7 +28,6 @@ class LogInViewController: UIViewController {
                     for j in 0..<tenantsInApartment.count{
                         let tenant=tenantsInApartment[j]
                         if tenant.name==self.tenantName.text && tenant.password==self.tenantPassword.text{
-                            print(tenant.name,tenant.password,tenant.apartmentKey,apartments[i].name)
                             
                             self.firebase.fetchTenantData(apartmentKey: tenant.apartmentKey, tenantKey: tenant.tenantKey ?? "") { (currentTenant) in
                                 
@@ -42,7 +41,14 @@ class LogInViewController: UIViewController {
                                 UserDefaults.standard.set(currentTenant.password, forKey: "password")
                                 UserDefaults.standard.set(currentTenant.userColorString, forKey: "userColorString")
                                 
-                                NotificationCenter.default.post(name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
+//                                NotificationCenter.default.post(name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
+                                self.dismiss(animated: true) {
+                                    var mainStoryBoard=UIStoryboard(name: "mainStoryboard", bundle: Bundle.main)
+                                    UIApplication.shared.keyWindow?.rootViewController
+                                        
+                                        = mainStoryBoard.instantiateViewController(withIdentifier: "mainStoryboard")
+                                    
+                                }
                             }
                         }
                         else if i==apartments.count-1 && j == tenantsInApartment.count-1{

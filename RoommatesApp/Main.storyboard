@@ -159,7 +159,7 @@
         <!--Container View Controller-->
         <scene sceneID="91Q-0d-lhY">
             <objects>
-                <viewController storyboardIdentifier="mainStoryboard" id="CEx-72-aQc" customClass="ContainerViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainStoryboard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CEx-72-aQc" customClass="ContainerViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vi1-eM-8e7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

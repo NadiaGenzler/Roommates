@@ -17,7 +17,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     var tasksArr:[Task]=[]
     @IBOutlet weak var tableView: UITableView!
     
-    func showStoryboard(){
+    func showRegistrationStoryboard(){
         var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
         nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
         
@@ -31,8 +31,8 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     
 //    override func viewDidAppear(_ animated: Bool) {
 //        super.viewDidAppear(animated)
-//                if UserDefaults.standard.string(forKey: "apartmentKey") == nil{
-//        showStoryboard()
+//                if UserDefaults.standard.string(forKey: "apartmentKey") != nil{
+//                        UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "mainStoryboard")
 //                }
 //
 //
@@ -76,6 +76,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
         
         if UserDefaults.standard.string(forKey: "apartmentKey") != nil{
             print("not nil")
+//             UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "mainStoryboard")
             firebase.fetchAllTasksData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!) { (tasks) in
 
                 var sortedTasks=tasks.sorted { (t1, t2) -> Bool in
@@ -89,7 +90,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
         
         }else{
             print("nil")
-            showStoryboard()
+            showRegistrationStoryboard()
         }
         
     }
@@ -172,14 +173,14 @@ extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
         if (taskProperties["isTaskDone"] as? Bool==true){
             
             cell.chekmark.image=UIImage(systemName: "checkmark.square")
-            cell.taskText?.attributedText = cell.taskText?.text?.strikeThrough()
+//            cell.taskText?.attributedText = cell.taskText?.text?.strikeThrough()
             cell.taskText?.textColor=UIColor.gray
             cell.backgroundColor=util.hexStringToUIColor(taskProperties["doneByTenant"] as? String ?? "#ffffff")
             
         }
         else {
             cell.chekmark.image=UIImage(systemName: "square")
-            cell.taskText?.attributedText = cell.taskText?.text?.normal()
+//            cell.taskText?.attributedText = cell.taskText?.text?.normal()
             cell.taskText?.textColor=UIColor.black
             cell.backgroundColor=UIColor.white
             
@@ -192,7 +193,6 @@ extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
         let longPressGestureRecognizer=UILongPressGestureRecognizer(target: self, action: #selector(handelLongPress(_:)))
         cell.addGestureRecognizer(longPressGestureRecognizer)
         
-        // print(tasks?[indexPath.row].title)
         return cell
     }
     

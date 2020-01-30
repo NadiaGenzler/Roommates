@@ -74,7 +74,7 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
             
 
             
-            NotificationCenter.default.post(name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
             
             
             
