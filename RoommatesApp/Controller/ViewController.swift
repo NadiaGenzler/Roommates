@@ -12,36 +12,26 @@ class ViewController: UIViewController {
     var nav:UIViewController?
     var firebase=FirebaseHelper.shared
     var util=Utilities.shared
-    //var delegate:JoiningViewController?
     
-   func showStoryboard(){
+//   func showStoryboard(){
+//    var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
+//    nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
+//
+//    if let nav=nav{
+//
+//    show(nav, sender: nil)
+//
+//    }
+    
+ //  }
 
-    var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
-//    nav=regestrationStoryBoard.instantiateViewController(identifier: "registrationSb") as! UIViewController
-    nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
-    //regestrationStoryBoard.
-    
- 
-    if let nav=nav{
-       
-    show(nav, sender: nil)
-        
-    }
-    
-   }
-    
-    @objc func dismissStoryBoard(){
-      //   nav?.dismiss(animated: true)
-        self.nav?.dismiss(animated: true)
-        
-    }
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        showStoryboard()
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tabBarController?.tabBar.barTintColor=UIColor.white
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(dismissStoryBoard), name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
+
      
 //        func uploadImage(url:URL){
 //                let imagesRef = storageRef.child("imagess/user.jpg")
@@ -51,10 +41,7 @@ class ViewController: UIViewController {
 //            }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        showStoryboard()
-    }
+    
     
 
 }

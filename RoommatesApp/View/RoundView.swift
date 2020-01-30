@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable class RoundView: UIView {
-
+    
     @IBInspectable var borderRadius:CGFloat=10{
         didSet{
             layer.cornerRadius=self.borderRadius
@@ -20,6 +20,14 @@ import UIKit
         didSet{
             layer.backgroundColor=self.viewBackgroundColor.cgColor
             
+        }
+    }
+    
+    @IBInspectable var circle:Bool = false{
+        didSet{
+            if circle{
+                self.layer.cornerRadius = bounds.height / 2
+            }
         }
     }
     

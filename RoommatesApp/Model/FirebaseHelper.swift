@@ -179,6 +179,28 @@ class FirebaseHelper {
         
         }
     }
+//    func fetchAllTasksData(apartmentKey:String, completion: @escaping ([Task])->Void){
+//        
+//        self.ref.child("Apartment").child(apartmentKey).child("tasks").observe(.value) { (snapshot) in
+//            var tasks:[Task]=[]
+//            
+//            let taskDict=snapshot.value as? [String:Any] ?? [:]
+//            for (_,taskValue) in taskDict{
+//                
+//                let tasksValues=taskValue as! [String:Any]
+//                
+//                var Boolvalue = false
+//                if tasksValues["done"] as! String=="true"{
+//                    Boolvalue = true
+//                }
+//                let task=Task(taskDescription: tasksValues["taskDescription"] as! String,taskKey:tasksValues["taskKey"] as! String, done: Boolvalue,tenantColor: tasksValues["tenantColor"] as? String ?? "#ffffff")
+//                
+//                tasks.append(task)
+//            }
+//                completion(tasks)
+//        
+//        }
+//    }
         
         func fetchTaskData(apartmentKey:String,taskKey:String, completion: @escaping (Task)->Void){
             ref.child("Apartment").child(apartmentKey).child("tasks").child(taskKey).observe(.value) { (snapshot) in

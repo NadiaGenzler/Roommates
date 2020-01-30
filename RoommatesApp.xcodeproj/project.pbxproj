@@ -15,7 +15,6 @@
 		8041621423B10567001639CA /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041621323B10567001639CA /* CircularImageView.swift */; };
 		806E495E23BF539100BB13E7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E495D23BF539100BB13E7 /* Utilities.swift */; };
 		808E33B523D729EC009CCDBE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33B423D729EC009CCDBE /* LogInViewController.swift */; };
-		808E33B723D749D4009CCDBE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808E33B623D749D4009CCDBE /* Main.storyboard */; };
 		808E33B923D77391009CCDBE /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33B823D77391009CCDBE /* ContainerViewController.swift */; };
 		808E33BB23D7B30E009CCDBE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33BA23D7B30E009CCDBE /* MenuViewController.swift */; };
 		808E33BD23D9959B009CCDBE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33BC23D9959B009CCDBE /* RegistrationViewController.swift */; };
@@ -39,6 +38,8 @@
 		80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */; };
 		80C346EC23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */; };
 		80C346EE23B8733A003B4DA0 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */; };
+		80E0B30523E146FF0050F4DA /* tenantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E0B30423E146FF0050F4DA /* tenantTableViewCell.swift */; };
+		80E0B30623E22D430050F4DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 808E33B623D749D4009CCDBE /* Main.storyboard */; };
 		80F3B8CC23CA2FD100532411 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		80C346E923B4AFE2003B4DA0 /* FirebaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHelper.swift; sourceTree = "<group>"; };
 		80C346EB23B7F0B2003B4DA0 /* CreatedGroupDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatedGroupDialogViewController.swift; sourceTree = "<group>"; };
 		80C346ED23B8733A003B4DA0 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		80E0B30423E146FF0050F4DA /* tenantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tenantTableViewCell.swift; sourceTree = "<group>"; };
 		80F3B8CB23CA2FD100532411 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		E7A3F6AD6B471571E9649BA8 /* Pods_RoommatesApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RoommatesApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 				8097933023A8130400F2701B /* GradientView.swift */,
 				8041621323B10567001639CA /* CircularImageView.swift */,
 				8041620F23B10356001639CA /* TaskTableViewCell.swift */,
+				80E0B30423E146FF0050F4DA /* tenantTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -272,7 +275,7 @@
 				809792F523A4E81800F2701B /* LaunchScreen.storyboard in Resources */,
 				809792F223A4E81800F2701B /* Assets.xcassets in Resources */,
 				8097933323A81BAB00F2701B /* Assistance.storyboard in Resources */,
-				808E33B723D749D4009CCDBE /* Main.storyboard in Resources */,
+				80E0B30623E22D430050F4DA /* Main.storyboard in Resources */,
 				809792F023A4E81500F2701B /* Registration.storyboard in Resources */,
 				80C346E823B4AA8C003B4DA0 /* GoogleService-Info.plist in Resources */,
 			);
@@ -331,6 +334,7 @@
 				809792FD23A4EBA200F2701B /* Tenant.swift in Sources */,
 				808E33B923D77391009CCDBE /* ContainerViewController.swift in Sources */,
 				8041620E23B0D0AC001639CA /* TasksViewController.swift in Sources */,
+				80E0B30523E146FF0050F4DA /* tenantTableViewCell.swift in Sources */,
 				8097933123A8130400F2701B /* GradientView.swift in Sources */,
 				80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */,
 				8097930023A4F16400F2701B /* Apartment.swift in Sources */,
