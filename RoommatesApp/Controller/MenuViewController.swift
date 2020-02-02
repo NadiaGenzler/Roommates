@@ -9,26 +9,13 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-    // var nav:UIViewController?
+    
     let utility=Utilities.shared
     let firebase=FirebaseHelper.shared
     @IBOutlet weak var apartmentName: UILabel!
     @IBOutlet weak var currentUserName: UILabel!
     @IBOutlet weak var userImg: CircularImageView!
     var tenantsArr:[Tenant]=[]
-    
-    //    func showStoryboard(){
-    //           var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
-    //           nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
-    //
-    //           if let nav=nav{
-    //
-    //               show(nav, sender: nil)
-    //
-    //           }
-    //
-    //       }
-    
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -38,17 +25,19 @@ class MenuViewController: UIViewController {
         if let appDomain = Bundle.main.bundleIdentifier {
             UserDefaults.standard.removePersistentDomain(forName: appDomain)
         }
-        UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "mainStoryboard")
-        //restart the app
+        show(utility.showRegistrationStoryboard(), sender: nil)
         
     }
     
     @IBAction func leave(_ sender: UIButton) {
+   
         firebase.removeTenant(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey") ?? "", tenantKey: UserDefaults.standard.string(forKey: "tenantKey") ?? "")
         
         if let appDomain = Bundle.main.bundleIdentifier {
             UserDefaults.standard.removePersistentDomain(forName: appDomain)
         }
+        
+         show(utility.showRegistrationStoryboard(), sender: nil)
         
     }
     
@@ -56,25 +45,31 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if UserDefaults.standard.string(forKey: "apartmentKey") != nil{
-            //        UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "mainStoryboard")
+        apartmentName.text=UserDefaults.standard.string(forKey: "apartmentName")
+        currentUserName.text=UserDefaults.standard.string(forKey: "name")
+        let stringColor=UserDefaults.standard.string(forKey: "userColorString")
+        self.view.backgroundColor=utility.hexStringToUIColor(stringColor ?? "#ffffff")
+        tableView.backgroundColor=utility.hexStringToUIColor(stringColor ?? "#ffffff")
+        
+        
+        firebase.fetchAllTenantsData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey") ?? "") { (tenants) in
             
-            
-            apartmentName.text=UserDefaults.standard.string(forKey: "apartmentName")
-            currentUserName.text=UserDefaults.standard.string(forKey: "name")
-            let stringColor=UserDefaults.standard.string(forKey: "userColorString")
-            self.view.backgroundColor=utility.hexStringToUIColor(stringColor ?? "#ffffff")
-            tableView.backgroundColor=utility.hexStringToUIColor(stringColor ?? "#ffffff")
-            
-            
-            firebase.fetchAllTenantsData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey") ?? "") { (tenants) in
-                self.tenantsArr=tenants
-                self.tableView.reloadData()
+            var tenantsWithoutCurrent:[Tenant]=[]
+            for tenant in tenants{
+                if tenant.tenantKey != UserDefaults.standard.string(forKey: "tenantKey"){
+                    tenantsWithoutCurrent.append(tenant)
+                }
             }
-            
-            
-            // tableView.heightAnchor=40*tenantsArr.count
+            if tenantsWithoutCurrent.count==0{
+                
+            }
+            self.tenantsArr=tenantsWithoutCurrent
+            self.tableView.reloadData()
         }
+        
+        
+        // tableView.heightAnchor=40*tenantsArr.count
+        //        }
         
         
     }
@@ -90,12 +85,14 @@ extension MenuViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "tenantCell", for: indexPath)
             as! tenantTableViewCell
-        
+        if tenantsArr.count==1{
+            cell.name.text="You have no roommates"
+        }else{
         var tenant=tenantsArr[indexPath.row]
         cell.name.text=tenant.name
         cell.color.backgroundColor=utility.hexStringToUIColor(tenant.userColorString)
         cell.backgroundColor=utility.hexStringToUIColor(UserDefaults.standard.string(forKey: "userColorString") ?? "#ffffff")
-        
+        }
         return cell
     }
     

@@ -12,7 +12,7 @@ class ColorPickerViewController: UIViewController,UICollectionViewDataSource, UI
     
     var tag:Int=0
     var cellColor:UIColor=UIColor.gray
-    var colors=["#ffccff","#ff99bb","#e184c2","#d9b3ff","#b3d9ff","#99ffff","#b3ffe6","#ffbb99"]
+    var colors=["#ffccff","#FDDFDF","#FCF7DE","#F0DEFD","#DEF3FD","#DEFDE0","#d1edf2","#ffd8a7"]
     var delegate : JoiningViewController? = nil
     var utilities=Utilities.shared
     

@@ -31,5 +31,10 @@ import UIKit
         }
     }
     
+    @IBInspectable var borderWidth:Double = 1.0{
+        didSet{
+            self.layer.borderWidth = CGFloat(borderWidth)
+        }
+    }
     
 }

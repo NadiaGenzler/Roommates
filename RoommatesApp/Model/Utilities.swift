@@ -34,6 +34,28 @@ class Utilities {
             alpha: CGFloat(1.0)
         )
     }
+    
+    func showRegistrationStoryboard()->UIViewController{
+        
+        var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
+       var nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
+           
+           // show(nav, sender: nil)
+        return nav
+       
+    }
+    
+    
+    func showMainStoryboard()->UIViewController{
+        var registrationStoryBoard=UIStoryboard(name: "Main", bundle: Bundle.main)
+        var nav=registrationStoryBoard.instantiateViewController(withIdentifier: "mainStoryboard") as! UIViewController
+     
+           // show(nav, sender: nil)
+            return nav
+        }
+    
+    
+    
 //    var dateFormatter=DateFormatter()
     
 //    func presentPopover(popoverVC: inout UIViewController,identifier: String, popoverSize : CGSize) {

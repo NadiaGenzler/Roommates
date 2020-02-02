@@ -14,13 +14,14 @@
 		8041621023B10356001639CA /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041620F23B10356001639CA /* TaskTableViewCell.swift */; };
 		8041621423B10567001639CA /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8041621323B10567001639CA /* CircularImageView.swift */; };
 		806E495E23BF539100BB13E7 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E495D23BF539100BB13E7 /* Utilities.swift */; };
+		807A388023E2F6DB00242B04 /* AppLoad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 807A387F23E2F6DB00242B04 /* AppLoad.storyboard */; };
+		807A388223E2F75800242B04 /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807A388123E2F75800242B04 /* LoadViewController.swift */; };
 		808E33B523D729EC009CCDBE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33B423D729EC009CCDBE /* LogInViewController.swift */; };
 		808E33B923D77391009CCDBE /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33B823D77391009CCDBE /* ContainerViewController.swift */; };
 		808E33BB23D7B30E009CCDBE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33BA23D7B30E009CCDBE /* MenuViewController.swift */; };
 		808E33BD23D9959B009CCDBE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808E33BC23D9959B009CCDBE /* RegistrationViewController.swift */; };
 		809792E923A4E81500F2701B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809792E823A4E81500F2701B /* AppDelegate.swift */; };
 		809792EB23A4E81500F2701B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809792EA23A4E81500F2701B /* SceneDelegate.swift */; };
-		809792ED23A4E81500F2701B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809792EC23A4E81500F2701B /* ViewController.swift */; };
 		809792F023A4E81500F2701B /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 809792EE23A4E81500F2701B /* Registration.storyboard */; };
 		809792F223A4E81800F2701B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 809792F123A4E81800F2701B /* Assets.xcassets */; };
 		809792F523A4E81800F2701B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 809792F323A4E81800F2701B /* LaunchScreen.storyboard */; };
@@ -52,6 +53,8 @@
 		8041620F23B10356001639CA /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		8041621323B10567001639CA /* CircularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		806E495D23BF539100BB13E7 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		807A387F23E2F6DB00242B04 /* AppLoad.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppLoad.storyboard; sourceTree = "<group>"; };
+		807A388123E2F75800242B04 /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		808E33B423D729EC009CCDBE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		808E33B623D749D4009CCDBE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		808E33B823D77391009CCDBE /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +63,6 @@
 		809792E523A4E81500F2701B /* RoommatesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoommatesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		809792E823A4E81500F2701B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		809792EA23A4E81500F2701B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		809792EC23A4E81500F2701B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		809792EF23A4E81500F2701B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Registration.storyboard; sourceTree = "<group>"; };
 		809792F123A4E81800F2701B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		809792F423A4E81800F2701B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		809792E723A4E81500F2701B /* RoommatesApp */ = {
 			isa = PBXGroup;
 			children = (
+				807A387F23E2F6DB00242B04 /* AppLoad.storyboard */,
 				808E33B623D749D4009CCDBE /* Main.storyboard */,
 				809792EE23A4E81500F2701B /* Registration.storyboard */,
 				8097930623A4F5A400F2701B /* Controller */,
@@ -198,7 +201,7 @@
 				8034D18323DCE1B9001835DA /* Registration */,
 				808E33B823D77391009CCDBE /* ContainerViewController.swift */,
 				808E33BA23D7B30E009CCDBE /* MenuViewController.swift */,
-				809792EC23A4E81500F2701B /* ViewController.swift */,
+				807A388123E2F75800242B04 /* LoadViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				8097933323A81BAB00F2701B /* Assistance.storyboard in Resources */,
 				80E0B30623E22D430050F4DA /* Main.storyboard in Resources */,
 				809792F023A4E81500F2701B /* Registration.storyboard in Resources */,
+				807A388023E2F6DB00242B04 /* AppLoad.storyboard in Resources */,
 				80C346E823B4AA8C003B4DA0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,8 +334,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				809792ED23A4E81500F2701B /* ViewController.swift in Sources */,
 				809792FD23A4EBA200F2701B /* Tenant.swift in Sources */,
+				807A388223E2F75800242B04 /* LoadViewController.swift in Sources */,
 				808E33B923D77391009CCDBE /* ContainerViewController.swift in Sources */,
 				8041620E23B0D0AC001639CA /* TasksViewController.swift in Sources */,
 				80E0B30523E146FF0050F4DA /* tenantTableViewCell.swift in Sources */,

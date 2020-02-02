@@ -11,7 +11,7 @@ import UIKit
 class LogInViewController: UIViewController {
     
     var firebase=FirebaseHelper.shared
-    
+    var utility=Utilities.shared
     @IBOutlet weak var tenantName: UITextField!
     
     @IBOutlet weak var tenantPassword: UITextField!
@@ -41,14 +41,11 @@ class LogInViewController: UIViewController {
                                 UserDefaults.standard.set(currentTenant.password, forKey: "password")
                                 UserDefaults.standard.set(currentTenant.userColorString, forKey: "userColorString")
                                 
-//                                NotificationCenter.default.post(name: NSNotification.Name("dismissRegestrationStoryboard"), object: nil)
-                                self.dismiss(animated: true) {
-                                    var mainStoryBoard=UIStoryboard(name: "mainStoryboard", bundle: Bundle.main)
-                                    UIApplication.shared.keyWindow?.rootViewController
-                                        
-                                        = mainStoryBoard.instantiateViewController(withIdentifier: "mainStoryboard")
-                                    
-                                }
+                                
+                                var nav=self.utility.showMainStoryboard()
+                                nav.modalPresentationStyle = .overFullScreen
+                                nav.modalTransitionStyle = .coverVertical
+                                self.present(nav,animated: true)
                             }
                         }
                         else if i==apartments.count-1 && j == tenantsInApartment.count-1{
@@ -59,13 +56,14 @@ class LogInViewController: UIViewController {
                 }
             }
         }
+
+        
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+       
         
     }
     

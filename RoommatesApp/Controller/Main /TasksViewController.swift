@@ -11,40 +11,17 @@ import Firebase
 
 class TasksViewController: UIViewController , UIPopoverPresentationControllerDelegate {
     
-    var nav:UIViewController?
     var firebase=FirebaseHelper.shared
     var util=Utilities.shared
     var tasksArr:[Task]=[]
     @IBOutlet weak var tableView: UITableView!
     
-    func showRegistrationStoryboard(){
-        var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
-        nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
-        
-        if let nav=nav{
-            
-            show(nav, sender: nil)
-            
-        }
-        
-    }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//                if UserDefaults.standard.string(forKey: "apartmentKey") != nil{
-//                        UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "mainStoryboard")
-//                }
-//
-//
-//    }
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("openMenu"), object: nil)
         //make the parent view and the tableview darker
         //  self.view.backgroundColor=UIColor.lightGray
     }
-    
-    
     
     
     
@@ -73,10 +50,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if UserDefaults.standard.string(forKey: "apartmentKey") != nil{
-            print("not nil")
-//             UIApplication.shared.keyWindow?.rootViewController = storyboard!.instantiateViewController(withIdentifier: "mainStoryboard")
+  
             firebase.fetchAllTasksData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!) { (tasks) in
 
                 var sortedTasks=tasks.sorted { (t1, t2) -> Bool in
@@ -86,12 +60,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
                 self.tasksArr=sortedTasks
                 self.tableView.reloadData()
             }
-            
         
-        }else{
-            print("nil")
-            showRegistrationStoryboard()
-        }
         
     }
     
