@@ -27,14 +27,13 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     
     @IBAction func addList(_ sender: UIBarButtonItem) {
         taskPopover(sender, [:])
-        
-        
+     
     }
     
     func taskPopover(_ sender : Any, _ tasksProperties:[String:Any]){
         
         let popoverTaskVC=storyboard?.instantiateViewController(identifier: "taskEditor") as! EditTaskViewController
-        popoverTaskVC.modalPresentationStyle = .overCurrentContext
+
         if sender is UIBarButtonItem{
             popoverTaskVC.senderIdentifier="addNewTask"
         }else{
@@ -43,9 +42,9 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
         }
         present(popoverTaskVC, animated: true)
     }
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
+//    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+//        return .none
+//    }
     
     
     override func viewDidLoad() {
@@ -68,9 +67,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     @objc func handleSingleTap(_ sender:UITapGestureRecognizer){
         
         let cell=sender.view as! TaskTableViewCell
-        
-        //  let checkMark=cell.chekmark
-        //  let textL=cell.taskText
+       
         var tappedTaskProperties=cell.tasksProperties
         
         if (tappedTaskProperties["isTaskDone"] as! Bool==false){
@@ -92,15 +89,13 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
             cell.backgroundColor=UIColor.white
             
         }
-        // print(tappedTaskProperties)
         
         var updatedTask=Task(taskDescription: tappedTaskProperties["taskDescription"] as! String, taskKey: tappedTaskProperties["taskKey"] as! String, done: tappedTaskProperties["isTaskDone"] as? Bool ?? false, tenantColor: tappedTaskProperties["doneByTenant"] as! String)
         firebase.updateTask(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!, taskKey: tappedTaskProperties["taskKey"] as! String, task: &updatedTask)
-        
-        // self.tableView.reloadData()
+     
     }
     @objc func handelLongPress(_ sender: UILongPressGestureRecognizer){
-        var cell=sender.view as! TaskTableViewCell
+        let cell=sender.view as! TaskTableViewCell
         taskPopover(sender,cell.tasksProperties)
 //        
 //        //            cell.isSelected=true
@@ -132,10 +127,10 @@ extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell=tableView.dequeueReusableCell(withIdentifier: "taskCell",for: indexPath)
             as! TaskTableViewCell
-        var currentTask=tasksArr[indexPath.row]
+        let currentTask=tasksArr[indexPath.row]
         cell.tasksProperties=["taskKey":currentTask.taskKey,"taskDescription":currentTask.taskDescription,"isTaskDone":currentTask.done, "doneByTenant":currentTask.tenantColor ?? "#ffffff"]
         
-        var taskProperties=cell.tasksProperties
+        let taskProperties=cell.tasksProperties
         
         cell.taskText?.text=taskProperties["taskDescription"] as? String ?? ""
         
@@ -176,11 +171,10 @@ extension String {
         
         return attributeString
     }
+    
     func normal() -> NSAttributedString {
         let attributeString =  NSMutableAttributedString(string: self)
         attributeString.removeAttribute(NSAttributedString.Key.strikethroughStyle, range: NSMakeRange(0, attributeString.length))
-        //        attributeString.setAttributes([:], range: NSRange(0..<attributeString.length))
-        
         
         return attributeString
     }

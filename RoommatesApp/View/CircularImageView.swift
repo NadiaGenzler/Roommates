@@ -12,7 +12,7 @@ import UIKit
 @IBDesignable
 public class CircularImageView: UIImageView {
    
-    
+    //  imageLayer.frame = self.bounds
    @IBInspectable var borderRadius:Double = 1.0{
        didSet{
            self.layer.cornerRadius = CGFloat(borderRadius)

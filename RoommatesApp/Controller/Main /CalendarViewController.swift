@@ -11,17 +11,13 @@ import CalendarKit
 
 class CalendarViewController: DayViewController {
     
-    //6/edit the landscape layout
-    //7/
-    
-    
     var firebase=FirebaseHelper.shared
     var util=Utilities.shared
     var formatter=DateFormatter()
     var eventsArr:[MyEvent]?
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
-         NotificationCenter.default.post(name: NSNotification.Name("openMenu"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("openMenu"), object: nil)
     }
     @IBAction func addEvent(_ sender: UIBarButtonItem) {
         eventPopover(sender,[:])
@@ -66,7 +62,6 @@ class CalendarViewController: DayViewController {
         var events = [Event]()
         
         if let myEvents=eventsArr{
-            print(myEvents)
             for myevent in myEvents {
                 
                 let event = Event()
@@ -75,7 +70,7 @@ class CalendarViewController: DayViewController {
                 event.startDate = myevent.startDate
                 event.endDate = myevent.endDate
                 event.backgroundColor=util.hexStringToUIColor(myevent.tenantColor)
-        
+                
                 // event.color=util.hexStringToUIColor(myevent.tenantColor)
                 //event.isAllDay=true
                 event.userInfo=["eventKey" : myevent.eventKey, "eventDescription":myevent.eventDescription, "startDate":myevent.startDate, "endDate":myevent.endDate] as? [String:Any]
@@ -92,35 +87,29 @@ class CalendarViewController: DayViewController {
     
     override func dayViewDidSelectEventView(_ eventView: EventView) {
         guard let descriptor = eventView.descriptor as? Event else {return}
-        
         eventPopover(UITapGestureRecognizer(),descriptor.userInfo as! [String:Any])
-        
     }
+    
+    override func dayView(dayView: DayView, didLongPressTimelineAt date: Date) {
+        eventPopover(UILongPressGestureRecognizer(), ["date":date])
+    }
+    
     override func dayViewDidLongPressEventView(_ eventView: EventView) {
         guard let descriptor = eventView.descriptor as? Event else {return}
         let eventProperties=descriptor.userInfo as! [String:Any]
         
         let alert=UIAlertController(title: "Are you sure you want to delete?", message: "", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+        let okAction = UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
             self.firebase.removeEvent(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!, eventKey: eventProperties["eventKey"] as! String)
         })
         
         alert.addAction(okAction)
-        
-        alert.addAction(.init(title: "Cancel", style: .destructive, handler: { (action) in
-            self.dismiss(animated: true)
-            
+        alert.addAction(.init(title: "Cancel", style: .default, handler: { (action) in
+            alert.dismiss(animated: true)
         }))
         
         present(alert, animated: true)
         
-        print("Event has been longPressed: \(descriptor) \(String(describing: descriptor.userInfo))")
     }
-    override func dayView(dayView: DayView, didLongPressTimelineAt date: Date) {
-        print("Did long press timeline at date \(date)")
-        //        NotificationCenter.default.post(name: NSNotification.Name("setSenderIdentifier"), object: nil, userInfo: ["identifier" : "NewEventFromLongPress"])
-        //         gestureSenderIdentifier="NewEventFromLongPress"
-        
-        eventPopover(UILongPressGestureRecognizer(), ["date":date])
-    }
+    
 }

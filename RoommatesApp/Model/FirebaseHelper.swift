@@ -218,6 +218,11 @@ class FirebaseHelper {
     
     
     //MARK: Remove from FireBase
+    func removeAllApartments(){
+        let refForRemove=Database.database().reference(withPath: "/Apartment/")
+        refForRemove.removeValue()
+        
+    }
     func removeApartment(apartmentKey:String){
         let refForRemove=Database.database().reference(withPath: "/Apartment/\(apartmentKey)")
         refForRemove.removeValue()

@@ -19,11 +19,11 @@ class ColorPickerViewController: UIViewController,UICollectionViewDataSource, UI
     
     
       func numberOfSections(in collectionView: UICollectionView) -> Int {
-           // #warning Incomplete implementation, return the number of sections
+     
            return 1
        }
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           // #warning Incomplete implementation, return the number of items
+            
            return 8
        }
    
@@ -31,9 +31,10 @@ class ColorPickerViewController: UIViewController,UICollectionViewDataSource, UI
      func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell=collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath)
+        view.backgroundColor=UIColor.darkGray
         cellColor=utilities.hexStringToUIColor(colors[indexPath.item])
-        print(cellColor)
         cell.contentView.backgroundColor=cellColor
+        
         cell.tag = tag
         tag = tag + 1
         

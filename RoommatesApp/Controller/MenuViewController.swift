@@ -16,34 +16,64 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var currentUserName: UILabel!
     @IBOutlet weak var userImg: CircularImageView!
     var tenantsArr:[Tenant]=[]
+    var tenantsWithoutCurrent:[Tenant]=[]
     
-    
+    @IBOutlet weak var userImage: CircularImageView!
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func logOut(_ sender: UIButton) {
+        let alert=UIAlertController(title: "Already leaving?", message: "", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
+            
+           if let appDomain = Bundle.main.bundleIdentifier {
+               UserDefaults.standard.removePersistentDomain(forName: appDomain)
+           }
+            self.show(self.utility.showRegistrationStoryboard(), sender: nil)
+            
+        })
         
-        if let appDomain = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: appDomain)
-        }
-        show(utility.showRegistrationStoryboard(), sender: nil)
+        alert.addAction(okAction)
+        alert.addAction(.init(title: "Cancel", style: .default, handler: { (action) in
+            alert.dismiss(animated: true)
+        }))
+        
+        present(alert, animated: true)
+        
         
     }
     
+    
     @IBAction func leave(_ sender: UIButton) {
+   let alert=UIAlertController(title: "Moving out of the apartment?", message: "", preferredStyle: .alert)
+   let okAction = UIAlertAction(title: "Yes", style: .destructive, handler: { (action) in
+    
+    self.firebase.removeTenant(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey") ?? "", tenantKey: UserDefaults.standard.string(forKey: "tenantKey") ?? "")
+           
+           if let appDomain = Bundle.main.bundleIdentifier {
+               UserDefaults.standard.removePersistentDomain(forName: appDomain)
+           }
+           
+    self.show(self.utility.showRegistrationStoryboard(), sender: nil)
+    
+    
+   })
    
-        firebase.removeTenant(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey") ?? "", tenantKey: UserDefaults.standard.string(forKey: "tenantKey") ?? "")
-        
-        if let appDomain = Bundle.main.bundleIdentifier {
-            UserDefaults.standard.removePersistentDomain(forName: appDomain)
-        }
-        
-         show(utility.showRegistrationStoryboard(), sender: nil)
-        
+   alert.addAction(okAction)
+   alert.addAction(.init(title: "Cancel", style: .default, handler: { (action) in
+       alert.dismiss(animated: true)
+   }))
+   
+   present(alert, animated: true)
+       
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let pngImgData=UserDefaults.standard.object(forKey: "UserImagePng") as? Data{
+            userImage.image = UIImage(data: pngImgData)}
+        
         
         apartmentName.text=UserDefaults.standard.string(forKey: "apartmentName")
         currentUserName.text=UserDefaults.standard.string(forKey: "name")
@@ -53,33 +83,25 @@ class MenuViewController: UIViewController {
         
         
         firebase.fetchAllTenantsData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey") ?? "") { (tenants) in
+            self.tenantsArr=tenants
             
-            var tenantsWithoutCurrent:[Tenant]=[]
             for tenant in tenants{
                 if tenant.tenantKey != UserDefaults.standard.string(forKey: "tenantKey"){
-                    tenantsWithoutCurrent.append(tenant)
+                    self.tenantsWithoutCurrent.append(tenant)
                 }
             }
-            if tenantsWithoutCurrent.count==0{
-                
-            }
-            self.tenantsArr=tenantsWithoutCurrent
-            self.tableView.reloadData()
+                self.tableView.reloadData()
         }
-        
-        
-        // tableView.heightAnchor=40*tenantsArr.count
-        //        }
-        
-        
     }
     
 }
 
 extension MenuViewController:UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return tenantsArr.count
+        if tenantsArr.count==1{
+            return tenantsArr.count
+        }
+        return tenantsArr.count-1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,8 +109,9 @@ extension MenuViewController:UITableViewDataSource,UITableViewDelegate{
             as! tenantTableViewCell
         if tenantsArr.count==1{
             cell.name.text="You have no roommates"
+            cell.color.isHidden=true
         }else{
-        var tenant=tenantsArr[indexPath.row]
+        var tenant=tenantsWithoutCurrent[indexPath.row]
         cell.name.text=tenant.name
         cell.color.backgroundColor=utility.hexStringToUIColor(tenant.userColorString)
         cell.backgroundColor=utility.hexStringToUIColor(UserDefaults.standard.string(forKey: "userColorString") ?? "#ffffff")

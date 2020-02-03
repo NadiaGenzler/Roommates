@@ -8,61 +8,93 @@
 
 import UIKit
 
-class CreatingGroupViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-// if no tenet subscribes, group will be eliminated within 3 days
+class CreatingGroupViewController: UIViewController{
+    // if no tenet subscribes, group will be eliminated within 3 days
     @IBOutlet weak var groupName: UITextField!
     
-    let fireBase=FirebaseHelper.shared
+    let firebase=FirebaseHelper.shared
     var apartmentKey:String?
     var apartmentName:String?
-    var creationVC:CreatedGroupDialogViewController?
+    var apartmentsArr:[Apartment]=[]
     
-    @IBAction func create(_ sender: UIButton) {
+    @IBOutlet weak var errorLable: UILabel!
+    
+    @IBAction func create(_ sender: UIButton) { //add function tha cheks that the fields are not empty
         
-        //add function tha cheks that the fields are not empty
-     var apartment=Apartment(name: groupName.text!, tenants: [], tasks: [], events: [])
-    
-        fireBase.addApartment(apartment: &apartment) { (apartmentKey, name) in
-                self.apartmentKey=apartmentKey
-                self.apartmentName=name
+        for i in 0..<apartmentsArr.count{
+            
+            if apartmentsArr[i].name == self.groupName.text?.trimmingCharacters(in: .whitespaces){
+                self.errorLable.isHidden=false
+                return
+            }else if i==apartmentsArr.count-1{
+                var apartment=Apartment(name: self.groupName.text!.trimmingCharacters(in: .whitespaces), tenants: [], tasks: [], events: [])
+                self.firebase.addApartment(apartment: &apartment) { (apartmentKey, name) in
+                    self.apartmentKey=apartmentKey
+                    self.apartmentName=name
+                }
+                
+                groupName.isEnabled=false
+                createdSuccessfuly()//present and after 2 secs dismiss
+//
+//             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+//
+//
+//
+//                    })
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
+                    let joinController=self.storyboard?.instantiateViewController(withIdentifier: "joinVC") as! JoiningViewController
+//                    joinController.apartmentKey=self.apartmentKey
+                    joinController.apartmentName=self.apartmentName
+                    self.show(joinController,sender: nil)
+                }
+           
+            }
+            
         }
         
-        creationVC=storyboard?.instantiateViewController(identifier: "successfulCreation") as! CreatedGroupDialogViewController
-        
-        if let creationVC=creationVC {
-            creationVC.modalPresentationStyle = .overFullScreen
-            creationVC.modalTransitionStyle = .coverVertical
-        creationVC.apartmentKey=apartmentKey ?? "0key"
-        creationVC.apartmentName=apartmentName ?? "0name"
-//            creationVC.delegate=self
-      
-        
-        present(creationVC,animated: true, completion: nil)
-        }
     }
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
+    
+
+    func createdSuccessfuly(){
+        var creationVC=self.storyboard?.instantiateViewController(identifier: "successfulCreation") as! CreatedGroupDialogViewController
+   
+        creationVC.modalPresentationStyle = .overFullScreen
+        creationVC.modalTransitionStyle = .coverVertical
+        creationVC.apartmentName=self.apartmentName ?? "0name"
+        
+        self.present(creationVC,animated: true, completion: nil)
+       DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+        creationVC.dismiss(animated: true)
+        })
+        
+        
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        firebase.fetchAllApartmentsData { (apartments) in
+            self.apartmentsArr=apartments
+        }
+        
         
         groupName.delegate=self
         
     }
     
-
-
+    
+    
 }
 extension CreatingGroupViewController:UITextFieldDelegate{
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let text=textField.text!
-//
-//        return   && text.count<3 || text.isEmpty
-//    }
+    //        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    //            let text=textField.text!
+    //
+    //            return  text.count<3 || text.isEmpty
+    //        }
     
-     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
         return true
     }
