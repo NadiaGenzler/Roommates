@@ -8,13 +8,14 @@
 
 import UIKit
 
+
 class MenuViewController: UIViewController {
     
     let utility=Utilities.shared
     let firebase=FirebaseHelper.shared
     @IBOutlet weak var apartmentName: UILabel!
     @IBOutlet weak var currentUserName: UILabel!
-    @IBOutlet weak var userImg: CircularImageView!
+   
     var tenantsArr:[Tenant]=[]
     var tenantsWithoutCurrent:[Tenant]=[]
     
@@ -74,6 +75,15 @@ class MenuViewController: UIViewController {
         if let pngImgData=UserDefaults.standard.object(forKey: "UserImagePng") as? Data{
             userImage.image = UIImage(data: pngImgData)}
         
+        let apartmentKey=UserDefaults.standard.string(forKey: "apartmentKey") ?? ""
+        let tenantKey=UserDefaults.standard.string(forKey: "tenantKey") ?? ""
+        
+        firebase.downloadImage(apartmentKey: apartmentKey, tenantKey: tenantKey) { (data) in
+            self.userImage.image=UIImage(data: data)
+        }
+
+        
+        
         
         apartmentName.text=UserDefaults.standard.string(forKey: "apartmentName")
         currentUserName.text=UserDefaults.standard.string(forKey: "name")
@@ -82,11 +92,12 @@ class MenuViewController: UIViewController {
         tableView.backgroundColor=utility.hexStringToUIColor(stringColor ?? "#ffffff")
         
         
-        firebase.fetchAllTenantsData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey") ?? "") { (tenants) in
+        
+        firebase.fetchAllTenantsData(apartmentKey: apartmentKey) { (tenants) in
             self.tenantsArr=tenants
             
             for tenant in tenants{
-                if tenant.tenantKey != UserDefaults.standard.string(forKey: "tenantKey"){
+                if tenant.tenantKey != tenantKey{
                     self.tenantsWithoutCurrent.append(tenant)
                 }
             }

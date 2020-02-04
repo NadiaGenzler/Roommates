@@ -11,18 +11,22 @@ import UIKit
 class DatePickerViewController: UIViewController {
     
     var delegate:EditEventViewController?
-    
+    let formatter=DateFormatter()
+    var dateTapped:String=""
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBAction func datePicker(_ sender: UIDatePicker) {
+      
         let date:Date = sender.date
-        let formatter=DateFormatter()
-        formatter.dateFormat="MM/dd/yyyy HH:mm"
+        
      
-        let dateTapped=delegate?.tapAccessibilityIdentifier
+        
         
         if dateTapped == "startDateTapped" {
+            
             delegate?.startDate.text=formatter.string(from: date)
         }else{
+            
             delegate?.endDate.text=formatter.string(from: date)
         }
     }
@@ -34,7 +38,16 @@ class DatePickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+          formatter.dateFormat="MM/dd/yyyy HH:mm"
+        dateTapped=delegate?.tapAccessibilityIdentifier ?? ""
+        
+        if dateTapped == "startDateTapped" {
+           
+          datePicker.setDate(formatter.date(from: delegate?.startDate.text ?? "" ) ?? Date(), animated: true)
+        }else{
+            datePicker.setDate(formatter.date(from: delegate?.endDate.text ?? "" ) ?? Date(), animated: true)
+         
+        }
     }
     
     

@@ -38,7 +38,7 @@ class EditEventViewController: UIViewController,UIPopoverPresentationControllerD
         
         guard let popoverVC=popoverVC else {return}
         popoverVC.modalPresentationStyle = .popover
-        popoverVC.preferredContentSize=CGSize(width: 240, height: 250)
+        popoverVC.preferredContentSize=CGSize(width: 310, height: 235)
         if let popoverController=popoverVC.popoverPresentationController{
             popoverController.sourceView=sender.view
             popoverController.permittedArrowDirections = .up
@@ -89,6 +89,7 @@ class EditEventViewController: UIViewController,UIPopoverPresentationControllerD
                 endDate.text=formatter.string(from: Date())
             }else{
                 startDate.text=formatter.string(from: eventsProperties["date"] as! Date)
+               
                 endDate.text=formatter.string(from: eventsProperties["date"] as! Date)
             }
             

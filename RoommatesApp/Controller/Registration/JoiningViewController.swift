@@ -18,13 +18,12 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     var utility=Utilities.shared
     var apartmentsArr:[Apartment]=[]
     //will be filled automatically once the group created
-    //    @IBOutlet weak var apartmentKeyTF: UITextField!
-    //    var apartmentKey:String?
     @IBOutlet weak var apartmentNameTF: UITextField!
     var apartmentName:String?
     
     @IBOutlet weak var errorLable: UILabel!
     @IBOutlet weak var imageView: CircularImageView!
+    var imgUrl:URL?
     
     @IBOutlet weak var colorView: RoundView!
     var stringColor:String = "#ffffff"
@@ -74,6 +73,9 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
                     UserDefaults.standard.set(currentTenant.password, forKey: "password")
                     UserDefaults.standard.set(currentTenant.userColorString, forKey: "userColorString")
                     
+                    if let url=imgUrl{
+                     firebase.uploadImage(url: url, apartmentKey: currentTenant.apartmentKey, tenantKey: currentTenant.tenantKey!)
+                    }
                 }
                 
                 let nav=self.utility.showMainStoryboard()
@@ -157,9 +159,12 @@ extension JoiningViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     
         picker.dismiss(animated: true)
+        
+        imgUrl=info[.imageURL] as? URL
     
         guard let image = info[.originalImage] as? UIImage else {return}
         imageView.image = image
+        
         let pngImage=image.pngData()
         UserDefaults.standard.set(pngImage, forKey: "UserImagePng")
     }

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+
 class FirebaseHelper {
     var ref: DatabaseReference!
     let storageRef:StorageReference!
@@ -52,7 +53,6 @@ class FirebaseHelper {
         
     }
     func updateTask(apartmentKey:String, taskKey:String, task: inout Task){
-       // ref.child(apartmentKey).child("tasks").child(taskKey)
         
         let childUpdates=["/Apartment/\(apartmentKey)/tasks/\(taskKey)":task.toDictionary()]
         ref.updateChildValues(childUpdates)
@@ -74,15 +74,27 @@ class FirebaseHelper {
         
     }
     
+     
+    func uploadImage(url:URL,apartmentKey:String,tenantKey:String){
+            let imagesRef = storageRef.child("\(apartmentKey)/\(tenantKey)Image.jpeg")
+            
+            let uploadTask=imagesRef.putFile(from: url)
+                
+        }
     
-    
-    
-    
-    //    func uploadImage(url:URL){
-    //        let imagesRef = storageRef.child("images")
-    //        print(imagesRef)
-    //        let uploadTask=imagesRef.putFile(from: url)
-    //    }
+    func downloadImage(apartmentKey:String,tenantKey:String, completion: @escaping (Data)->Void){
+        let reference = storageRef.child("\(apartmentKey)/\(tenantKey)Image.jpeg")
+
+        reference.getData(maxSize: 6 * 1024 * 1024) { data, error in
+          if let error = error {
+            print(error)
+          } else {
+            completion(data!)
+          }
+            
+        }
+          
+    }
     
     //MARK: Read from FireBase
     

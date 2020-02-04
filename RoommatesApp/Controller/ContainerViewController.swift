@@ -10,11 +10,14 @@ import UIKit
 
 class ContainerViewController: UIViewController {
     
+    @IBOutlet weak var grayView: UIView!
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var mainContainerView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
+        grayView.isHidden=true
         NotificationCenter.default.addObserver(self, selector: #selector(openSideMenu), name: NSNotification.Name("openMenu"), object: nil)
         
         
@@ -29,7 +32,7 @@ class ContainerViewController: UIViewController {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
-        
+        grayView.isHidden=false
     }
     
     @objc func closeSideMenu(_ sender: UISwipeGestureRecognizer) {
@@ -40,7 +43,7 @@ class ContainerViewController: UIViewController {
             }
             
         }
-        
+        grayView.isHidden=true
         
         
         
