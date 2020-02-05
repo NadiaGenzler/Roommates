@@ -13,6 +13,7 @@ class Utilities {
     static var shared=Utilities()
     private init(){}
     
+//    MARK: Color from String to UIColor
     func hexStringToUIColor (_ hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
 
@@ -35,43 +36,24 @@ class Utilities {
         )
     }
     
+    
+    //    MARK: Show storyboards
+    
     func showRegistrationStoryboard()->UIViewController{
         
-        var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
-       var nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
+        let registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
+        let nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
            
-           // show(nav, sender: nil)
         return nav
        
     }
     
     
     func showMainStoryboard()->UIViewController{
-        var registrationStoryBoard=UIStoryboard(name: "Main", bundle: Bundle.main)
-        var nav=registrationStoryBoard.instantiateViewController(withIdentifier: "mainStoryboard") as! UIViewController
+        let registrationStoryBoard=UIStoryboard(name: "Main", bundle: Bundle.main)
+        let nav=registrationStoryBoard.instantiateViewController(withIdentifier: "mainStoryboard") as! UIViewController
      
-           // show(nav, sender: nil)
             return nav
         }
     
-    
-    
-//    var dateFormatter=DateFormatter()
-    
-//    func presentPopover(popoverVC: inout UIViewController,identifier: String, popoverSize : CGSize) {
-//        popoverVC=popoverVC.storyboard?.instantiateViewController(withIdentifier: identifier) ?? <#default value#>
-//           
-//           guard let popoverVC=popoverVC else {return}
-//           popoverVC.modalPresentationStyle = .popover
-//           popoverVC.preferredContentSize=popoverSize
-//           if let popoverController=popoverVC.popoverPresentationController{
-//               popoverController.sourceView=sender.view
-//               popoverController.permittedArrowDirections = .up
-//               popoverController.delegate=self
-//               popoverVC.delegate = self
-//           }
-//           
-//           present(popoverVC,animated: true, completion: nil)
-//           
-//       }
 }

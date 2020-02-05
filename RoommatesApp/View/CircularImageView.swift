@@ -12,7 +12,6 @@ import UIKit
 @IBDesignable
 public class CircularImageView: UIImageView {
    
-    //  imageLayer.frame = self.bounds
    @IBInspectable var borderRadius:Double = 1.0{
        didSet{
            self.layer.cornerRadius = CGFloat(borderRadius)
@@ -39,24 +38,6 @@ public class CircularImageView: UIImageView {
            }
         }
     }
-    
-//    public override func prepareForInterfaceBuilder() {
-//        super.prepareForInterfaceBuilder()
-//        commonInit()
-//    }
-//    
-//    
-//    public override func awakeFromNib() {
-//        super.awakeFromNib()
-//        commonInit()
-//    }
-    
-//    func commonInit(){
-//       let bundle = Bundle(for: CircularImageView.self)
-//       image = UIImage(named: "user_male", in: bundle, compatibleWith: nil)?.cgImage
-//      //  imageLayer.frame = self.bounds
-//        layer.addSublayer(imageLayer)
-//       
-//    }
+
 }
 

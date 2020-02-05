@@ -19,9 +19,9 @@ class CalendarViewController: DayViewController {
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("openMenu"), object: nil)
     }
+    
     @IBAction func addEvent(_ sender: UIBarButtonItem) {
         eventPopover(sender,[:])
-        
         reloadData()
     }
     
@@ -29,8 +29,8 @@ class CalendarViewController: DayViewController {
         
         let popoverVC=storyboard?.instantiateViewController(identifier: "EventEditor") as! EditEventViewController
         popoverVC.modalPresentationStyle = .automatic
-        
         popoverVC.eventsProperties=eventProperties
+        // chek how the sender in order to know what dates and event to display on the edit event controller
         if sender is UIBarButtonItem{
             popoverVC.senderIdentifier="NewEventFromAddButton"
         }else if sender is UILongPressGestureRecognizer{
@@ -42,7 +42,7 @@ class CalendarViewController: DayViewController {
         present(popoverVC, animated: true)
     }
     
-    
+//    MARK: Fetch the events from firebase
     override func viewDidLoad() {
         super.viewDidLoad()
         let apartmentKey = UserDefaults.standard.string(forKey: "apartmentKey")
@@ -51,9 +51,7 @@ class CalendarViewController: DayViewController {
             self.eventsArr=events
             self.reloadData()
         }
-        
         dayView.autoScrollToFirstEvent = true
-        
     }
     
     // MARK: EventDataSource
@@ -71,7 +69,6 @@ class CalendarViewController: DayViewController {
                 event.endDate = myevent.endDate
                 event.backgroundColor=util.hexStringToUIColor(myevent.tenantColor)
                 
-                // event.color=util.hexStringToUIColor(myevent.tenantColor)
                 //event.isAllDay=true
                 event.userInfo=["eventKey" : myevent.eventKey, "eventDescription":myevent.eventDescription, "startDate":myevent.startDate, "endDate":myevent.endDate] as? [String:Any]
                 events.append(event)

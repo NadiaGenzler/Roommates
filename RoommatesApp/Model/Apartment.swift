@@ -19,6 +19,15 @@ class Apartment:CustomStringConvertible{
     var tasks:[Task]
     var events:[MyEvent]
     
+    init(name:String, tenants: [Tenant], tasks: [Task], events:[MyEvent]){
+        self.name=name
+        self.tenants=tenants
+        self.tasks=tasks
+        self.events=events
+    }
+    
+    //    MARK: Transformation to and from dictionary
+    
     init(fromDictionary:[String:Any]) {
         
         self.name=fromDictionary["name"] as! String
@@ -65,15 +74,7 @@ class Apartment:CustomStringConvertible{
         }
     }
     
-    
-    init(name:String, tenants: [Tenant], tasks: [Task], events:[MyEvent]){
-        self.name=name
-        self.tenants=tenants
-        self.tasks=tasks
-        self.events=events
-    }
-    
-    
+   
     func toDictionary() -> [String:Any] {
         var dict:Dictionary<String,Any>=[:]
         

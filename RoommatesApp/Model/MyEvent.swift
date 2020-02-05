@@ -9,42 +9,21 @@
 import UIKit
 
 class MyEvent: CustomStringConvertible {
+    var description:String{
+        return "eventDescription:\(eventDescription) startDate:\(startDate), endDate:\(endDate), tenantColore : \(tenantColor)"
+    }
+    
     var apartmentKey:String?
     var eventKey:String?
   //  var eventName:String?
     var eventDescription:String
-    
     var startDate:Date
     var endDate:Date
 //    var tenantKey:String
      var tenantColor:String
 
-    var description:String{
-        return "eventDescription:\(eventDescription) startDate:\(startDate), endDate:\(endDate), tenantColore : \(tenantColor)"
-    }
+    
     let formatter=DateFormatter()
-    
-    
-    init(fromDictionary:[String:Any]){
-        
-        self.apartmentKey=fromDictionary["apartmentKey"] as? String
-        self.eventKey=fromDictionary["eventKey"] as? String ?? ""
-        self.eventDescription=fromDictionary["eventDescription"] as! String
-       // self.eventName=fromDictionary["eventName"] as? String ?? ""
-        self.startDate=formatter.date(from: fromDictionary["startDate"] as! String) ?? Date()
-        self.endDate=formatter.date(from: fromDictionary["endDate"] as! String) ?? Date()
-        self.tenantColor=fromDictionary["tenantColor"] as! String
-        
-        
-    }
-    
-//    init(eventName:String ,eventDescription:String, startDate:Date, endDate:Date, tenantColor : String){
-//        self.eventName=eventName
-//        self.eventDescription=eventDescription
-//        self.startDate=startDate
-//        self.endDate=endDate
-//        self.tenantColor=tenantColor
-//    }
     
     init(eventDescription:String, startDate:Date, endDate:Date, tenantColor : String){
         self.eventDescription=eventDescription
@@ -60,6 +39,22 @@ class MyEvent: CustomStringConvertible {
         self.tenantColor=tenantColor
         self.eventKey=eventKey
     }
+    
+//    MARK: Transformation to and from dictionary
+    
+    init(fromDictionary:[String:Any]){
+        
+        self.apartmentKey=fromDictionary["apartmentKey"] as? String
+        self.eventKey=fromDictionary["eventKey"] as? String ?? ""
+        self.eventDescription=fromDictionary["eventDescription"] as! String
+       // self.eventName=fromDictionary["eventName"] as? String ?? ""
+        self.startDate=formatter.date(from: fromDictionary["startDate"] as! String) ?? Date()
+        self.endDate=formatter.date(from: fromDictionary["endDate"] as! String) ?? Date()
+        self.tenantColor=fromDictionary["tenantColor"] as! String
+    }
+    
+    
+    
     func toDictionary()->[String:Any]{
         var dict:Dictionary<String,Any>=[:]
         formatter.dateFormat="MM/dd/yyyy HH:mm"

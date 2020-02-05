@@ -139,7 +139,7 @@ was Created Successfully!</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.85344415900000004" green="0.69458407160000002" blue="0.66665852069999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="2Mr-5O-p6l" firstAttribute="top" secondItem="pu8-lG-fbn" secondAttribute="top" id="0Ky-nP-2QP"/>
                             <constraint firstItem="2Mr-5O-p6l" firstAttribute="leading" secondItem="Req-9u-i92" secondAttribute="leading" id="ADt-Z3-SHp"/>
@@ -178,7 +178,7 @@ was Created Successfully!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Livingroom" translatesAutoresizingMaskIntoConstraints="NO" id="D4e-y4-BBR">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="-55" y="88" width="522" height="808"/>
                             </imageView>
                             <visualEffectView opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oLo-26-s7X">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -278,12 +278,12 @@ was Created Successfully!</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.85344415900000004" green="0.69458407160000002" blue="0.66665852069999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="hqE-4q-n2d" firstAttribute="centerY" secondItem="Sak-0V-6nv" secondAttribute="centerY" constant="-50" id="8Hl-NJ-aNv"/>
-                            <constraint firstItem="Lcl-Mg-lGv" firstAttribute="trailing" secondItem="D4e-y4-BBR" secondAttribute="trailing" id="9ei-vZ-LDQ"/>
+                            <constraint firstItem="Lcl-Mg-lGv" firstAttribute="trailing" secondItem="D4e-y4-BBR" secondAttribute="trailing" constant="-53" id="9ei-vZ-LDQ"/>
                             <constraint firstItem="Psa-uR-emf" firstAttribute="leading" secondItem="Lcl-Mg-lGv" secondAttribute="leading" constant="40" id="CMF-og-icf"/>
-                            <constraint firstItem="D4e-y4-BBR" firstAttribute="leading" secondItem="Lcl-Mg-lGv" secondAttribute="leading" id="KPo-MR-wn1"/>
+                            <constraint firstItem="D4e-y4-BBR" firstAttribute="leading" secondItem="Lcl-Mg-lGv" secondAttribute="leading" constant="-55" id="KPo-MR-wn1"/>
                             <constraint firstItem="Psa-uR-emf" firstAttribute="top" secondItem="hqE-4q-n2d" secondAttribute="bottom" constant="50" id="KjY-c4-lNt"/>
                             <constraint firstItem="Lcl-Mg-lGv" firstAttribute="trailing" secondItem="hqE-4q-n2d" secondAttribute="trailing" constant="40" id="SuV-4a-P1t"/>
                             <constraint firstItem="Lcl-Mg-lGv" firstAttribute="trailing" secondItem="2ot-1x-if7" secondAttribute="trailing" constant="10" id="UOT-Fr-Q68"/>
@@ -321,7 +321,7 @@ was Created Successfully!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Livingroom" translatesAutoresizingMaskIntoConstraints="NO" id="4PD-gE-Vy6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="-43" y="60" width="509" height="836"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <visualEffectView opaque="NO" alpha="0.55000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dB-Co-HBI">
@@ -421,7 +421,7 @@ was Created Successfully!</string>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.85344415900000004" green="0.69458407160000002" blue="0.66665852069999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="i7c-1B-jpH" firstAttribute="top" secondItem="nc9-xE-xsK" secondAttribute="top" constant="100" id="3DA-UF-Abm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="i7c-1B-jpH" secondAttribute="trailing" constant="20" id="cLe-hk-xzf"/>
@@ -454,7 +454,7 @@ was Created Successfully!</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Livingroom" translatesAutoresizingMaskIntoConstraints="NO" id="CU2-Rg-8uB">
-                                        <rect key="frame" x="-43" y="0.0" width="500" height="808"/>
+                                        <rect key="frame" x="-43" y="-18" width="500" height="826"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="500" id="HOt-7q-2kh"/>
                                         </constraints>
@@ -672,7 +672,7 @@ was Created Successfully!</string>
                             <constraint firstItem="3UT-go-oI5" firstAttribute="width" secondItem="qeS-vh-EIL" secondAttribute="width" multiplier="0.9" id="i0A-eL-cJM"/>
                             <constraint firstItem="dPg-1W-Ix3" firstAttribute="width" secondItem="qeS-vh-EIL" secondAttribute="width" multiplier="0.9" id="rbl-D7-lvh"/>
                             <constraint firstItem="d3P-c2-uJB" firstAttribute="top" secondItem="Rc4-fm-wEP" secondAttribute="top" constant="88" id="srQ-XQ-BrU"/>
-                            <constraint firstItem="CU2-Rg-8uB" firstAttribute="top" secondItem="qeS-vh-EIL" secondAttribute="top" constant="88" id="svH-GJ-G6B"/>
+                            <constraint firstItem="CU2-Rg-8uB" firstAttribute="top" secondItem="qeS-vh-EIL" secondAttribute="top" constant="70" id="svH-GJ-G6B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d3P-c2-uJB"/>
                     </view>

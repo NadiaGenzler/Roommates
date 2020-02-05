@@ -9,7 +9,7 @@
 import UIKit
 
 class CreatingGroupViewController: UIViewController{
-    // if no tenet subscribes, group will be eliminated within 3 days
+    
     @IBOutlet weak var groupName: UITextField!
     
     let firebase=FirebaseHelper.shared
@@ -23,6 +23,7 @@ class CreatingGroupViewController: UIViewController{
         self.errorLable.isHidden=true
         for i in 0..<apartmentsArr.count{
             
+            // cheks if the apartment already exists
             if apartmentsArr[i].name == self.groupName.text?.trimmingCharacters(in: .whitespaces){
                 self.errorLable.isHidden=false
                 return
@@ -35,7 +36,7 @@ class CreatingGroupViewController: UIViewController{
                 
                 createdSuccessfuly()//present and after 2 secs dismiss
 
-                
+                groupName.isEnabled=false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
                     let joinController=self.storyboard?.instantiateViewController(withIdentifier: "joinVC") as! JoiningViewController
 //                    joinController.apartmentKey=self.apartmentKey
@@ -73,20 +74,18 @@ class CreatingGroupViewController: UIViewController{
             self.apartmentsArr=apartments
         }
         
-        
         groupName.delegate=self
         
     }
-    
-    
-    
 }
+
+
 extension CreatingGroupViewController:UITextFieldDelegate{
-    //        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    //            let text=textField.text!
-    //
-    //            return  text.count<3 || text.isEmpty
-    //        }
+//            func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//                let text=textField.text!
+//
+//                return  text.count<3 || text.isEmpty
+//            }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)

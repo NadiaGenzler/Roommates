@@ -32,7 +32,7 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     @IBOutlet weak var password: UITextField!
     var popoverVC:ColorPickerViewController?
     
-    
+//    MARK: ColorPicker
     @IBAction func colorPicker(_ sender: UITapGestureRecognizer) {
         
         popoverVC=storyboard?.instantiateViewController(withIdentifier: "colorPalette") as? ColorPickerViewController
@@ -60,6 +60,7 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
         //add function tha cheks that the fields are not empty
         
         for i in 0..<apartmentsArr.count{
+            // cheks if the apartment that the user want to join exists
             if apartmentsArr[i].name==apartmentNameTF.text?.trimmingCharacters(in: .whitespaces){
                 
                 var tenant=Tenant(apartmentKey: apartmentsArr[i].apartmentKey! ,name: name.text!, password: password.text!,userColorString: stringColor)
@@ -91,9 +92,6 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
     }
     
     
-    
-    
-    
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         let imagepicker=UIImagePickerController()
         imagepicker.delegate=self
@@ -111,7 +109,6 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        //        textField.delegate=self
         
         
     }
@@ -144,13 +141,6 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
 
 
 //MARK: Extentions for Imagepicker
-
-//extension JoiningViewController:UITextFieldDelegate{
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.endEditing(true)
-//        return true
-//    }
-//}
 
 
 extension JoiningViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{

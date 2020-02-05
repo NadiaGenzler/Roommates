@@ -12,14 +12,13 @@ class ColorPickerViewController: UIViewController,UICollectionViewDataSource, UI
     
     var tag:Int=0
     var cellColor:UIColor=UIColor.gray
-    var colors=["#ffccff","#FDDFDF","#FCF7DE","#F0DEFD","#DEF3FD","#DEFDE0","#d1edf2","#ffd8a7"]
+    var colors=["#ffccff","#FDDFDF","#FCF7DE",
+                "#F0DEFD","#DEF3FD","#DEFDE0","#d1edf2","#ffd8a7"]
     var delegate : JoiningViewController? = nil
     var utilities=Utilities.shared
     
     
-    
       func numberOfSections(in collectionView: UICollectionView) -> Int {
-     
            return 1
        }
      func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,8 +48,7 @@ class ColorPickerViewController: UIViewController,UICollectionViewDataSource, UI
         delegate?.colorView.backgroundColor=cellColor
         delegate?.stringColor=sColor
         delegate?.popoverVC?.dismiss(animated: true)
-        
-        
+       
     }
       
 

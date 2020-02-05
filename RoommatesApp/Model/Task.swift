@@ -14,25 +14,14 @@ class Task:CustomStringConvertible {
     }
     
     
-   // var title:String
+    // var title:String
     var taskDescription:String
     var done:Bool = false
     var apartmentKey:String?
     var taskKey:String?
-  //  var takenBy:Tenant?
+    //  var takenBy:Tenant?
     var tenantColor:String?
     
-    
-    init(fromDictionary:[String:Any]){
-            
-      //  self.title=fromDictionary["title"] as! String
-        self.taskDescription=fromDictionary["taskDescription"] as! String
-        self.done=Bool(fromDictionary["done"] as! String ) ?? false
-       // self.takenBy=fromDictionary["takenBy"] as? Tenant ?? nil
-        self.taskKey=fromDictionary["taskKey"] as? String ?? nil
-        self.apartmentKey=fromDictionary["apartmentKey"] as? String ?? nil
-        self.tenantColor=fromDictionary["tenantColor"] as? String ?? "#ffffff"
-    }
     //the task alway false in the begining
     init(taskDescription:String){
         self.taskDescription=taskDescription
@@ -51,13 +40,25 @@ class Task:CustomStringConvertible {
         self.tenantColor=tenantColor
     }
     
+    //    MARK: Transformation to and from dictionary
+    
+    init(fromDictionary:[String:Any]){
+        
+        //  self.title=fromDictionary["title"] as! String
+        self.taskDescription=fromDictionary["taskDescription"] as! String
+        self.done=Bool(fromDictionary["done"] as! String ) ?? false
+        // self.takenBy=fromDictionary["takenBy"] as? Tenant ?? nil
+        self.taskKey=fromDictionary["taskKey"] as? String ?? nil
+        self.apartmentKey=fromDictionary["apartmentKey"] as? String ?? nil
+        self.tenantColor=fromDictionary["tenantColor"] as? String ?? "#ffffff"
+    }
     
     func toDictionary()->[String:Any]{
         var dict:Dictionary<String,Any>=[:]
-    //    dict["title"]=title
+        //    dict["title"]=title
         dict["taskDescription"]=taskDescription
         dict["done"]=String(done)
-       // dict["takenBy"]=takenBy
+        // dict["takenBy"]=takenBy
         dict["taskKey"]=taskKey
         dict["apartmentKey"]=apartmentKey
         dict["tenantColor"]=tenantColor

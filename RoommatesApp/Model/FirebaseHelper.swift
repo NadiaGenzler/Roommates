@@ -24,7 +24,7 @@ class FirebaseHelper {
     
     //MARK: Write to FireBase
     
-    // add new
+    // add or update
     func addApartment(apartment: inout Apartment, completion: (String,String)->Void){
         guard let apartmentKey=self.ref.childByAutoId().key else {return}
         apartment.apartmentKey=apartmentKey
@@ -74,27 +74,14 @@ class FirebaseHelper {
         
     }
     
-     
-    func uploadImage(url:URL,apartmentKey:String,tenantKey:String){
-            let imagesRef = storageRef.child("\(apartmentKey)/\(tenantKey)Image.jpeg")
-            
-            let uploadTask=imagesRef.putFile(from: url)
-                
-        }
     
-    func downloadImage(apartmentKey:String,tenantKey:String, completion: @escaping (Data)->Void){
-        let reference = storageRef.child("\(apartmentKey)/\(tenantKey)Image.jpeg")
-
-        reference.getData(maxSize: 6 * 1024 * 1024) { data, error in
-          if let error = error {
-            print(error)
-          } else {
-            completion(data!)
-          }
-            
-        }
-          
+    func uploadImage(url:URL,apartmentKey:String,tenantKey:String){
+        let imagesRef = storageRef.child("\(apartmentKey)/\(tenantKey)Image.jpeg")
+        
+        let uploadTask=imagesRef.putFile(from: url)
+        
     }
+    
     
     //MARK: Read from FireBase
     
@@ -139,27 +126,27 @@ class FirebaseHelper {
     }
     
     func fetchTenantData(apartmentKey:String,tenantKey:String, completion: @escaping (Tenant)->Void){
-               ref.child("Apartment").child(apartmentKey).child("tenants").child(tenantKey).observe(.value) { (snapshot) in
-                      let tenantDict=snapshot.value as? [String:Any] ?? [:]
-                      
-                      let tenant = Tenant(fromDictionary: tenantDict)
-                      completion(tenant)
-                      
-                  }
-              }
+        ref.child("Apartment").child(apartmentKey).child("tenants").child(tenantKey).observe(.value) { (snapshot) in
+            let tenantDict=snapshot.value as? [String:Any] ?? [:]
+            
+            let tenant = Tenant(fromDictionary: tenantDict)
+            completion(tenant)
+            
+        }
+    }
     
     func fetchEventData(apartmentKey:String, completion: @escaping ([MyEvent])->Void){
         ref.child("Apartment").child(apartmentKey).child("events").observe(.value) { (snapshot) in
             let eventDict=snapshot.value as? [String:Any] ?? [:]
-          
+            
             let formatter=DateFormatter()
-                       formatter.dateFormat="MM/dd/yyyy HH:mm"
+            formatter.dateFormat="MM/dd/yyyy HH:mm"
             
             var events:[MyEvent]=[]
             for (_,eventValue) in eventDict{
                 let eventValues=eventValue as! [String:Any]
                 let event=MyEvent(eventDescription: eventValues["eventDescription"] as! String, startDate: formatter.date(from: eventValues["startDate"] as! String) ?? Date(), endDate: formatter.date(from:eventValues["endDate"] as! String ) ?? Date(), tenantColor: eventValues["tenantColor"] as! String ,eventKey: eventValues["eventKey"] as? String ?? "nokey")
-
+                
                 events.append(event)
             }
             
@@ -168,7 +155,7 @@ class FirebaseHelper {
         }
     }
     
-        
+    
     func fetchAllTasksData(apartmentKey:String, completion: @escaping ([Task])->Void){
         
         self.ref.child("Apartment").child(apartmentKey).child("tasks").observe(.value) { (snapshot) in
@@ -187,46 +174,36 @@ class FirebaseHelper {
                 
                 tasks.append(task)
             }
-                completion(tasks)
-        
+            completion(tasks)
+            
         }
     }
-//    func fetchAllTasksData(apartmentKey:String, completion: @escaping ([Task])->Void){
-//        
-//        self.ref.child("Apartment").child(apartmentKey).child("tasks").observe(.value) { (snapshot) in
-//            var tasks:[Task]=[]
-//            
-//            let taskDict=snapshot.value as? [String:Any] ?? [:]
-//            for (_,taskValue) in taskDict{
-//                
-//                let tasksValues=taskValue as! [String:Any]
-//                
-//                var Boolvalue = false
-//                if tasksValues["done"] as! String=="true"{
-//                    Boolvalue = true
-//                }
-//                let task=Task(taskDescription: tasksValues["taskDescription"] as! String,taskKey:tasksValues["taskKey"] as! String, done: Boolvalue,tenantColor: tasksValues["tenantColor"] as? String ?? "#ffffff")
-//                
-//                tasks.append(task)
-//            }
-//                completion(tasks)
-//        
-//        }
-//    }
-        
-        func fetchTaskData(apartmentKey:String,taskKey:String, completion: @escaping (Task)->Void){
-            ref.child("Apartment").child(apartmentKey).child("tasks").child(taskKey).observe(.value) { (snapshot) in
-                   let taskDict=snapshot.value as? [String:Any] ?? [:]
-                   //          print(apartmentDict)
-                   
-                   let task = Task(fromDictionary: taskDict)
-                   completion(task)
-                   
-               }
-           }
-        
+    
+    func fetchTaskData(apartmentKey:String,taskKey:String, completion: @escaping (Task)->Void){
+        ref.child("Apartment").child(apartmentKey).child("tasks").child(taskKey).observe(.value) { (snapshot) in
+            let taskDict=snapshot.value as? [String:Any] ?? [:]
+            //          print(apartmentDict)
+            
+            let task = Task(fromDictionary: taskDict)
+            completion(task)
+            
+        }
+    }
     
     
+    func downloadImage(apartmentKey:String,tenantKey:String, completion: @escaping (Data)->Void){
+        let reference = storageRef.child("\(apartmentKey)/\(tenantKey)Image.jpeg")
+        
+        reference.getData(maxSize: 6 * 1024 * 1024) { data, error in
+            if let error = error {
+                print(error)
+            } else {
+                completion(data!)
+            }
+            
+        }
+        
+    }
     
     
     //MARK: Remove from FireBase

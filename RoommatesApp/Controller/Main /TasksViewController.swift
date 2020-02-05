@@ -19,15 +19,8 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("openMenu"), object: nil)
-      
     }
     
-    
-    
-    @IBAction func addList(_ sender: UIBarButtonItem) {
-        taskPopover(sender, [:])
-     
-    }
     
     func taskPopover(_ sender : Any, _ tasksProperties:[String:Any]){
         
@@ -41,21 +34,23 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
         }
         present(popoverTaskVC, animated: true)
     }
-
     
+    @IBAction func addList(_ sender: UIBarButtonItem) {
+        taskPopover(sender, [:])
+    }
     
+    //    MARK: Fetch the tasks from firebase
     override func viewDidLoad() {
         super.viewDidLoad()
   
-            firebase.fetchAllTasksData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!) { (tasks) in
-
-                var sortedTasks=tasks.sorted { (t1, t2) -> Bool in
-                    return t1.taskDescription<t2.taskDescription
-                }
-
-                self.tasksArr=sortedTasks
-                self.tableView.reloadData()
+        firebase.fetchAllTasksData(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!) { (tasks) in
+            var sortedTasks=tasks.sorted { (t1, t2) -> Bool in
+                return t1.taskDescription<t2.taskDescription
             }
+
+            self.tasksArr=sortedTasks
+            self.tableView.reloadData()
+        }
         
     }
     
@@ -111,9 +106,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
 //    //    }
 //    
 }
-//
-//
-//
+
 extension TasksViewController:UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

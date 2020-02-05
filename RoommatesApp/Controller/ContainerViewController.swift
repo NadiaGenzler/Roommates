@@ -14,6 +14,9 @@ class ContainerViewController: UIViewController {
     @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var mainContainerView: UIView!
+    
+    //handle the opening and closing of the menu
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        

@@ -12,17 +12,7 @@ class Tenant:CustomStringConvertible {
     var description: String {
         return "name: \(name), password: \(password), userColorString: \(userColorString) "
     }
-    
-
-    init(apartmentKey:String,name:String,password:String, userColorString:String) {
-        self.apartmentKey=apartmentKey
-        self.name=name
-      //  self.phoneNumber=phoneNumber
-        self.password=password
-        self.userColorString=userColorString
-    }
-    
-    
+ 
     var apartmentKey:String
     var tenantKey:String?
     let name:String
@@ -34,7 +24,16 @@ class Tenant:CustomStringConvertible {
         return Utilities.shared.hexStringToUIColor(userColorString)
     }
   
+    init(apartmentKey:String,name:String,password:String, userColorString:String) {
+        self.apartmentKey=apartmentKey
+        self.name=name
+      //  self.phoneNumber=phoneNumber
+        self.password=password
+        self.userColorString=userColorString
+    }
     
+    
+    //    MARK: Transformation to and from dictionary
     init(fromDictionary:[String:Any]){
         
         self.name=fromDictionary["name"] as? String ?? ""
