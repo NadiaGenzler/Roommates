@@ -321,7 +321,7 @@ was Created Successfully!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Livingroom" translatesAutoresizingMaskIntoConstraints="NO" id="4PD-gE-Vy6">
-                                <rect key="frame" x="-43" y="60" width="509" height="836"/>
+                                <rect key="frame" x="0.0" y="60" width="466" height="836"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <visualEffectView opaque="NO" alpha="0.55000001192092896" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dB-Co-HBI">
