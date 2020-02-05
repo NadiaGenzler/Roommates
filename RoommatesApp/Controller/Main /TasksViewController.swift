@@ -19,8 +19,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
     
     @IBAction func openMenu(_ sender: UIBarButtonItem) {
         NotificationCenter.default.post(name: NSNotification.Name("openMenu"), object: nil)
-        //make the parent view and the tableview darker
-        //  self.view.backgroundColor=UIColor.lightGray
+      
     }
     
     
@@ -42,9 +41,7 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
         }
         present(popoverTaskVC, animated: true)
     }
-//    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-//        return .none
-//    }
+
     
     
     override func viewDidLoad() {
@@ -59,7 +56,6 @@ class TasksViewController: UIViewController , UIPopoverPresentationControllerDel
                 self.tasksArr=sortedTasks
                 self.tableView.reloadData()
             }
-        
         
     }
     

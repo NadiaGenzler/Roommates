@@ -30,7 +30,7 @@ class MenuViewController: UIViewController {
                UserDefaults.standard.removePersistentDomain(forName: appDomain)
            }
             self.show(self.utility.showRegistrationStoryboard(), sender: nil)
-            
+
         })
         
         alert.addAction(okAction)
@@ -120,6 +120,7 @@ extension MenuViewController:UITableViewDataSource,UITableViewDelegate{
             as! tenantTableViewCell
         if tenantsArr.count==1{
             cell.name.text="You have no roommates"
+            cell.backgroundColor=utility.hexStringToUIColor(UserDefaults.standard.string(forKey: "userColorString") ?? "#ffffff")
             cell.color.isHidden=true
         }else{
         var tenant=tenantsWithoutCurrent[indexPath.row]

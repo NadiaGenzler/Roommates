@@ -32,7 +32,6 @@
 		8097930A23A504FB00F2701B /* CreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097930923A504FB00F2701B /* CreatingGroupViewController.swift */; };
 		8097930C23A5051A00F2701B /* JoiningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097930B23A5051A00F2701B /* JoiningViewController.swift */; };
 		8097932F23A5617300F2701B /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097932E23A5617300F2701B /* RoundView.swift */; };
-		8097933123A8130400F2701B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8097933023A8130400F2701B /* GradientView.swift */; };
 		8097933323A81BAB00F2701B /* Assistance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8097933223A81BAB00F2701B /* Assistance.storyboard */; };
 		809FF88A23D346660038B8C5 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809FF88923D346660038B8C5 /* EditTaskViewController.swift */; };
 		80C346E823B4AA8C003B4DA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */; };
@@ -74,7 +73,6 @@
 		8097930923A504FB00F2701B /* CreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupViewController.swift; sourceTree = "<group>"; };
 		8097930B23A5051A00F2701B /* JoiningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiningViewController.swift; sourceTree = "<group>"; };
 		8097932E23A5617300F2701B /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
-		8097933023A8130400F2701B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		8097933223A81BAB00F2701B /* Assistance.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Assistance.storyboard; sourceTree = "<group>"; };
 		809FF88923D346660038B8C5 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		80C346E723B4AA8C003B4DA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -186,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				8097932E23A5617300F2701B /* RoundView.swift */,
-				8097933023A8130400F2701B /* GradientView.swift */,
 				8041621323B10567001639CA /* CircularImageView.swift */,
 				8041620F23B10356001639CA /* TaskTableViewCell.swift */,
 				80E0B30423E146FF0050F4DA /* tenantTableViewCell.swift */,
@@ -339,7 +336,6 @@
 				808E33B923D77391009CCDBE /* ContainerViewController.swift in Sources */,
 				8041620E23B0D0AC001639CA /* TasksViewController.swift in Sources */,
 				80E0B30523E146FF0050F4DA /* tenantTableViewCell.swift in Sources */,
-				8097933123A8130400F2701B /* GradientView.swift in Sources */,
 				80C346EA23B4AFE2003B4DA0 /* FirebaseHelper.swift in Sources */,
 				8097930023A4F16400F2701B /* Apartment.swift in Sources */,
 				8097932F23A5617300F2701B /* RoundView.swift in Sources */,

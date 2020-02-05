@@ -20,7 +20,7 @@ class CreatingGroupViewController: UIViewController{
     @IBOutlet weak var errorLable: UILabel!
     
     @IBAction func create(_ sender: UIButton) { //add function tha cheks that the fields are not empty
-        
+        self.errorLable.isHidden=true
         for i in 0..<apartmentsArr.count{
             
             if apartmentsArr[i].name == self.groupName.text?.trimmingCharacters(in: .whitespaces){
@@ -33,14 +33,8 @@ class CreatingGroupViewController: UIViewController{
                     self.apartmentName=name
                 }
                 
-                groupName.isEnabled=false
                 createdSuccessfuly()//present and after 2 secs dismiss
-//
-//             DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-//
-//
-//
-//                    })
+
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2 ) {
                     let joinController=self.storyboard?.instantiateViewController(withIdentifier: "joinVC") as! JoiningViewController

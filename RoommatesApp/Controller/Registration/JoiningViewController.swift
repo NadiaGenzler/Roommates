@@ -116,6 +116,7 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
         
     }
     
+    //MARK: KeyBoard and ScrollView handle
     
     var keyboardClosed = true
     @objc func keyboardWillShow(_ notification: NSNotification) {
@@ -128,12 +129,12 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
         
         if keyboardClosed {
             scrollView.contentSize = CGSize(width: keyboard.width, height: view.frame.height-keyboard.height)
-            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height-keyboard.height)
+//            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height-keyboard.height)
             
             keyboardClosed = false
         }else{
             scrollView.contentSize = CGSize(width: keyboard.width, height: view.frame.height)
-            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height)
+//            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height)
             
             keyboardClosed = true
         }
@@ -142,13 +143,14 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
 }
 
 
+//MARK: Extentions for Imagepicker
 
-extension JoiningViewController:UITextFieldDelegate{
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
-        return true
-    }
-}
+//extension JoiningViewController:UITextFieldDelegate{
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.endEditing(true)
+//        return true
+//    }
+//}
 
 
 extension JoiningViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{

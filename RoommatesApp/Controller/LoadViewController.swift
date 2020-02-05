@@ -10,28 +10,9 @@ import UIKit
 
 class LoadViewController: UIViewController {
     
-    // var nav:UIViewController?
     let utility=Utilities.shared
     let firebase=FirebaseHelper.shared
     
-    //    func showRegistrationStoryboard()->UIViewController{
-    //
-    //        var registrationStoryBoard=UIStoryboard(name: "Registration", bundle: Bundle.main)
-    //       var nav=registrationStoryBoard.instantiateViewController(withIdentifier: "registrationSb") as! UIViewController
-    //
-    //            show(nav, sender: nil)
-    //        return nav
-    //
-    //    }
-    //
-    //
-    //    func showMainStoryboard()->UIViewController{
-    //        var registrationStoryBoard=UIStoryboard(name: "Main", bundle: Bundle.main)
-    //        var nav=registrationStoryBoard.instantiateViewController(withIdentifier: "mainStoryboard") as! UIViewController
-    //
-    //            show(nav, sender: nil)
-    //            return nav
-    //        }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
