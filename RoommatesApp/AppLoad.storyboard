@@ -14,7 +14,20 @@
                     <view key="view" contentMode="scaleToFill" id="iAk-OH-BWl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch screen" translatesAutoresizingMaskIntoConstraints="NO" id="0UT-O0-Zqs">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0UT-O0-Zqs" firstAttribute="centerX" secondItem="iAk-OH-BWl" secondAttribute="centerX" id="1JA-W2-jN0"/>
+                            <constraint firstItem="0UT-O0-Zqs" firstAttribute="leading" secondItem="iAk-OH-BWl" secondAttribute="leading" id="J4f-bp-Zor"/>
+                            <constraint firstItem="0UT-O0-Zqs" firstAttribute="centerY" secondItem="iAk-OH-BWl" secondAttribute="centerY" id="gYa-Hm-AXa"/>
+                            <constraint firstItem="0UT-O0-Zqs" firstAttribute="top" secondItem="iAk-OH-BWl" secondAttribute="top" id="i1l-dt-7Xl"/>
+                            <constraint firstAttribute="trailing" secondItem="0UT-O0-Zqs" secondAttribute="trailing" id="mZB-ds-nkU"/>
+                            <constraint firstAttribute="bottom" secondItem="0UT-O0-Zqs" secondAttribute="bottom" id="yjg-Rx-ZHd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="E1r-nr-3bw"/>
                     </view>
                 </viewController>
@@ -23,4 +36,7 @@
             <point key="canvasLocation" x="162" y="46"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Launch screen" width="1000" height="1500"/>
+    </resources>
 </document>

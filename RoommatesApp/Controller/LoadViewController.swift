@@ -18,11 +18,11 @@ class LoadViewController: UIViewController {
 // Checks if there is information in the UserDefaults and decides which storyboard to launch
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserDefaults.standard.string(forKey: "apartmentKey") != nil{
-            show(utility.showMainStoryboard(), sender: nil)
+        if UserDefaults.standard.string(forKey: "apartmentKey") == nil{
+            show(utility.showRegistrationStoryboard(), sender: nil)
             
         }else{
-            show(utility.showRegistrationStoryboard(), sender: nil)
+            show(utility.showMainStoryboard(), sender: nil)
         }
         
     }

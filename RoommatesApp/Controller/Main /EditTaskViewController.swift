@@ -30,7 +30,7 @@ class EditTaskViewController: UIViewController {
         }
 //      if the task exists->updateTask to firebase
         else{
-            var updateTask=Task(taskDescription: tasksProperties["taskDescription"] as? String ?? "", taskKey: tasksProperties["taskKey"] as? String ?? "", done: tasksProperties["done"] as? Bool ?? false, tenantColor: tasksProperties["tenantColor"] as? String ?? "#ffffff")
+            var updateTask=Task(taskDescription: taskText.text as? String ?? "", taskKey: tasksProperties["taskKey"] as? String ?? "", done: tasksProperties["done"] as? Bool ?? false, tenantColor: tasksProperties["tenantColor"] as? String ?? "#ffffff")
 
             firebase.updateTask(apartmentKey: UserDefaults.standard.string(forKey: "apartmentKey")!, taskKey: tasksProperties["taskKey"] as? String ?? "", task: &updateTask)
         }

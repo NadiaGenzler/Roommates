@@ -120,21 +120,24 @@ class JoiningViewController: UIViewController, UIPopoverPresentationControllerDe
         if let keyboard=(notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue{
             handleScrollView(keyboard)
         }
+        
+        
     }
     
     func handleScrollView(_ keyboard:CGRect){
         
         if keyboardClosed {
             scrollView.contentSize = CGSize(width: keyboard.width, height: view.frame.height-keyboard.height)
-//            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height-keyboard.height)
+            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height-keyboard.height-60)
             
             keyboardClosed = false
-        }else{
-            scrollView.contentSize = CGSize(width: keyboard.width, height: view.frame.height)
-//            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height)
-            
-            keyboardClosed = true
         }
+//        else{
+////            scrollView.contentSize = CGSize(width: keyboard.width, height: view.frame.height)
+//            scrollView.frame = CGRect(x: 0, y: 0, width: keyboard.width, height: view.frame.height)
+//
+//            keyboardClosed = true
+//        }
         
     }
 }

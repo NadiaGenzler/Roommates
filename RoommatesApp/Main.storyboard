@@ -426,7 +426,7 @@
         <!--Edit Event View Controller-->
         <scene sceneID="fpa-5B-6sy">
             <objects>
-                <viewController storyboardIdentifier="EventEditor" id="nQV-fT-Iei" customClass="EditEventViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventEditor" modalPresentationStyle="currentContext" id="nQV-fT-Iei" customClass="EditEventViewController" customModule="RoommatesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EJp-xh-Jo6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -504,7 +504,7 @@
                                         </constraints>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                         <dataDetectorType key="dataDetectorTypes" calendarEvent="YES"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Text:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hmq-Uq-B1U">
